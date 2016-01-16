@@ -81,7 +81,7 @@
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" id="fAj-s6-QHj">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_submit" id="fAj-s6-QHj">
                                                             <rect key="frame" x="89" y="80" width="13" height="13"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <animations/>
@@ -1035,7 +1035,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clock" width="29" height="29"/>
         <image name="locIcon" width="30" height="30"/>
         <image name="refreshButt" width="44" height="44"/>
         <image name="star_unselected" width="58" height="58"/>
