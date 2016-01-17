@@ -27,26 +27,27 @@ ADBannerViewDelegate
 {
 
     /* Views */
-    @IBOutlet var containerScrollView: UIScrollView!
+//    @IBOutlet var containerScrollView: UIScrollView!
     @IBOutlet var eventImage: UIImageView!
-    @IBOutlet var descrTxt: UITextView!
+//    @IBOutlet var descrTxt: UITextView!
+    @IBOutlet weak var eventTitleLabel: UILabel!
     
-    @IBOutlet var detailsView: UIView!
-    @IBOutlet var addToCalOutlet: UIButton!
+//    @IBOutlet var detailsView: UIView!
+//    @IBOutlet var addToCalOutlet: UIButton!
     @IBOutlet var shareOnFBOutlet: UIButton!
-    @IBOutlet var shareOnTWOutlet: UIButton!
-    @IBOutlet weak var shareByMailOutlet: UIButton!
+//    @IBOutlet var shareOnTWOutlet: UIButton!
+//    @IBOutlet weak var shareByMailOutlet: UIButton!
     @IBOutlet weak var shareBySMSOutlet: UIButton!
     
-    @IBOutlet var dayNrLabel: UILabel!
-    @IBOutlet var monthLabel: UILabel!
-    @IBOutlet var yearLabel: UILabel!
+//    @IBOutlet var dayNrLabel: UILabel!
+//    @IBOutlet var monthLabel: UILabel!
+//    @IBOutlet var yearLabel: UILabel!
     @IBOutlet var registerOutlet: UIButton!
     
     @IBOutlet var startDateLabel: UILabel!
     @IBOutlet var endDateLabel: UILabel!
     @IBOutlet var costLabel: UILabel!
-    @IBOutlet var websiteLabel: UILabel!
+//    @IBOutlet var websiteLabel: UILabel!
     
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var mapView: MKMapView!
@@ -55,8 +56,8 @@ ADBannerViewDelegate
     var reportButt = UIButton()
     
     //Ad banners properties
-    var iAdBannerView = ADBannerView()
-    var adMobBannerView = GADBannerView()
+//    var iAdBannerView = ADBannerView()
+//    var adMobBannerView = GADBannerView()
     
     
     /* Variables */
@@ -73,15 +74,71 @@ ADBannerViewDelegate
     var pointAnnotation:MKPointAnnotation!
     var pinView:MKPinAnnotationView!
     var region: MKCoordinateRegion!
+    
+    /* Tab Toggle View */
+    @IBOutlet weak var snapchatToggleView: UIView!
+    @IBOutlet weak var msgToggleView: UIView!
+    @IBOutlet weak var mapToggleView: UIView!
+    @IBOutlet weak var descToggleView: UIView!
+    
+    @IBAction func tabToggleView(sender: UISegmentedControl) {
+        switch (sender.selectedSegmentIndex){
+        case 0:
+            self.snapchatToggleView.hidden = true;
+            self.msgToggleView.hidden = true;
+            self.mapToggleView.hidden = false;
+            self.descToggleView.hidden = false;
+
+        case 1:
+            self.snapchatToggleView.hidden = false;
+            self.msgToggleView.hidden = false;
+            self.mapToggleView.hidden = true;
+            self.descToggleView.hidden = true;
+        default:
+            break;
+        }
+    }
+    
+/* Rate bar */
+
+    var rateCurrent:Float = 1;
+    var rateTotal:Float = 1;
+    var ratePercent:Float = 0;
 
     
-    
+    @IBOutlet weak var rateProgress: UIProgressView!
 
+    
+    @IBAction func nahButton(sender: UIButton) {
+        rateCurrent = rateCurrent - 1;
+        self.progBarUpdate(rateCurrent)
+    }
+
+    @IBAction func litButton(sender: UIButton) {
+        rateCurrent = rateCurrent + 1;
+        self.progBarUpdate(rateCurrent)
+
+    }
+    
+    func progBarUpdate(finalValue: Float){
+        rateTotal = rateTotal + 1;
+        ratePercent = (rateCurrent / rateTotal);
+        if (rateCurrent < 0 || rateCurrent == 0){
+            
+            rateProgress.setProgress(0, animated: true)
+            
+        } else {
+            rateProgress.setProgress(ratePercent, animated: true)
+        }
+
+    }
+    
+    
 // MARK: - VIEW DID LOAD
 override func viewDidLoad() {
         super.viewDidLoad()
     
-    // Back BarButton Item
+// Back BarButton Item
     backButt = UIButton(type: UIButtonType.Custom)
     backButt.frame = CGRectMake(0, 0, 44, 44)
     backButt.setBackgroundImage(UIImage(named: "backButt"), forState: UIControlState.Normal)
@@ -97,11 +154,11 @@ override func viewDidLoad() {
     
     
     // Round views corners
-    addToCalOutlet.layer.cornerRadius = 5
+//    addToCalOutlet.layer.cornerRadius = 5
     
     shareOnFBOutlet.layer.cornerRadius = 5
-    shareOnTWOutlet.layer.cornerRadius = 5
-    shareByMailOutlet.layer.cornerRadius = 5
+//    shareOnTWOutlet.layer.cornerRadius = 5
+//    shareByMailOutlet.layer.cornerRadius = 5
     shareBySMSOutlet.layer.cornerRadius = 5
     
     registerOutlet.layer.cornerRadius = 5
@@ -109,28 +166,30 @@ override func viewDidLoad() {
     registerOutlet.layer.borderWidth = 1.5
 
     // Init ad banners
-    initiAdBanner()
-    initAdMobBanner()
+//    initiAdBanner()
+//    initAdMobBanner()
     
     
     
     // GET EVENT'S TITLE
     self.title = "\(eventObj[EVENTS_TITLE]!)"
+    eventTitleLabel.text = "\(eventObj[EVENTS_TITLE]!)"
     
     // GET EVENT'S IMAGE
     let imageFile = eventObj[EVENTS_IMAGE] as? PFFile
     imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
         if error == nil {
             if let imageData = imageData {
+                self.eventImage.layer.cornerRadius = self.eventImage.frame.size.width / 2;
                 self.eventImage.image = UIImage(data:imageData)
     } } }
     
     
     // GET EVENT'S DECSRIPTION
-    descrTxt.text = "\(eventObj[EVENTS_DESCRIPTION]!)"
-    descrTxt.sizeToFit()
+//    descrTxt.text = "\(eventObj[EVENTS_DESCRIPTION]!)"
+//    descrTxt.sizeToFit()
     
-    
+/*
     // GET EVENT'S START DATE (for the labels on the left side of the event's image)
     let dayFormatter = NSDateFormatter()
     dayFormatter.dateFormat = "dd"
@@ -146,27 +205,27 @@ override func viewDidLoad() {
     yearFormatter.dateFormat = "yyyy"
     let yearStr = yearFormatter.stringFromDate(eventObj[EVENTS_START_DATE] as! NSDate)
     yearLabel.text = yearStr
-    
+*/
     
     // GET EVENT START AND END DATES & TIME
     let startDateFormatter = NSDateFormatter()
-    startDateFormatter.dateFormat = "MMM dd @hh:mm a"
+    startDateFormatter.dateFormat = "MMM d, h:mm a"
     let startDateStr = startDateFormatter.stringFromDate(eventObj[EVENTS_START_DATE] as! NSDate).uppercaseString
     let endDateFormatter = NSDateFormatter()
-    endDateFormatter.dateFormat = "MMM dd @hh:mm a"
+    endDateFormatter.dateFormat = "MMM d, h:mm a"
     let endDateStr = endDateFormatter.stringFromDate(eventObj[EVENTS_END_DATE] as! NSDate).uppercaseString
     
-    startDateLabel.text = "Start Date: \(startDateStr)"
-    if endDateStr != "" {  endDateLabel.text = "End Date: \(endDateStr)"
+    startDateLabel.text = "\(startDateStr)"
+    if endDateStr != "" {  endDateLabel.text = " - \(endDateStr)"
     } else { endDateLabel.text = ""  }
     
     
     // DISABLE THE ADD TO CALENDAR BUTTON IN CASE THE EVENT HAS PASSED
     let currentDate = NSDate()
     if currentDate.isGreaterThanDate(eventObj[EVENTS_END_DATE] as! NSDate) {
-        addToCalOutlet.enabled = false
-        addToCalOutlet.backgroundColor = mediumGray
-        addToCalOutlet.setTitle("This event has passed", forState: UIControlState.Normal)
+//        addToCalOutlet.enabled = false
+//        addToCalOutlet.backgroundColor = mediumGray
+//        addToCalOutlet.setTitle("This event has passed", forState: UIControlState.Normal)
         
         registerOutlet.enabled = false
         registerOutlet.backgroundColor = mediumGray
@@ -176,26 +235,26 @@ override func viewDidLoad() {
     
     // GET EVENT'S COST
     costLabel.text = "Cost: \(eventObj[EVENTS_COST]!)".uppercaseString
-    
+/*
     // GET EVENT'S WEBSITE
     if eventObj[EVENTS_WEBSITE] != nil {
     websiteLabel.text = "Website: \(eventObj[EVENTS_WEBSITE]!)"
     } else {  websiteLabel.text = ""  }
-    
+*/
     // GET EVENT'S LOCATION
     locationLabel.text = "\(eventObj[EVENTS_LOCATION]!)".uppercaseString
     addPinOnMap(locationLabel.text!.lowercaseString)
     
     
     // Move the addToCalendar button below the descriptionTxt
-    detailsView.frame.origin.y = descrTxt.frame.origin.y + descrTxt.frame.size.height + 10
+//    detailsView.frame.origin.y = descrTxt.frame.origin.y + descrTxt.frame.size.height + 10
     
     // Finally Resize the conainer ScrollView
-    containerScrollView.contentSize = CGSizeMake(containerScrollView.frame.size.width, detailsView.frame.origin.y + detailsView.frame.size.height)
+//    containerScrollView.contentSize = CGSizeMake(containerScrollView.frame.size.width, detailsView.frame.origin.y + detailsView.frame.size.height)
+    
+    
     
 }
-    
-
     
 // MARK: - ADD A PIN ON THE MAPVIEW
 func addPinOnMap(address: String) {
@@ -271,7 +330,7 @@ func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutA
 
     
     
-    
+/*
     
 // MARK: - ADD EVENT TO IOS CALENDAR
 @IBAction func addToCalButt(sender: AnyObject) {
@@ -336,7 +395,7 @@ func insertEvent(store: EKEventStore) {
     }
 }
     
-    
+*/
     
     
  
@@ -368,7 +427,7 @@ func insertEvent(store: EKEventStore) {
     
 }
     
-    
+/*
 // MARK: - SHARE EVENT ON TWITTER
 @IBAction func shareOnTWButt(sender: AnyObject) {
     if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
@@ -396,7 +455,7 @@ func insertEvent(store: EKEventStore) {
     }
 }
 
-    
+
 
 // MARK: - SHARE EVEN BY MAIL
 @IBAction func shareByMailButt(sender: AnyObject) {
@@ -421,7 +480,7 @@ func insertEvent(store: EKEventStore) {
 
 }
     
-    
+*/
     
 // MARK: - SHARE EVENT BY SMS
 @IBAction func shareBySMSButt(sender: AnyObject) {
@@ -461,14 +520,14 @@ func messageComposeViewController(controller: MFMessageComposeViewController, di
     
     
     
-    
+/*
     
 // MARK: - OPEN LINK TO WEBSITE BUTTON
 @IBAction func openLinkButt(sender: AnyObject) {
     let webURL = NSURL(string: "\(eventObj[EVENTS_WEBSITE]!)")
     UIApplication.sharedApplication().openURL(webURL!)
 }
-    
+*/
     
 // MARK: - REGISTER TO THE EVENT'S WEBSITE BUTTON
 @IBAction func registerButt(sender: AnyObject) {
@@ -535,7 +594,7 @@ func backButt(sender: UIButton) {
 
     
  
-    
+/*
     
     
 // MARK: - iAD + ADMOB BANNER METHODS
@@ -615,7 +674,7 @@ func backButt(sender: UIButton) {
         hideBanner(adMobBannerView)
     }
     
-
+*/
     
     
     
