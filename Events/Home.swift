@@ -29,7 +29,7 @@ ADBannerViewDelegate
     
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchTxt: UITextField!
-    @IBOutlet var searchCityTxt: UITextField!
+    //@IBOutlet var searchCityTxt: UITextField!
     
     @IBOutlet weak var searchOutlet: UIBarButtonItem!
     

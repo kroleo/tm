@@ -123,12 +123,16 @@ ADBannerViewDelegate
     func progBarUpdate(finalValue: Float){
         rateTotal = rateTotal + 1;
         ratePercent = (rateCurrent / rateTotal);
+       //FIX HEIGHT!
+        // rateProgress.frame.size.height = 8;
         if (rateCurrent < 0 || rateCurrent == 0){
             
             rateProgress.setProgress(0, animated: true)
+            rateProgress.frame.size.height = 8;
             
         } else {
             rateProgress.setProgress(ratePercent, animated: true)
+            rateProgress.frame.size.height = 8;
         }
 
     }
