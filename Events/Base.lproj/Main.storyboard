@@ -11,11 +11,14 @@
                 <tabBarController id="UKZ-y8-AGY" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="RQ1-ZN-jvI">
+                    <tabBar key="tabBar" contentMode="scaleToFill" selectionIndicatorImage="tabBar" id="RQ1-ZN-jvI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
                                 <color key="value" red="0.29411764709999999" green="0.53725490200000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,11 +29,62 @@
                         <segue destination="zWC-7f-okG" kind="relationship" relationship="viewControllers" id="Cq0-JM-S8g"/>
                         <segue destination="xPf-f2-d3f" kind="relationship" relationship="viewControllers" id="7dn-za-Gzg"/>
                         <segue destination="JEN-AN-sYw" kind="relationship" relationship="viewControllers" id="4w3-zY-pn7"/>
+                        <segue destination="IGs-4C-seb" kind="relationship" relationship="viewControllers" id="vbZ-j1-sZR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YoL-dm-R6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-827" y="118"/>
+            <point key="canvasLocation" x="-1238" y="-13"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="vfo-6q-hBy">
+            <objects>
+                <tableViewController id="C7n-6U-6Ix" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bdz-Lb-8tP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UfX-04-7Oz">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UfX-04-7Oz" id="q9g-eX-MkJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="C7n-6U-6Ix" id="NhI-cY-K6L"/>
+                            <outlet property="delegate" destination="C7n-6U-6Ix" id="6Jv-z1-Fez"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="1l3-PV-Pqy"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ry9-vX-RVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1238" y="1372"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="24R-bK-ecD">
+            <objects>
+                <navigationController id="IGs-4C-seb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="tab_profile" id="Rbb-aq-SB5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7VZ-5m-Xr8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="C7n-6U-6Ix" kind="relationship" relationship="rootViewController" id="IRp-4c-VUJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3To-VM-410" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1238" y="767"/>
         </scene>
         <!--Recent Events-->
         <scene sceneID="Ct4-Sg-koh">
@@ -955,11 +1009,11 @@
             </objects>
             <point key="canvasLocation" x="-358" y="1300"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="wGS-f9-5n6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zWC-7f-okG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="tab_home" id="hLq-F2-n3X"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_home" id="hLq-F2-n3X"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aLh-jl-fqF">
@@ -981,11 +1035,11 @@
             </objects>
             <point key="canvasLocation" x="-358" y="-126"/>
         </scene>
-        <!--Submit an Event-->
+        <!--Navigation Controller-->
         <scene sceneID="bdG-5L-oOe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xPf-f2-d3f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Submit an Event" image="tab_submit" id="oVn-1M-XWw"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_submit" id="oVn-1M-XWw"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Geg-Sz-rEj">
@@ -1007,11 +1061,11 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="-126"/>
         </scene>
-        <!--Contact-->
+        <!--Navigation Controller-->
         <scene sceneID="zes-As-RF2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JEN-AN-sYw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contact" image="tab_contact" id="0LU-G1-5cp"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_contact" id="0LU-G1-5cp"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="j3N-T3-K8v">
@@ -1038,8 +1092,10 @@
         <image name="locIcon" width="30" height="30"/>
         <image name="refreshButt" width="44" height="44"/>
         <image name="star_unselected" width="58" height="58"/>
+        <image name="tabBar" width="44" height="44"/>
         <image name="tab_contact" width="44" height="44"/>
         <image name="tab_home" width="44" height="44"/>
+        <image name="tab_profile" width="44" height="44"/>
         <image name="tab_submit" width="44" height="44"/>
     </resources>
 </document>
