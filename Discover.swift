@@ -1,5 +1,5 @@
 //
-//  Favorites.swift
+//  Discover.swift
 //  Events
 //
 //  Created by Harsha Cuttari on 1/17/16.
@@ -12,20 +12,24 @@ import GoogleMobileAds
 import iAd
 import AudioToolbox
 
-class Favorites: UIViewController,
+class Discover: UIViewController,
     UICollectionViewDataSource,
     UICollectionViewDelegate,
     UICollectionViewDelegateFlowLayout,
     UITextFieldDelegate,
     GADBannerViewDelegate,
 ADBannerViewDelegate {
+    
+    
 
+
+    
     /* Views */
     @IBOutlet var eventsCollView: UICollectionView!
     
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchTxt: UITextField!
-
+    
     
     @IBOutlet weak var searchOutlet: UIBarButtonItem!
     
@@ -35,13 +39,12 @@ ADBannerViewDelegate {
     var cellSize = CGSize()
     var searchViewIsVisible = false
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // iPhone
-        cellSize = CGSizeMake(view.frame.size.width, 120)
+        cellSize = CGSizeMake(view.frame.size.width, 85)
         
         // Search View initial setup
         searchView.frame.origin.y = -searchView.frame.size.height
@@ -50,17 +53,16 @@ ADBannerViewDelegate {
         searchTxt.resignFirstResponder()
         
         // Set placeholder's color and text for Search text fields
-        searchTxt.attributedPlaceholder = NSAttributedString(string: "Type an event name", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()] )
+        searchTxt.attributedPlaceholder = NSAttributedString(string: "Type a name", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()] )
         
         // Call a Parse query
         queryLatestEvents()
         
-    
-
+        
+        
         // Do any additional setup after loading the view.
     }
-    
-    
+
     
     func queryLatestEvents() {
         view.showHUD(view)
@@ -103,10 +105,10 @@ ADBannerViewDelegate {
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "headerCollectionReusableView", forIndexPath: indexPath) as! headerCollectionReusableView
+        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "DiscoverHeader", forIndexPath: indexPath) as! DiscoverHeader
         
-        headerView.discHeaderImage.image = UIImage(named: "favHeaderImage")
-        
+        headerView.exploreHeaderImage.image = UIImage(named: "exploreHeaderImage")
+        headerView.exploreTypeLabel.text = "People"
         return headerView
     }
     
@@ -116,7 +118,7 @@ ADBannerViewDelegate {
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DiscoverCell", forIndexPath: indexPath) as! DiscoverCell
         
         var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
         eventsClass = eventsArray[indexPath.row] as! PFObject
@@ -133,13 +135,13 @@ ADBannerViewDelegate {
                     //cell.eventImage.clipsToBounds = YES;
                     cell.eventImage.image = UIImage(data:imageData)
                 } } }
-
+        
         // GET EVENT'S TITLE
         cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
-    
+        
         // GET EVENT'S LOCATION
-        cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
-
+        //cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
+        
         // GET EVENT START AND END DATES & TIME
         let startDateFormatter = NSDateFormatter()
         startDateFormatter.dateFormat = "MMM d, h:mm a"
@@ -148,21 +150,21 @@ ADBannerViewDelegate {
         
         
         // GET EVENT'S COST
-        cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
+        //cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
         
         
         return cell
     }
-
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return cellSize
     }
-
     
     
     
-
-
+    
+    
+    
     
     // MARK: - TAP A CELL TO OPEN EVENT DETAILS CONTROLLER
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -273,20 +275,20 @@ ADBannerViewDelegate {
         hideSearchView()
         searchViewIsVisible = false
         
-        self.title = "Following"
+        self.title = "Explore"
     }
-
-
     
     
-
+    
+    
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
     
@@ -295,5 +297,5 @@ ADBannerViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
