@@ -149,6 +149,43 @@ ADBannerViewDelegate {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DiscoverCell", forIndexPath: indexPath) as! DiscoverCell
         
+        
+        if indexPath.section == 0{
+            if (indexPath.row == eventsArray.count - 4){
+                
+                var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
+                eventsClass = eventsArray[indexPath.row] as! PFObject
+                
+                cell.separatorView.hidden = true
+                
+                // GET EVENT'S IMAGE
+
+                
+                let imageFile = eventsClass[EVENTS_IMAGE] as? PFFile
+                imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+                    if error == nil {
+                        if let imageData = imageData {
+                            
+                            cell.eventImage.layer.cornerRadius = cell.eventImage.frame.size.width / 2;
+                            //cell.eventImage.clipsToBounds = YES;
+                            cell.eventImage.image = UIImage(data:imageData)
+                        } } }
+                
+                // GET EVENT'S TITLE
+                cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
+                
+                
+                // GET EVENT START AND END DATES & TIME
+                let startDateFormatter = NSDateFormatter()
+                startDateFormatter.dateFormat = "MMM d, h:mm a"
+                let startDateStr = startDateFormatter.stringFromDate(eventsClass[EVENTS_START_DATE] as! NSDate).uppercaseString
+                cell.timeLabel.text = startDateStr
+                        return cell
+                
+                
+            } else {
+                        cell.separatorView.hidden = false
+                
         var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
         eventsClass = eventsArray[indexPath.row] as! PFObject
         
@@ -168,8 +205,6 @@ ADBannerViewDelegate {
         // GET EVENT'S TITLE
         cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
         
-        // GET EVENT'S LOCATION
-        //cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
         
         // GET EVENT START AND END DATES & TIME
         let startDateFormatter = NSDateFormatter()
@@ -178,13 +213,47 @@ ADBannerViewDelegate {
         cell.timeLabel.text = startDateStr
         
         
-        // GET EVENT'S COST
-        //cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
-        
         
         return cell
-    }
+            }
+            
+            
+        } else {
+            
+
+            var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
+            eventsClass = eventsArray[indexPath.row] as! PFObject
+            
+            
+            // GET EVENT'S IMAGE
+            
+            let imageFile = eventsClass[EVENTS_IMAGE] as? PFFile
+            imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        
+                        cell.eventImage.layer.cornerRadius = cell.eventImage.frame.size.width / 2;
+                        //cell.eventImage.clipsToBounds = YES;
+                        cell.eventImage.image = UIImage(data:imageData)
+                    } } }
+            
+            // GET EVENT'S TITLE
+            cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
+            
+            
+            // GET EVENT START AND END DATES & TIME
+            let startDateFormatter = NSDateFormatter()
+            startDateFormatter.dateFormat = "MMM d, h:mm a"
+            let startDateStr = startDateFormatter.stringFromDate(eventsClass[EVENTS_START_DATE] as! NSDate).uppercaseString
+            cell.timeLabel.text = startDateStr
+            
+            return cell
+            
+            
+        }
     
+}
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return cellSize
     }

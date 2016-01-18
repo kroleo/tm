@@ -16,5 +16,6 @@ class DiscoverCell: UICollectionViewCell {
     
     @IBOutlet var eventImage: UIImageView!
     
+    @IBOutlet weak var separatorView: UIView!
 
 }

@@ -852,6 +852,7 @@
                                         <animations/>
                                         <connections>
                                             <outlet property="eventImage" destination="vz8-Li-niP" id="w0J-d3-Daw"/>
+                                            <outlet property="separatorView" destination="4SM-fY-lCK" id="dgt-Qd-rXY"/>
                                             <outlet property="timeLabel" destination="iTR-bT-tnt" id="86J-rV-iP5"/>
                                             <outlet property="titleLbl" destination="A2V-By-sga" id="ayn-74-PEP"/>
                                         </connections>
