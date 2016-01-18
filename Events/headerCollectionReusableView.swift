@@ -10,5 +10,7 @@ import UIKit
 
 class headerCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var discHeaderImage: UIImageView!
+    @IBOutlet weak var followingToggle: UISegmentedControl!
+    
         
 }

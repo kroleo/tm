@@ -47,7 +47,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UfX-04-7Oz">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UfX-04-7Oz" id="q9g-eX-MkJ">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -107,7 +107,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="yad-dm-yjt" userLabel="EventCell" customClass="EventCell" customModule="Events" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="174" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="110" width="320" height="110"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -200,11 +200,12 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollectionReusableView" id="v5Z-Pj-L0h" customClass="headerCollectionReusableView" customModule="Events" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ohu-Ip-6CV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
                                     </subviews>
@@ -239,7 +240,7 @@
                             </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.8980392157" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Recent Events" id="GAA-eF-E2e">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="zOh-Si-WRF" userLabel="SearchButt">
@@ -586,7 +587,7 @@
             </objects>
             <point key="canvasLocation" x="-1676" y="1192"/>
         </scene>
-        <!--Favorite Events-->
+        <!--Following-->
         <scene sceneID="nVw-1R-Cec">
             <objects>
                 <viewController storyboardIdentifier="Favorites" id="3K6-BJ-Zzj" customClass="Favorites" customModule="Events" customModuleProvider="target" sceneMemberID="viewController">
@@ -601,13 +602,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="y96-9y-Gmh">
                                     <size key="itemSize" width="320" height="110"/>
-                                    <size key="headerReferenceSize" width="320" height="110"/>
+                                    <size key="headerReferenceSize" width="320" height="139"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="Er0-UN-87O" userLabel="EventCell" customClass="EventCell" customModule="Events" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="174" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="203" width="320" height="110"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -700,17 +701,29 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollectionReusableView" id="TRa-e3-MQX" customClass="headerCollectionReusableView" customModule="Events" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="110"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="139"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="gDw-qr-lcZ">
+                                            <rect key="frame" x="0.0" y="110" width="320" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <segments>
+                                                <segment title="People"/>
+                                                <segment title="Venues"/>
+                                            </segments>
+                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </segmentedControl>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="IXy-ZL-CnB">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                         </imageView>
                                     </subviews>
                                     <animations/>
                                     <connections>
                                         <outlet property="discHeaderImage" destination="IXy-ZL-CnB" id="2Dp-ud-fcK"/>
+                                        <outlet property="followingToggle" destination="gDw-qr-lcZ" id="FIh-4T-N8Z"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>
@@ -741,7 +754,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorite Events" id="bRx-Od-fQN">
+                    <navigationItem key="navigationItem" title="Following" id="bRx-Od-fQN">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="x4M-ik-3ZJ" userLabel="SearchButt">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1145,7 +1158,7 @@
         <scene sceneID="bdG-5L-oOe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xPf-f2-d3f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="oVn-1M-XWw"/>
+                    <tabBarItem key="tabBarItem" image="tab_following" id="oVn-1M-XWw"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Geg-Sz-rEj">
@@ -1200,6 +1213,7 @@
         <image name="star_unselected" width="58" height="58"/>
         <image name="tabBar" width="44" height="44"/>
         <image name="tab_contact" width="44" height="44"/>
+        <image name="tab_following" width="44" height="44"/>
         <image name="tab_home" width="44" height="44"/>
         <image name="tab_profile" width="44" height="44"/>
         <image name="tab_submit" width="44" height="44"/>
