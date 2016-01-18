@@ -37,6 +37,7 @@ ADBannerViewDelegate {
     /* Variables */
     var eventsArray = NSMutableArray()
     var cellSize = CGSize()
+    var headerSize = CGSize()
     var searchViewIsVisible = false
     
 
@@ -45,6 +46,7 @@ ADBannerViewDelegate {
         
         // iPhone
         cellSize = CGSizeMake(view.frame.size.width, 85)
+        headerSize = CGSizeMake(view.frame.size.width, 139)
         
         // Search View initial setup
         searchView.frame.origin.y = -searchView.frame.size.height
@@ -96,22 +98,49 @@ ADBannerViewDelegate {
     
     // MARK: -  COLLECTION VIEW DELEGATES
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventsArray.count
+        //fix the actual number to what is needed
+        
+        if section == 0{
+            return eventsArray.count - 3
+        } else {
+        return eventsArray.count - 2
+        }
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "DiscoverHeader", forIndexPath: indexPath) as! DiscoverHeader
-        
-        headerView.exploreHeaderImage.image = UIImage(named: "exploreHeaderImage")
-        headerView.exploreTypeLabel.text = "People"
-        return headerView
+        if indexPath.section == 0 {
+
+            headerView.exploreDivder.hidden = true
+            headerView.exploreHeaderImage.hidden = false
+            headerView.exploreHeaderImage.image = UIImage(named: "exploreHeaderImage")
+            headerView.exploreTypeLabel.text = "Venues"
+            return headerView
+        } else {
+
+            headerView.exploreHeaderImage.hidden = true
+            headerView.exploreDivder.hidden = false
+            headerView.exploreTypeLabel.text = "People"
+            return headerView
+        }
+
     }
     
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        if section == 0 {
+            return headerSize
+        } else {
+            return CGSizeMake(view.frame.size.width, 29)
+        }
+        
+    }
     
     
     
