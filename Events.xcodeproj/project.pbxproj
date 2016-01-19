@@ -12,6 +12,8 @@
 		63BDB7E01C4C9AC900D31303 /* Discover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7DF1C4C9AC900D31303 /* Discover.swift */; settings = {ASSET_TAGS = (); }; };
 		63BDB7E51C4CA80C00D31303 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E41C4CA80C00D31303 /* DiscoverCell.swift */; settings = {ASSET_TAGS = (); }; };
 		63BDB7E71C4D30BD00D31303 /* DiscoverHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E61C4D30BD00D31303 /* DiscoverHeader.swift */; settings = {ASSET_TAGS = (); }; };
+		63BDB7E91C4E0C3100D31303 /* ExploreVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E81C4E0C3100D31303 /* ExploreVenue.swift */; settings = {ASSET_TAGS = (); }; };
+		63BDB7EB1C4E1F3E00D31303 /* ExplorePeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7EA1C4E1F3E00D31303 /* ExplorePeople.swift */; settings = {ASSET_TAGS = (); }; };
 		720B19091B5E7B69008D261F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B19081B5E7B69008D261F /* AppDelegate.swift */; };
 		720B190E1B5E7B69008D261F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 720B190C1B5E7B69008D261F /* Main.storyboard */; };
 		720B19101B5E7B69008D261F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 720B190F1B5E7B69008D261F /* Images.xcassets */; };
@@ -51,6 +53,8 @@
 		63BDB7DF1C4C9AC900D31303 /* Discover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Discover.swift; path = ../Discover.swift; sourceTree = "<group>"; };
 		63BDB7E41C4CA80C00D31303 /* DiscoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
 		63BDB7E61C4D30BD00D31303 /* DiscoverHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverHeader.swift; sourceTree = "<group>"; };
+		63BDB7E81C4E0C3100D31303 /* ExploreVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreVenue.swift; sourceTree = "<group>"; };
+		63BDB7EA1C4E1F3E00D31303 /* ExplorePeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorePeople.swift; sourceTree = "<group>"; };
 		720B19031B5E7B69008D261F /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		720B19071B5E7B69008D261F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		720B19081B5E7B69008D261F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,8 +135,10 @@
 		63BDB7E11C4C9AD600D31303 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				63BDB7E81C4E0C3100D31303 /* ExploreVenue.swift */,
 				63BDB7E61C4D30BD00D31303 /* DiscoverHeader.swift */,
 				63BDB7DF1C4C9AC900D31303 /* Discover.swift */,
+				63BDB7EA1C4E1F3E00D31303 /* ExplorePeople.swift */,
 				63BDB7E41C4CA80C00D31303 /* DiscoverCell.swift */,
 			);
 			name = Discover;
@@ -318,6 +324,7 @@
 			files = (
 				63BDB7D91C4C22CC00D31303 /* Favorites.swift in Sources */,
 				63BDB7D51C4A1D0600D31303 /* headerCollectionReusableView.swift in Sources */,
+				63BDB7EB1C4E1F3E00D31303 /* ExplorePeople.swift in Sources */,
 				63BDB7E51C4CA80C00D31303 /* DiscoverCell.swift in Sources */,
 				720B19341B5E8834008D261F /* EventCell.swift in Sources */,
 				72D163C21B6BBFB900DABB47 /* SubmitEvent.swift in Sources */,
@@ -327,6 +334,7 @@
 				720B19321B5E8824008D261F /* Home.swift in Sources */,
 				720B19291B5E7BB6008D261F /* Configs.swift in Sources */,
 				7297FBE91B6CBE72004DE5E3 /* Contact.swift in Sources */,
+				63BDB7E91C4E0C3100D31303 /* ExploreVenue.swift in Sources */,
 				63BDB7E71C4D30BD00D31303 /* DiscoverHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

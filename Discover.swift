@@ -39,6 +39,7 @@ ADBannerViewDelegate {
     var cellSize = CGSize()
     var headerSize = CGSize()
     var searchViewIsVisible = false
+
     
 
     override func viewDidLoad() {
@@ -111,25 +112,57 @@ ADBannerViewDelegate {
         }
     }
     
+    
+    
+    
+
+    @IBAction func exploreSeeAllButton(sender: AnyObject) {
+        navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("ExploreVenue") as! ExploreVenue, animated: true)
+        
+    }
+    
+    @IBAction func exploreSeeAllButton2(sender: AnyObject) {
+            navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("ExplorePeople") as! ExplorePeople, animated: true)
+        
+    }
+    
+    
+
+    
+    
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "DiscoverHeader", forIndexPath: indexPath) as! DiscoverHeader
+        
+
         if indexPath.section == 0 {
 
             headerView.exploreDivder.hidden = true
             headerView.exploreHeaderImage.hidden = false
             headerView.exploreHeaderImage.image = UIImage(named: "exploreHeaderImage")
             headerView.exploreTypeLabel.text = "Venues"
+            headerView.exploreSeeAllButton.hidden = false
+            headerView.exploreSeeAllButton2.hidden = true
+
+
             return headerView
         } else {
 
             headerView.exploreHeaderImage.hidden = true
             headerView.exploreDivder.hidden = false
             headerView.exploreTypeLabel.text = "People"
+            headerView.exploreSeeAllButton.hidden = true
+            headerView.exploreSeeAllButton2.hidden = false
+            
+            
+            
             return headerView
         }
 
     }
+    
+    
+
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -274,6 +307,9 @@ ADBannerViewDelegate {
         let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDetails
         edVC.eventObj = eventsClass
         navigationController?.pushViewController(edVC, animated: true)
+        
+
+        
     }
     
     

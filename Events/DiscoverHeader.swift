@@ -15,4 +15,5 @@ class DiscoverHeader: UICollectionReusableView {
     @IBOutlet weak var exploreTypeLabel: UILabel!
     @IBOutlet weak var exploreSeeAllButton: UIButton!
     @IBOutlet weak var exploreDivder: UIView!
+    @IBOutlet weak var exploreSeeAllButton2: UIButton!
 }
