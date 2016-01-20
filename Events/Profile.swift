@@ -1,8 +1,8 @@
 //
-//  Favorites.swift
+//  Profile.swift
 //  Events
 //
-//  Created by Harsha Cuttari on 1/17/16.
+//  Created by Harsha Cuttari on 1/19/16.
 //  Copyright © 2016 FV iMAGINATION. All rights reserved.
 //
 
@@ -12,75 +12,95 @@ import GoogleMobileAds
 import iAd
 import AudioToolbox
 
-class Favorites: UIViewController,
+class Profile: UIViewController,
     UICollectionViewDataSource,
     UICollectionViewDelegate,
     UICollectionViewDelegateFlowLayout,
     UITextFieldDelegate,
     GADBannerViewDelegate,
 ADBannerViewDelegate {
-
+    
     /* Views */
     @IBOutlet var eventsCollView: UICollectionView!
     
-    @IBOutlet var searchView: UIView!
+  /*  @IBOutlet var searchView: UIView!
     @IBOutlet var searchTxt: UITextField!
-
+    
     
     @IBOutlet weak var searchOutlet: UIBarButtonItem!
-    
+ */
     
     /* Variables */
     var eventsArray = NSMutableArray()
     var cellSize = CGSize()
-    var searchViewIsVisible = false
     var whichColToUse = 0
+   // var searchViewIsVisible = false
    
-    
-    @IBAction func peopleVenueToggle(sender: UISegmentedControl) {
-    switch (sender.selectedSegmentIndex){
-    case 0:
 
-    whichColToUse = 0
-    queryLatestEvents()
     
     
-    case 1:
+    @IBAction func currentPastToggle(sender: UISegmentedControl) {
+        
+        switch (sender.selectedSegmentIndex){
+        case 0:
 
-    whichColToUse = 1
-    queryLatestEvents()
-    
-    
-    
-    default:
-    break;
+            whichColToUse = 0
+            queryLatestEvents()
+            
+        case 1:
+
+            whichColToUse = 1
+            queryLatestEvents()
+            
+            
+            
+        default:
+        break;
+        }
+        
     }
-        
-        
+    
+    /* following and followers button and setting button functions */
+    
+    
+    @IBAction func openFollowing(sender: AnyObject) {
+        navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("ProfileFollowing") as! ProfileFollowing, animated: true)
         
     }
     
     
+    @IBAction func openFollowers(sender: AnyObject) {
+        navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("ProfileFollowers") as! ProfileFollowers, animated: true)
+        
+    }
+    
+    @IBAction func settingsButton(sender: AnyObject) {
+        
+           navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("Settings") as! Settings, animated: true)
+        
+    }
+    
+    
+    @IBAction func hostButton(sender: AnyObject) {
+        
+        navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("SubmitEvent") as! SubmitEvent, animated: true)
+    }
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Profile"
 
+        
         // iPhone
         cellSize = CGSizeMake(view.frame.size.width, 120)
         
-        // Search View initial setup
+   /*     // Search View initial setup
         searchView.frame.origin.y = -searchView.frame.size.height
         searchView.layer.cornerRadius = 10
         searchViewIsVisible = false
@@ -88,12 +108,12 @@ ADBannerViewDelegate {
         
         // Set placeholder's color and text for Search text fields
         searchTxt.attributedPlaceholder = NSAttributedString(string: "Type an event name", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()] )
-        
+    */
         // Call a Parse query
         queryLatestEvents()
         
-    
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -140,9 +160,9 @@ ADBannerViewDelegate {
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "headerCollectionReusableView", forIndexPath: indexPath) as! headerCollectionReusableView
+        let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ProfileHeader", forIndexPath: indexPath) as! ProfileHeader
         
-        headerView.discHeaderImage.image = UIImage(named: "favHeaderImage")
+        headerView.profileImage.image = UIImage(named: "favHeaderImage")
         
         return headerView
     }
@@ -154,7 +174,7 @@ ADBannerViewDelegate {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        if(whichColToUse == 0){
+        if (whichColToUse == 0){
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell", forIndexPath: indexPath) as! EventCell
         
         var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
@@ -172,13 +192,13 @@ ADBannerViewDelegate {
                     //cell.eventImage.clipsToBounds = YES;
                     cell.eventImage.image = UIImage(data:imageData)
                 } } }
-
+        
         // GET EVENT'S TITLE
         cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
-    
+        
         // GET EVENT'S LOCATION
         cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
-
+        
         // GET EVENT START AND END DATES & TIME
         let startDateFormatter = NSDateFormatter()
         startDateFormatter.dateFormat = "MMM d, h:mm a"
@@ -191,8 +211,8 @@ ADBannerViewDelegate {
         
         
         return cell
-        } else {
             
+        } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("EventCell1", forIndexPath: indexPath) as! EventCell
             
             var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
@@ -206,7 +226,7 @@ ADBannerViewDelegate {
                 if error == nil {
                     if let imageData = imageData {
                         
-                        cell.eventImage.layer.cornerRadius = cell.eventImage.frame.size.width / 2;
+                        //cell.eventImage.layer.cornerRadius = cell.eventImage.frame.size.width / 2;
                         //cell.eventImage.clipsToBounds = YES;
                         cell.eventImage.image = UIImage(data:imageData)
                     } } }
@@ -229,7 +249,11 @@ ADBannerViewDelegate {
             
             
             return cell
-         
+            
+            
+            
+            
+            
             
         }
         
@@ -238,27 +262,24 @@ ADBannerViewDelegate {
             
             
     }
-
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return cellSize
         
-        
-        
-        
     }
-
     
     
     
-
-
+    
+    
+    
     
     // MARK: - TAP A CELL TO OPEN EVENT DETAILS CONTROLLER
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
         eventsClass = eventsArray[indexPath.row] as! PFObject
-        hideSearchView()
+ //       hideSearchView()
         
         let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDetails
         edVC.eventObj = eventsClass
@@ -268,7 +289,7 @@ ADBannerViewDelegate {
     
     
     
-    
+  /*
     
     
     // MARK: - SEARCH EVENTS BUTTON
@@ -279,10 +300,10 @@ ADBannerViewDelegate {
         } else { hideSearchView()  }
         
     }
-    
+  */
     
     // MARK: - TEXTFIELD DELEGATE (tap Search on the keyboard to launch a search query) */
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+ /*   func textFieldShouldReturn(textField: UITextField) -> Bool {
         hideSearchView()
         view.showHUD(view)
         
@@ -352,11 +373,11 @@ ADBannerViewDelegate {
             self.searchView.frame.origin.y = -self.searchView.frame.size.height
             }, completion: { (finished: Bool) in })
     }
-    
+    */
     
     
     // MARK: -  REFRESH  BUTTON
-    @IBAction func refreshButt(sender: AnyObject) {
+/*    @IBAction func refreshButt(sender: AnyObject) {
         queryLatestEvents()
         searchTxt.resignFirstResponder();
         hideSearchView()
@@ -364,18 +385,18 @@ ADBannerViewDelegate {
         
         self.title = "Following"
     }
-
-
+    
+   */
     
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
     
@@ -384,5 +405,5 @@ ADBannerViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }

@@ -25,6 +25,6 @@ class EventCell: UICollectionViewCell {
     
     @IBOutlet var costLabel: UILabel!
     
-    
+
     
 }
