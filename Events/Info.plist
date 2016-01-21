@@ -18,25 +18,35 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb859447097407208</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>859447097407208</string>
+	<key>FacebookDisplayName</key>
+	<string>The Move</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSExceptionDomains</key>
+	<dict>
+		<key>files.parsetfss.com</key>
+		<dict>
+			<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
+		</dict>
+	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-    
-    <!-- for Parse on iOS 9 -->
-    <key>NSExceptionDomains</key>
-    <dict>
-        <key>files.parsetfss.com</key>
-        <dict>
-            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-        </dict>
-    </dict>
-    <!------------------------->
-    
-    
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
