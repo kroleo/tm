@@ -7,9 +7,27 @@
 //
 
 import UIKit
+import Parse
+
 
 class Settings: UIViewController {
 
+    @IBAction func logoutFacebookButton(sender: AnyObject) {
+        
+        PFUser.logOutInBackgroundWithBlock{(error:NSError?) -> Void in
+            
+            let loginPage = self.storyboard?.instantiateViewControllerWithIdentifier("FacebookLoginScreen") as! FacebookLoginScreen
+            
+            //let protectedPageNav = UINavigationController(rootViewController: protectedPage)
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            appDelegate.window?.rootViewController = loginPage
+            
+            
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Settings"
