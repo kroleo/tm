@@ -94,8 +94,12 @@ extension UIView {
 
 
 // PARSE CONFIGURATION ===========================================================
-let PARSE_APP_KEY = "t2M4nmj8H6mi6JQuKdG3IeyYHAe86qkSTkWQlUZl"
-let PARSE_CLIENT_KEY = "evWV61UdTEd33maIFo5ULVEMzZyPP1O2xLJCQ8id"
+let PARSE_APP_KEY = "37vHPQEVDxlbDZ376rjvwQaJkl91QthqzM6F2Cjn"
+//old app key
+//let PARSE_APP_KEY = "t2M4nmj8H6mi6JQuKdG3IeyYHAe86qkSTkWQlUZl"
+let PARSE_CLIENT_KEY = "mdyDH5sft0lDFwlqETLE23St4uKvuSQfyFEDywTL"
+//old client key
+//let PARSE_CLIENT_KEY = "evWV61UdTEd33maIFo5ULVEMzZyPP1O2xLJCQ8id"
 
 
 
