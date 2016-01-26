@@ -106,11 +106,14 @@ override func viewDidLoad() {
             if (userFirstName != nil) {
                 
                 myUser.setObject(userFirstName!, forKey: "first_name")
+                //sets profile
+                CURRENT_FIRST_NAME = userFirstName!
             }
             //Save last name
             if (userLastName != nil) {
                 
                 myUser.setObject(userLastName!, forKey: "last_name")
+                CURRENT_LAST_NAME = userLastName!
             }
             //Save email
             if (userEmail != nil) {
@@ -130,14 +133,15 @@ override func viewDidLoad() {
             
             let profilePictureUrl = NSURL(string: userProfile)
             let profilePictureData = NSData(contentsOfURL: profilePictureUrl!)
-            
+             //current user pic
+                CURRENT_PRO_PIC = NSData(contentsOfURL: profilePictureUrl!)!
+           
             if (profilePictureData != nil) {
                 
                 let profileFileObject = PFFile(data:profilePictureData!)
                 myUser.setObject(profileFileObject, forKey: "profile_picture")
                 }
-            
-            
+
             
             //Save in parse cloud
             myUser.saveInBackgroundWithBlock({(success:Bool, error:NSError?) -> Void in

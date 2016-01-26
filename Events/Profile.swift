@@ -162,7 +162,10 @@ ADBannerViewDelegate {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ProfileHeader", forIndexPath: indexPath) as! ProfileHeader
         
-        headerView.profileImage.image = UIImage(named: "favHeaderImage")
+        //headerView.profileImage.image = UIImage(named: "favHeaderImage")
+        headerView.profileImage.layer.cornerRadius = headerView.profileImage.frame.size.width / 2;
+        headerView.profileImage.image = UIImage(data: CURRENT_PRO_PIC)
+        headerView.profileName.text = "\(CURRENT_FIRST_NAME)"
         
         return headerView
     }
