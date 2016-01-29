@@ -6,11 +6,11 @@
 //  Copyright © 2016 FV iMAGINATION. All rights reserved.
 // DID NOT USE THIS> WILL REMOVE LATER (FOR HAVING SAME HEADERS THROUGHOUT)
 
-#ifndef Events_Bridging_Header_h
-#define Events_Bridging_Header_h
+//#ifndef Events_Bridging_Header_h
+//#define Events_Bridging_Header_h
 
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
-#endif /* Events_Bridging_Header_h */
+//#endif /* Events_Bridging_Header_h */

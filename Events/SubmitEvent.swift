@@ -282,10 +282,11 @@ func layoutButtons() {
     eventsClass[EVENTS_LOCATION] = locationTxt.text
     eventsClass[EVENTS_COST] = costTxt.text
     eventsClass[EVENTS_WEBSITE] = websiteTxt.text
-    eventsClass[EVENTS_IS_PENDING] = true
+    eventsClass[EVENTS_IS_PENDING] = false
     eventsClass[EVENTS_KEYWORDS] = "\(nameTxt!.text!.lowercaseString) \(locationTxt!.text!.lowercaseString) \(descriptionTxt!.text.lowercaseString)"
     eventsClass[EVENTS_START_DATE] = startDate
     eventsClass[EVENTS_END_DATE] = endDate
+    eventsClass[EVENTS_UPLOADING_USER] = PFUser.currentUser()?.objectId
     
     // Save Image (if exists)
     if eventImage.image != nil {

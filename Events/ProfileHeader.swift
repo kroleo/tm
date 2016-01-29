@@ -15,5 +15,8 @@ class ProfileHeader: UICollectionReusableView {
     @IBOutlet weak var profileImage: UIImageView!
     
     
+    @IBOutlet weak var profileName: UILabel!
+    
+    
         
 }

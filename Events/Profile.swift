@@ -162,7 +162,10 @@ ADBannerViewDelegate {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ProfileHeader", forIndexPath: indexPath) as! ProfileHeader
         
-        headerView.profileImage.image = UIImage(named: "favHeaderImage")
+        //headerView.profileImage.image = UIImage(named: "favHeaderImage")
+        headerView.profileImage.layer.cornerRadius = headerView.profileImage.frame.size.width / 2;
+        headerView.profileImage.image = UIImage(data: CURRENT_PRO_PIC)
+        headerView.profileName.text = "\(CURRENT_FIRST_NAME)"
         
         return headerView
     }
@@ -235,8 +238,8 @@ ADBannerViewDelegate {
             cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
             
             // GET EVENT'S LOCATION
-            cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
-            
+            //cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
+       /*
             // GET EVENT START AND END DATES & TIME
             let startDateFormatter = NSDateFormatter()
             startDateFormatter.dateFormat = "MMM d, h:mm a"
@@ -246,7 +249,7 @@ ADBannerViewDelegate {
             
             // GET EVENT'S COST
             cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
-            
+   */
             
             return cell
             

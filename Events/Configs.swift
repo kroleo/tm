@@ -9,14 +9,16 @@
 
 import Foundation
 import UIKit
+import Parse
 
 
 // APP NAME (Change it accordingly to the name you'll give to this app)
-let APP_NAME = "Events"
+let APP_NAME = "The Move"
 
 
 // YOU CAN CHANGE THE "20" VALUE AS YOU WISH, THAT'S THE MAX. AMOUNT OF EVENTS THE APP WILL QUERY IN THE HOME SCREEN
-let limitForRecentEventsQuery = 20
+let limitForRecentEventsQuery = 30
+let limitForExplorePeopleQuery = 20
 
 
 // EMAIL ADDRESS TO EDIT (To get submitted events notifications)
@@ -117,11 +119,37 @@ var EVENTS_COST = "cost"
 var EVENTS_IMAGE = "image"
 var EVENTS_IS_PENDING = "isPending"
 var EVENTS_KEYWORDS = "keywords"
+var EVENTS_UPLOADING_USER = "uploadingUser"
 
 // EVENT GALLERY CLASS
 var GALLERY_CLASS_NAME = "Gallery"
 var GALLERY_EVENT_ID = "eventID"
 var GALLERY_IMAGE = "image"
+
+
+//USER CLASS
+var USER_CLASS_NAME = "_User"
+var USER_OBJECT_ID = "objectId"
+var USER_NAME = "username"
+var FIRST_NAME = "first_name"
+var LAST_NAME = "last_name"
+var PRO_PIC = "profile_picture"
+var IS_VENUE = "isVenue"
+
+//CURRENT USER PROFILE
+//var CURRENT_USER_OBJECT_ID = PFUser.currentUser()?.objectId
+var CURRENT_FIRST_NAME = "first"
+var CURRENT_LAST_NAME = "last"
+var CURRENT_PRO_PIC = NSData()
+
+//-------------------------
+
+//test follow button
+let kPAPUserAttributesIsFollowedByCurrentUserKey    = "isFollowedByCurrentUser"
+
+
+
+
 
 
 

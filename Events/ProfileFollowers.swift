@@ -11,6 +11,11 @@ import Parse
 import GoogleMobileAds
 import iAd
 import AudioToolbox
+import MessageUI
+import ParseUI
+import AddressBookUI
+
+
 
 class ProfileFollowers: UIViewController,
     UICollectionViewDataSource,
