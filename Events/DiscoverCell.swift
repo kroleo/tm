@@ -18,5 +18,6 @@ class DiscoverCell: UICollectionViewCell {
     
     @IBOutlet weak var separatorView: UIView!
     
+    @IBOutlet weak var followButton: UIButton!
 
 }

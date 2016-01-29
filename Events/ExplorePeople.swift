@@ -11,6 +11,10 @@ import Parse
 import GoogleMobileAds
 import iAd
 import AudioToolbox
+import MessageUI
+import ParseUI
+import AddressBookUI
+//import Synchronized
 
 class ExplorePeople: UIViewController,
     UICollectionViewDataSource,
@@ -22,9 +26,9 @@ UITextFieldDelegate{
     @IBOutlet var eventsCollView: UICollectionView!
     
     /* Variables */
-    var eventsArray = NSMutableArray()
+    var followArray = NSMutableArray()
     var cellSize = CGSize()
-    var users = [PFUser]()
+    var users = [PFUser]()  
     
     
     override func viewDidLoad() {
@@ -35,6 +39,7 @@ UITextFieldDelegate{
         //queryLatestEvents()
         
         loadUsers()
+        loadActivity()
         
         self.title = "People"
         
@@ -42,6 +47,37 @@ UITextFieldDelegate{
     }
     
     
+    
+    func loadActivity(){
+        followArray.removeAllObjects()
+        
+        let query = PFQuery(className: "Activity")
+        query.whereKey("fromUser", equalTo: PFUser.currentUser()!)
+        query.whereKey("type", equalTo: "follow")
+        
+        query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
+            if error == nil {
+                if let objects = objects  {
+                    for object in objects {
+                        self.followArray.addObject(object)
+                    } }
+                // Reload CollView
+                //self.eventsCollView.reloadData()
+                //self.view.hideHUD()
+                
+            } else {
+                let alert = UIAlertView(title: APP_NAME,
+                    message: "\(error!.localizedDescription)",
+                    delegate: nil,
+                    cancelButtonTitle: "OK" )
+                alert.show()
+                self.view.hideHUD()
+            } }
+
+        
+        
+        
+    }
     
     func loadUsers(){
         
@@ -127,9 +163,19 @@ UITextFieldDelegate{
                 }
             }
         }
+        //let currentCellUserStatus = userObject.objectForKey("objectId") as? String
+        //let i = followArray.count
+        let x = 1
+
+     
         
         
-        
+        if (x == 1){
+            cell.followButton.selected = true
+        } else {
+            cell.followButton.selected = false
+        }
+     
         
    /*
         var eventsClass = PFObject(className: USER_CLASS_NAME)

@@ -238,8 +238,8 @@ ADBannerViewDelegate {
             cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
             
             // GET EVENT'S LOCATION
-            cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
-            
+            //cell.locationLabel.text = "\(eventsClass[EVENTS_LOCATION]!)".uppercaseString
+       /*
             // GET EVENT START AND END DATES & TIME
             let startDateFormatter = NSDateFormatter()
             startDateFormatter.dateFormat = "MMM d, h:mm a"
@@ -249,7 +249,7 @@ ADBannerViewDelegate {
             
             // GET EVENT'S COST
             cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
-            
+   */
             
             return cell
             

@@ -17,6 +17,7 @@ import ParseFacebookUtilsV4
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var storyboard: UIStoryboard!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -26,7 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        
+        self.storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        if(PFUser.currentUser() != nil){
+            self.window?.rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProtectedPage")
+        }
         
         // For something else
         // return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

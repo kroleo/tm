@@ -143,7 +143,7 @@ ADBannerViewDelegate {
     
     // MARK: -  COLLECTION VIEW DELEGATES
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -173,7 +173,8 @@ ADBannerViewDelegate {
     
 
     
-    
+  
+    //NOT NEEDED FOR NOW BUT IS USED FOR TOP PART OF VENUE AND PEOPLE SECTION
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "DiscoverHeader", forIndexPath: indexPath) as! DiscoverHeader
@@ -184,14 +185,17 @@ ADBannerViewDelegate {
             headerView.exploreDivder.hidden = true
             headerView.exploreHeaderImage.hidden = false
             headerView.exploreHeaderImage.image = UIImage(named: "exploreHeaderImage")
-            headerView.exploreTypeLabel.text = "Venues"
-            headerView.exploreSeeAllButton.hidden = false
+            //headerView.exploreTypeLabel.text = "Venues"
+           // headerView.exploreTypeLabel.text = "People"
+            headerView.exploreSeeAllButton.hidden = true
+            
+
             headerView.exploreSeeAllButton2.hidden = true
 
 
             return headerView
         } else {
-
+// NOT NEEDED FOR NOW
             headerView.exploreHeaderImage.hidden = true
             headerView.exploreDivder.hidden = false
             headerView.exploreTypeLabel.text = "People"
@@ -230,7 +234,7 @@ ADBannerViewDelegate {
         if indexPath.section == 0{
             if (indexPath.row == 1){
  
-                cell.separatorView.hidden = true
+                cell.separatorView.hidden = false
                 
                 let userObject: PFUser = venues[indexPath.row]
                 
@@ -279,8 +283,8 @@ ADBannerViewDelegate {
                 
                 
                 return cell
-                
-                
+                // NOT NEEDED FOR NOW, to hide the last seprator
+           
             } else {
                         cell.separatorView.hidden = false
                 
@@ -333,7 +337,7 @@ ADBannerViewDelegate {
         
         return cell
             }
-            
+            // NOT NEEDED FOR NOW
             
         } else {
             

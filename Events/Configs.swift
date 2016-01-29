@@ -17,7 +17,7 @@ let APP_NAME = "The Move"
 
 
 // YOU CAN CHANGE THE "20" VALUE AS YOU WISH, THAT'S THE MAX. AMOUNT OF EVENTS THE APP WILL QUERY IN THE HOME SCREEN
-let limitForRecentEventsQuery = 20
+let limitForRecentEventsQuery = 30
 let limitForExplorePeopleQuery = 20
 
 
@@ -141,6 +141,15 @@ var IS_VENUE = "isVenue"
 var CURRENT_FIRST_NAME = "first"
 var CURRENT_LAST_NAME = "last"
 var CURRENT_PRO_PIC = NSData()
+
+//-------------------------
+
+//test follow button
+let kPAPUserAttributesIsFollowedByCurrentUserKey    = "isFollowedByCurrentUser"
+
+
+
+
 
 
 
