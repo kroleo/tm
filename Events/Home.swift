@@ -15,6 +15,7 @@ import iAd
 import AudioToolbox
 import ParseFacebookUtilsV4
 
+//Discover Page Class
 
 class Home: UIViewController,
 UICollectionViewDataSource,
@@ -167,7 +168,7 @@ func queryLatestEvents() {
     
     let query = PFQuery(className: EVENTS_CLASS_NAME)
     query.whereKey(EVENTS_IS_PENDING, equalTo: false)
-    query.orderByDescending(EVENTS_START_DATE)
+    query.orderByDescending("Lit")
     query.limit = limitForRecentEventsQuery
     // Query bloxk
     query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
@@ -296,14 +297,10 @@ func collectionView(collectionView: UICollectionView, layout collectionViewLayou
     
 // MARK: - TAP A CELL TO OPEN EVENT DETAILS CONTROLLER
 func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    
-    var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
-    eventsClass = eventsArray[indexPath.row] as! PFObject
-    hideSearchView()
-    
-    let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDetails
-    edVC.eventObj = eventsClass
-    navigationController?.pushViewController(edVC, animated: true)
+    SelectedEvent = eventsArray[indexPath.row] as! PFObject
+    //self.performSegueWithIdentifier("toEventDetails1", sender: self)
+    let eventDetailsPage = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDeats
+    navigationController?.pushViewController(eventDetailsPage, animated: true)
 }
    
 

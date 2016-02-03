@@ -11,6 +11,8 @@ import MapKit
 import CoreLocation
 import Parse
 
+var SelectedEvent: PFObject!
+
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     var locations = [String]()
@@ -32,8 +34,10 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
         
         self.map.showsUserLocation = true
         
+        
+        
         let query = PFQuery(className:"Events")
-        query.selectKeys(["location","title"])
+        query.selectKeys(["location","title","startDate","image","going"])
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -46,32 +50,43 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
                         request.naturalLanguageQuery = x
                         let search = MKLocalSearch(request: request)
                         search.startWithCompletionHandler{ (localSearchResponse, error) -> Void in
-                            // Add PointAnnonation text and a Pin to the Map
-                            
-                            let annotation = MKPointAnnotation()
-                            annotation.title = y
-                            annotation.coordinate = CLLocationCoordinate2D( latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:localSearchResponse!.boundingRegion.center.longitude)
-                            
-                            self.map.addAnnotation(annotation)
+                        // Add PointAnnonation text and a Pin to the Map
+                        //http://stackoverflow.com/questions/26991473/mkpointannotations-touch-event-in-swift
+                        let annotation = CustomPinAnnotation()
+                        annotation.title = y
+                        annotation.coordinate = CLLocationCoordinate2D( latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:localSearchResponse!.boundingRegion.center.longitude)
+                        annotation.EventObject = object
+                        
+                        self.map.addAnnotation(annotation)
+                        }
                     }
-
                 }
             }
         }
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is CustomPinAnnotation{
+        let v = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        v.animatesDrop = true;
         
+        v.canShowCallout = true;
+        let detailButton = UIButton(type: UIButtonType.DetailDisclosure)
+        v.rightCalloutAccessoryView = detailButton
+        return v
+        }
         
-        
-        /*
-        let annotation = MKPointAnnotation()
-        anotation.title
-        anotation.subtitle
-        anotation.coordinate
-        map.addAnotation()
-        */
-                
+        return nil
         
     }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let w = view.annotation as! CustomPinAnnotation
+        SelectedEvent = w.EventObject
+        self.performSegueWithIdentifier("toEventDetails", sender: self)
     }
+    
+    
     //Location delegate methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -83,7 +98,10 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
         self.locationManager.stopUpdatingLocation()
     }
     
-    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        
+        print(error.localizedDescription)
+    }
    
     
 }

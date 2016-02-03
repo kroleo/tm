@@ -408,7 +408,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
                                 <connections>
-                                    <outlet property="delegate" destination="BKT-gN-H5Q" id="uFh-fl-XAi"/>
+                                    <outlet property="delegate" destination="BKT-gN-H5Q" id="2dn-7i-sA7"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gkh-cL-82c">
@@ -417,7 +417,7 @@
                                 <animations/>
                                 <state key="normal" title="Host"/>
                                 <connections>
-                                    <segue destination="QgP-Ba-Mn3" kind="push" id="GJH-6T-dvo"/>
+                                    <segue destination="QgP-Ba-Mn3" kind="push" id="HJB-uO-dck"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -427,6 +427,7 @@
                     <navigationItem key="navigationItem" id="TN4-AF-CDi"/>
                     <connections>
                         <outlet property="map" destination="dPi-sx-Hmg" id="QUT-ct-Bnn"/>
+                        <segue destination="SEk-2d-QyD" kind="push" identifier="toEventDetails" id="3rd-5e-I63"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0m-A0-da2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -613,7 +614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KW6-Y5-fwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="408"/>
+            <point key="canvasLocation" x="0.0" y="452"/>
         </scene>
         <!--Submit an Event-->
         <scene sceneID="Leq-Ns-00Z">
@@ -1635,12 +1636,12 @@
             </objects>
             <point key="canvasLocation" x="-1290" y="1229"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Deats-->
         <scene sceneID="6k1-In-2iN">
             <objects>
-                <viewController id="SEk-2d-QyD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventDetails" id="SEk-2d-QyD" customClass="EventDeats" customModule="Events" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i5B-gX-JWU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zNv-Bf-zQT">
@@ -1708,6 +1709,9 @@
                                         <animations/>
                                         <state key="normal" title="attend" image="star_unselected"/>
                                         <state key="selected" image="star_selected"/>
+                                        <connections>
+                                            <action selector="go:" destination="SEk-2d-QyD" eventType="touchUpInside" id="VxK-QV-aKQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -1720,7 +1724,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="Vrh-jR-ZQt" userLabel="rateProgress">
-                                <rect key="frame" x="0.0" y="473" width="320" height="2"/>
+                                <rect key="frame" x="0.0" y="385" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1755,226 +1759,22 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="inn-Fn-9H5"/>
+                    <connections>
+                        <outlet property="going" destination="cPz-7J-6s3" id="cXK-ol-dPI"/>
+                        <outlet property="going1" destination="fwA-XU-f1l" id="GnE-Cj-i1I"/>
+                        <outlet property="going2" destination="3zp-Vh-2Lk" id="yVf-gv-tyj"/>
+                        <outlet property="going3" destination="sLd-ow-dGC" id="rCZ-3R-m48"/>
+                        <outlet property="going4" destination="VqF-kE-PCi" id="epp-4Q-0JS"/>
+                        <outlet property="image1" destination="zNv-Bf-zQT" id="73x-xo-b5t"/>
+                        <outlet property="location1" destination="JSf-mT-pJs" id="RGc-oD-Koz"/>
+                        <outlet property="time1" destination="6WI-1F-zCP" id="A7O-Ho-Kgd"/>
+                        <outlet property="title1" destination="ToP-cV-pgd" id="zVw-oQ-LOZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4fF-z6-wDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="1144"/>
-        </scene>
-        <!--Event Details-->
-        <scene sceneID="8Xh-oU-w1M">
-            <objects>
-                <viewController storyboardIdentifier="EventDetails" id="sFl-45-HUl" customClass="EventDetails" customModule="Events" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JSp-OX-dhD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" id="Gtc-UE-umS" userLabel="snapchatToggleView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="365"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="CD7-Wq-Uyv" userLabel="eventImage">
-                                        <rect key="frame" x="0.0" y="-21" width="320" height="386"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                    </imageView>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" id="7bm-v0-JuJ" userLabel="msgToggleView">
-                                <rect key="frame" x="0.0" y="409" width="320" height="231"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="JuF-CI-rCn" userLabel="mapToggleView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="365"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" mapType="standard" id="xTh-AP-QxX">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="365"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                    </mapView>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="E8C-kg-Tte" userLabel="descToggleView">
-                                <rect key="frame" x="0.0" y="409" width="320" height="231"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iUc-eu-ITb" userLabel="startDateLbel">
-                                        <rect key="frame" x="94" y="96" width="103" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
-                                        <color key="textColor" red="0.1824207165" green="0.2145885287" blue="0.25577965559999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yac-uD-P62" userLabel="endDateLabel">
-                                        <rect key="frame" x="174" y="96" width="92" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
-                                        <color key="textColor" red="0.1824207165" green="0.2145885287" blue="0.25577965559999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ebh-eo-Leg" userLabel="locationLabel">
-                                        <rect key="frame" x="94" y="50" width="175" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
-                                        <color key="textColor" red="0.1824207165" green="0.2145885287" blue="0.25577965559999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="rFU-qr-GOg" userLabel="registerButt">
-                                        <rect key="frame" x="103" y="138" width="113" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
-                                        <state key="normal" title="REGISTER NOW">
-                                            <color key="titleColor" red="0.1824207165" green="0.2145885287" blue="0.25577965559999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="registerButt:" destination="sFl-45-HUl" eventType="touchUpInside" id="ecE-CH-MUc"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locIcon" id="OIn-nT-H42">
-                                        <rect key="frame" x="70" y="99" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eventTitle" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KPF-sU-ISr" userLabel="eventTitle">
-                                        <rect key="frame" x="88" y="3" width="181" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="waq-HW-zyF" userLabel="eventImage">
-                                        <rect key="frame" x="12" y="3" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                    </imageView>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="QDz-7c-UQb" userLabel="rateProgress">
-                                        <rect key="frame" x="0.0" y="175" width="320" height="2"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <animations/>
-                                        <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </progressView>
-                                    <view contentMode="scaleToFill" id="ahp-Hf-pjq">
-                                        <rect key="frame" x="300" y="-158" width="12" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Bc7-3S-baD" userLabel="shareOnFBButt">
-                                                <rect key="frame" x="37" y="10" width="14" height="10"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <animations/>
-                                                <color key="backgroundColor" red="0.29411764709999999" green="0.53725490200000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                                <state key="normal" title="SHARE ON FACEBOOK">
-                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="shareOnFBButt:" destination="sFl-45-HUl" eventType="touchUpInside" id="gYB-7p-WUJ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="akH-vY-3g0" userLabel="shareBySMSButt">
-                                                <rect key="frame" x="15" y="9" width="14" height="11"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <animations/>
-                                                <color key="backgroundColor" red="0.60737069170000002" green="0.71397054999999998" blue="0.86142676770000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                                <state key="normal" title="SHARE BY SMS">
-                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="shareBySMSButt:" destination="sFl-45-HUl" eventType="touchUpInside" id="qaf-yh-PeJ"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1qe-Pi-8dF" userLabel="costLabel">
-                                                <rect key="frame" x="0.0" y="9" width="7" height="8"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
-                                                <color key="textColor" red="0.1824207165" green="0.2145885287" blue="0.25577965559999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <animations/>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="502-UW-6a7">
-                                        <rect key="frame" x="19" y="137" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <state key="normal" title="Lit"/>
-                                        <connections>
-                                            <action selector="litButton:" destination="sFl-45-HUl" eventType="touchUpInside" id="RLv-q1-jU8"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Sos-dZ-FG6">
-                                        <rect key="frame" x="266" y="137" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                        <state key="normal" title="Nah"/>
-                                        <connections>
-                                            <action selector="nahButton:" destination="sFl-45-HUl" eventType="touchUpInside" id="Kl6-HF-OcJ"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locIcon" id="CRf-rW-Apj">
-                                        <rect key="frame" x="70" y="60" width="24" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <animations/>
-                                    </imageView>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="dKC-ed-aj0">
-                                <rect key="frame" x="0.0" y="373" width="320" height="29"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <segments>
-                                    <segment title="Details"/>
-                                    <segment title="Reviews"/>
-                                </segments>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="tabToggleView:" destination="sFl-45-HUl" eventType="valueChanged" id="RFF-ex-hah"/>
-                                </connections>
-                            </segmentedControl>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="640"/>
-                    <connections>
-                        <outlet property="costLabel" destination="1qe-Pi-8dF" id="3yD-51-74F"/>
-                        <outlet property="descToggleView" destination="E8C-kg-Tte" id="aXr-lt-oyv"/>
-                        <outlet property="endDateLabel" destination="yac-uD-P62" id="wbS-iB-nHl"/>
-                        <outlet property="eventImage" destination="waq-HW-zyF" id="tNw-1v-yzM"/>
-                        <outlet property="eventTitleLabel" destination="KPF-sU-ISr" id="LcB-Jj-9Ci"/>
-                        <outlet property="locationLabel" destination="Ebh-eo-Leg" id="cQ7-c2-MXy"/>
-                        <outlet property="mapToggleView" destination="JuF-CI-rCn" id="m7I-oj-QQ8"/>
-                        <outlet property="mapView" destination="xTh-AP-QxX" id="AXy-VN-CXg"/>
-                        <outlet property="msgToggleView" destination="7bm-v0-JuJ" id="BTm-FH-DQ0"/>
-                        <outlet property="rateProgress" destination="QDz-7c-UQb" id="y6h-Hk-y5v"/>
-                        <outlet property="registerOutlet" destination="rFU-qr-GOg" id="EGn-Kb-1Yq"/>
-                        <outlet property="shareBySMSOutlet" destination="akH-vY-3g0" id="v6J-FI-gc5"/>
-                        <outlet property="shareOnFBOutlet" destination="Bc7-3S-baD" id="r84-Lx-5Na"/>
-                        <outlet property="snapchatToggleView" destination="Gtc-UE-umS" id="6RE-Hf-B0g"/>
-                        <outlet property="startDateLabel" destination="iUc-eu-ITb" id="Kef-zp-4Su"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="imy-9z-PKp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-358" y="1180"/>
+            <point key="canvasLocation" x="-763" y="1154"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wGS-f9-5n6">
