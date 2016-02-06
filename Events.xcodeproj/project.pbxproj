@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07298FBE1C665472009B4A24 /* GoingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07298FBD1C665472009B4A24 /* GoingListView.swift */; };
 		07BC86EE1C5E9C6700439539 /* CustomPinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */; };
 		07BC86F21C5EA26700439539 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BC86F11C5EA26700439539 /* EventDetails.swift */; };
 		07BC86F41C5EA2B100439539 /* EventDeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BC86F31C5EA2B100439539 /* EventDeats.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07298FBD1C665472009B4A24 /* GoingListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoingListView.swift; sourceTree = "<group>"; };
 		07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPinAnnotation.swift; sourceTree = "<group>"; };
 		07BC86F11C5EA26700439539 /* EventDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
 		07BC86F31C5EA2B100439539 /* EventDeats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDeats.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				07EB6AD11C5AF6C00091BA6E /* MapView.swift */,
 				07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */,
 				07BC86F31C5EA2B100439539 /* EventDeats.swift */,
+				07298FBD1C665472009B4A24 /* GoingListView.swift */,
 				63BDB8201C51D9EA00D31303 /* ProtectedPage.swift */,
 				720B19281B5E7BB6008D261F /* Configs.swift */,
 				720B190C1B5E7B69008D261F /* Main.storyboard */,
@@ -420,6 +423,7 @@
 				7297FBE91B6CBE72004DE5E3 /* Contact.swift in Sources */,
 				63BDB7E91C4E0C3100D31303 /* ExploreVenue.swift in Sources */,
 				63BDB7E71C4D30BD00D31303 /* DiscoverHeader.swift in Sources */,
+				07298FBE1C665472009B4A24 /* GoingListView.swift in Sources */,
 				63BDB8211C51D9EA00D31303 /* ProtectedPage.swift in Sources */,
 				63BDB7F01C4F5EC300D31303 /* ProfileFollowers.swift in Sources */,
 				07BC86F41C5EA2B100439539 /* EventDeats.swift in Sources */,

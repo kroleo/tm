@@ -31,6 +31,9 @@ class EventDeats: UIViewController{
     @IBOutlet var going4: UIImageView!
     
     @IBOutlet var going: UIButton!
+    
+    @IBOutlet var otherGoing: UIButton!
+    
     var userQuery: PFQuery!
     
     override func viewDidLoad() {
@@ -66,58 +69,19 @@ class EventDeats: UIViewController{
                 } } }
         
         //Add the goers to the images
+        fetch_all_going_images()
         
-        let ArrayOfGoers = SelectedEvent["going"] as! Array<String>
-        var numberOfGoing = ArrayOfGoers.count
-        if(numberOfGoing > 4){
-            numberOfGoing = 4;
+        //Number of Other
+        let n = SelectedEvent["going"] as! Array<String>
+        if(n.count > 4){
+            let x = n.count - 4
+            otherGoing.setTitle("+\(x)", forState: UIControlState.Normal)
+        }else{
+            otherGoing.setTitle("", forState: UIControlState.Normal)
         }
-        
-        var lastIndex = ArrayOfGoers.count - 1
-        var i = 1
-        while(i <= numberOfGoing){
-            //User Query to find the User at the End of the Going Array. End of the Array as he is the most recent
-            var image_file = PFFile()
-            let userQuery2 = PFQuery(className: "_User")
-            
-            userQuery2.getObjectInBackgroundWithId(ArrayOfGoers[lastIndex]) {
-                    (user: PFObject?, error: NSError?) -> Void in
-                    if error == nil && user != nil {
-                        image_file = user!["profile_picture"] as! PFFile
-                        image_file.getDataInBackgroundWithBlock { (imageData, error) -> Void in
-                            if error == nil {
-                                print("error == nil")
-                                if let imageData = imageData {
-                                    if (i == 1){
-                                        print("Image 1")
-                                        self.going1.layer.cornerRadius = self.going1.frame.size.width / 2;
-                                        self.going1.image = UIImage(data:imageData)
-                                    }else if (i == 2){
-                                        print("Image 2")
-                                        self.going2.layer.cornerRadius = self.going2.frame.size.width / 2;
-                                        self.going2.image = UIImage(data:imageData)
-                                    }else if(i == 3){
-                                        print("Image 3")
-                                        self.going3.layer.cornerRadius = self.going3.frame.size.width / 2;
-                                        self.going3.image = UIImage(data:imageData)
-                                    }else{
-                                        print("Image 4")
-                                        self.going4.layer.cornerRadius = self.going4.frame.size.width / 2;
-                                        self.going4.image = UIImage(data:imageData)
-                                    }
-                                    
-                                }
-                            }
-                        }
-                }
-            }
-            i++
-            lastIndex--
-
-        }
-        
+    
         //Check to see if the current user has this event as going or not
-        
+    
         userQuery.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!){
             (user: PFObject?, error: NSError?) -> Void in
             if error == nil {
@@ -174,7 +138,26 @@ class EventDeats: UIViewController{
             }
         }
         SelectedEvent.saveInBackground()
+        
+        fetch_all_going_images()
+        
+        let n = SelectedEvent["going"] as! Array<String>
+        if(n.count > 4){
+            let x = n.count - 4
+            otherGoing.setTitle("+\(x)", forState: UIControlState.Normal)
+        }else{
+            otherGoing.setTitle("", forState: UIControlState.Normal)
+        }
+        
     }
+    
+    
+    @IBAction func otherGoing(sender: UIButton) {
+        let listView = storyboard?.instantiateViewControllerWithIdentifier("GoersListView") as! GoingListView
+        navigationController?.pushViewController(listView, animated: true)
+    }
+    
+    
     @IBAction func nah(sender: AnyObject) {
         let index = visitedEvents.indexOf(SelectedEvent.objectId!)
         let lits = SelectedEvent["Lit"] as! Int
@@ -218,6 +201,51 @@ class EventDeats: UIViewController{
         }
         
         SelectedEvent.saveInBackground()
+    }
+    
+    func fetch_going_images(userID: String, image: UIImageView){
+        let userQuery2 = PFQuery(className: "_User")
+        userQuery2.getObjectInBackgroundWithId(userID) {
+            (user: PFObject?, error: NSError?) -> Void in
+            if error == nil && user != nil {
+                let image_file = user!["profile_picture"] as! PFFile
+                image_file.getDataInBackgroundWithBlock { (imageData, error) -> Void in
+                    if error == nil {
+                        if let imageData = imageData {
+                            print("Image" + userID)
+                            image.layer.cornerRadius = image.frame.size.width / 2;
+                            image.image = UIImage(data:imageData)
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func fetch_all_going_images(){
+        let arrayOfGoers = SelectedEvent["going"] as! Array<String>
+        let n = arrayOfGoers.count
+        if(n >= 1){
+            fetch_going_images(arrayOfGoers[n - 1], image: self.going1)
+        }else{
+            self.going1.image = nil
+        }
+        if(n >= 2){
+            fetch_going_images(arrayOfGoers[n - 2], image: self.going2)
+        }else{
+            self.going2.image = nil
+        }
+        if(n >= 3){
+            fetch_going_images(arrayOfGoers[n - 3], image: self.going3)
+        }else{
+            self.going3.image = nil
+        }
+        if(n >= 4){
+            fetch_going_images(arrayOfGoers[n - 4], image: self.going4)
+        }else{
+            self.going4.image = nil
+        }
     }
     
 }
