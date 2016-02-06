@@ -12,10 +12,12 @@ import CoreLocation
 import Parse
 
 var SelectedEvent: PFObject!
+//These Arrays should be in Parse
+var visitedEvents = [String]()
+var litArray = [Bool]()
+var nahArray = [Bool]()
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
-    
-    var locations = [String]()
     
     @IBOutlet var map: MKMapView!
     
@@ -37,7 +39,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
         
         
         let query = PFQuery(className:"Events")
-        query.selectKeys(["location","title","startDate","image","going"])
+        query.selectKeys(["location","title","startDate","image","going","Lit","Nah"])
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -55,14 +57,15 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
                         let annotation = CustomPinAnnotation()
                         annotation.title = y
                         annotation.coordinate = CLLocationCoordinate2D( latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:localSearchResponse!.boundingRegion.center.longitude)
-                        annotation.EventObject = object
                         
+                        annotation.EventObject = object
                         self.map.addAnnotation(annotation)
                         }
                     }
                 }
             }
         }
+        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {

@@ -123,7 +123,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="0Va-20-QAs" userLabel="EventCell" customClass="EventCell" customModule="Events" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="264" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="200" width="320" height="110"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -215,7 +215,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell1" id="zcX-lS-Muq" userLabel="EventCell" customClass="EventCell" customModule="Events" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="374" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="310" width="320" height="110"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -254,7 +254,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileHeader" id="Tf3-4s-LgC" customClass="ProfileHeader" customModule="Events" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="BYE-Rk-lQf">
@@ -455,7 +455,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="yad-dm-yjt" userLabel="EventCell" customClass="EventCell" customModule="Events" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="174" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="110" width="320" height="110"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -548,7 +548,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollectionReusableView" id="v5Z-Pj-L0h" customClass="headerCollectionReusableView" customModule="Events" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ohu-Ip-6CV">
@@ -1243,7 +1243,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiscoverCell" id="Myf-jY-h8f" userLabel="DiscoverCell" customClass="DiscoverCell" customModule="Events" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="174" width="320" height="85"/>
+                                        <rect key="frame" x="0.0" y="110" width="320" height="85"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1302,7 +1302,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiscoverHeader" id="c4P-nW-l0v" customClass="DiscoverHeader" customModule="Events" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" id="hbZ-Rt-H7H">
@@ -1735,6 +1735,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <state key="normal" title="Nah"/>
+                                <connections>
+                                    <action selector="nah:" destination="SEk-2d-QyD" eventType="touchUpInside" id="bdC-1C-E7q"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="5np-2i-Rvi" userLabel="snapchatView">
                                 <rect key="frame" x="0.0" y="315" width="320" height="128"/>
@@ -1754,6 +1757,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <state key="normal" title="Lit"/>
+                                <connections>
+                                    <action selector="lit:" destination="SEk-2d-QyD" eventType="touchUpInside" id="V0n-Vy-hqt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

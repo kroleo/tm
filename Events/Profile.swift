@@ -123,29 +123,41 @@ ADBannerViewDelegate {
         view.showHUD(view)
         eventsArray.removeAllObjects()
         
-        let query = PFQuery(className: EVENTS_CLASS_NAME)
-        query.whereKey(EVENTS_IS_PENDING, equalTo: false)
-        query.orderByDescending(EVENTS_START_DATE)
-        query.limit = limitForRecentEventsQuery
-        // Query bloxk
-        query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
+        let query1 = PFQuery(className: "_User")
+        query1.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!) {
+            (user : PFObject?, error: NSError?) -> Void in
             if error == nil {
-                if let objects = objects  {
-                    for object in objects {
-                        self.eventsArray.addObject(object)
-                    } }
-                // Reload CollView
-                self.eventsCollView.reloadData()
-                self.view.hideHUD()
-                
-            } else {
-                let alert = UIAlertView(title: APP_NAME,
-                    message: "\(error!.localizedDescription)",
-                    delegate: nil,
-                    cancelButtonTitle: "OK" )
-                alert.show()
-                self.view.hideHUD()
-            } }
+               let eventsIDS = user!["events"] as! Array<String>
+                let query = PFQuery(className: EVENTS_CLASS_NAME)
+                query.orderByDescending(EVENTS_START_DATE)
+                query.limit = limitForRecentEventsQuery
+                for event in eventsIDS{
+                    query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
+                        if error == nil {
+                            if let objects = objects  {
+                                for object in objects {
+                                    if(object.objectId == event){
+                                        self.eventsArray.addObject(object)
+                                    }
+                                } }
+                            // Reload CollView
+                            self.eventsCollView.reloadData()
+                            self.view.hideHUD()
+                            
+                        } else {
+                            let alert = UIAlertView(title: APP_NAME,
+                                message: "\(error!.localizedDescription)",
+                                delegate: nil,
+                                cancelButtonTitle: "OK" )
+                            alert.show()
+                            self.view.hideHUD()
+                        } }
+                    
+                }
+            }
+        }
+
+    
         
     }
     
