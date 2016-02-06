@@ -293,12 +293,8 @@ ADBannerViewDelegate {
     // MARK: - TAP A CELL TO OPEN EVENT DETAILS CONTROLLER
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
-        eventsClass = eventsArray[indexPath.row] as! PFObject
- //       hideSearchView()
-        
-        let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDetails
-        edVC.eventObj = eventsClass
+        SelectedEvent = eventsArray[indexPath.row] as! PFObject
+        let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDeats
         navigationController?.pushViewController(edVC, animated: true)
     }
     
