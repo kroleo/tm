@@ -15,6 +15,7 @@ import iAd
 import AudioToolbox
 import ParseFacebookUtilsV4
 
+//Discover Page Class
 
 class Home: UIViewController,
 UICollectionViewDataSource,
@@ -167,7 +168,7 @@ func queryLatestEvents() {
     
     let query = PFQuery(className: EVENTS_CLASS_NAME)
     query.whereKey(EVENTS_IS_PENDING, equalTo: false)
-    query.orderByDescending(EVENTS_START_DATE)
+    query.orderByDescending("Lit")
     query.limit = limitForRecentEventsQuery
     // Query bloxk
     query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
@@ -296,14 +297,10 @@ func collectionView(collectionView: UICollectionView, layout collectionViewLayou
     
 // MARK: - TAP A CELL TO OPEN EVENT DETAILS CONTROLLER
 func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    
-    var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
-    eventsClass = eventsArray[indexPath.row] as! PFObject
-    hideSearchView()
-    
-    let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDetails
-    edVC.eventObj = eventsClass
-    navigationController?.pushViewController(edVC, animated: true)
+    SelectedEvent = eventsArray[indexPath.row] as! PFObject
+    //self.performSegueWithIdentifier("toEventDetails1", sender: self)
+    let eventDetailsPage = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDeats
+    navigationController?.pushViewController(eventDetailsPage, animated: true)
 }
    
 
@@ -411,88 +408,6 @@ func hideSearchView() {
     
     
 
-    
-  /*
-    
-// MARK: -  iAD + ADMOB BANNER METHODS 
-    
-    // Initialize Apple iAd banner
-    func initiAdBanner() {
-        iAdBannerView = ADBannerView(frame: CGRectMake(0, self.view.frame.size.height, 0, 0) )
-        iAdBannerView.delegate = self
-        iAdBannerView.hidden = true
-        view.addSubview(iAdBannerView)
-    }
-    
-    // Initialize Google AdMob banner
-    func initAdMobBanner() {
-        adMobBannerView.adSize =  GADAdSizeFromCGSize(CGSizeMake(320, 50))
-        adMobBannerView.frame = CGRectMake(0, self.view.frame.size.height, 320, 50)
-        adMobBannerView.adUnitID = ADMOB_UNIT_ID
-        adMobBannerView.rootViewController = self
-        adMobBannerView.delegate = self
-        // adMobBannerView.hidden = true
-        view.addSubview(adMobBannerView)
-        
-        let request = GADRequest()
-        adMobBannerView.loadRequest(request)
-    }
-    
-    
-    // Hide the banner
-    func hideBanner(banner: UIView) {
-        UIView.beginAnimations("hideBanner", context: nil)
-        // Hide the banner moving it below the bottom of the screen
-        banner.frame = CGRectMake(0, self.view.frame.size.height, banner.frame.size.width, banner.frame.size.height)
-        UIView.commitAnimations()
-        banner.hidden = true
-        
-    }
-    
-    // Show the banner
-    func showBanner(banner: UIView) {
-        UIView.beginAnimations("showBanner", context: nil)
-        
-        // Move the banner on the bottom of the screen
-        banner.frame = CGRectMake(0, self.view.frame.size.height - banner.frame.size.height - 44,
-            banner.frame.size.width, banner.frame.size.height);
-        
-        UIView.commitAnimations()
-        banner.hidden = false
-        
-    }
-    
-    // iAd banner available
-    func bannerViewWillLoadAd(banner: ADBannerView!) {
-        print("iAd loaded!")
-        hideBanner(adMobBannerView)
-        showBanner(iAdBannerView)
-    }
-    
-    // NO iAd banner available
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        print("iAd can't looad ads right now, they'll be available later")
-        hideBanner(iAdBannerView)
-        let request = GADRequest()
-        adMobBannerView.loadRequest(request)
-    }
-    
-    
-    // AdMob banner available
-    func adViewDidReceiveAd(view: GADBannerView!) {
-        print("AdMob loaded!")
-        hideBanner(iAdBannerView)
-        showBanner(adMobBannerView)
-    }
-    
-    // NO AdMob banner available
-    func adView(view: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
-        print("AdMob Can't load ads right now, they'll be available later \n\(error)")
-        hideBanner(adMobBannerView)
-    }
-    
-*/
-    
     
     
 override func didReceiveMemoryWarning() {

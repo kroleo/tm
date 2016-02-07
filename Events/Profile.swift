@@ -120,11 +120,20 @@ ADBannerViewDelegate {
     
     
     func queryLatestEvents() {
+        //
         view.showHUD(view)
         eventsArray.removeAllObjects()
+        var eventsIDS = Array<String>()
+        let query1 = PFQuery(className: "_User")
+        query1.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!) {
+            (user : PFObject?, error: NSError?) -> Void in
+            if error == nil {
+               eventsIDS = user!["events"] as! Array<String>
+            }
+        }
+
         
         let query = PFQuery(className: EVENTS_CLASS_NAME)
-        query.whereKey(EVENTS_IS_PENDING, equalTo: false)
         query.orderByDescending(EVENTS_START_DATE)
         query.limit = limitForRecentEventsQuery
         // Query bloxk
@@ -132,7 +141,11 @@ ADBannerViewDelegate {
             if error == nil {
                 if let objects = objects  {
                     for object in objects {
-                        self.eventsArray.addObject(object)
+                        for event in eventsIDS{
+                        if(object.objectId! == event){
+                            self.eventsArray.addObject(object)
+                        }
+                        }
                     } }
                 // Reload CollView
                 self.eventsCollView.reloadData()
@@ -280,12 +293,8 @@ ADBannerViewDelegate {
     // MARK: - TAP A CELL TO OPEN EVENT DETAILS CONTROLLER
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
-        eventsClass = eventsArray[indexPath.row] as! PFObject
- //       hideSearchView()
-        
-        let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDetails
-        edVC.eventObj = eventsClass
+        SelectedEvent = eventsArray[indexPath.row] as! PFObject
+        let edVC = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDeats
         navigationController?.pushViewController(edVC, animated: true)
     }
     
