@@ -226,7 +226,20 @@ func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath ind
     eventsClass = eventsArray[indexPath.row] as! PFObject
     
     
-    // GET EVENT'S IMAGE
+    //Make event image
+    
+    cell.eventImageBackground.layer.cornerRadius = cell.eventImageBackground.frame.size.width / 2;
+    
+    let fullTitle = "\(eventsClass[EVENTS_TITLE]!)"
+    let firstLetter = fullTitle[fullTitle.startIndex]
+    
+    cell.eventImageIcon.text = "\(firstLetter)".uppercaseString
+    
+    
+    
+    
+    
+    // GET EVENT'S IMAGE from Parse
     
     let imageFile = eventsClass[EVENTS_IMAGE] as? PFFile
     imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in

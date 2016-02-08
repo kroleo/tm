@@ -25,6 +25,11 @@ class EventCell: UICollectionViewCell {
     
     @IBOutlet var costLabel: UILabel!
     
-
+    @IBOutlet weak var eventImageBackground: UIView!
     
+    @IBOutlet weak var eventImageIcon: UILabel!
+
+    @IBOutlet weak var eventProfileImageBackground: UIView!
+    
+    @IBOutlet weak var eventProfileImageIcon: UILabel!
 }
