@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "tabbar@2x.png",
+      "filename" : "explore2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "tabBarImages_profile.png",
+      "filename" : "explore3.png",
       "scale" : "3x"
     }
   ],
