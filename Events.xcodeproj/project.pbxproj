@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		07298FBE1C665472009B4A24 /* GoingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07298FBD1C665472009B4A24 /* GoingListView.swift */; };
 		07298FC01C668D27009B4A24 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07298FBF1C668D27009B4A24 /* UserCell.swift */; };
-		07298FC21C668D40009B4A24 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07298FC11C668D40009B4A24 /* Search.swift */; };
 		07BC86EE1C5E9C6700439539 /* CustomPinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */; };
 		07BC86F21C5EA26700439539 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BC86F11C5EA26700439539 /* EventDetails.swift */; };
 		07BC86F41C5EA2B100439539 /* EventDeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BC86F31C5EA2B100439539 /* EventDeats.swift */; };
@@ -20,10 +19,11 @@
 		07EB6ACC1C5AF51F0091BA6E /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EB6AC71C5AF51F0091BA6E /* ParseFacebookUtilsV4.framework */; };
 		07EB6AD21C5AF6C00091BA6E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EB6AD11C5AF6C00091BA6E /* MapView.swift */; };
 		07EB6AD41C5B2B000091BA6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EB6AD31C5B2B000091BA6E /* MapKit.framework */; };
+		639C55CC1C67848D000FCBCD /* Explore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C55CB1C67848D000FCBCD /* Explore.swift */; settings = {ASSET_TAGS = (); }; };
 		63BDB7D51C4A1D0600D31303 /* headerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7D41C4A1D0600D31303 /* headerCollectionReusableView.swift */; };
 		63BDB7D91C4C22CC00D31303 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7D81C4C22CC00D31303 /* Favorites.swift */; };
-		63BDB7E51C4CA80C00D31303 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E41C4CA80C00D31303 /* DiscoverCell.swift */; };
-		63BDB7E71C4D30BD00D31303 /* DiscoverHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E61C4D30BD00D31303 /* DiscoverHeader.swift */; };
+		63BDB7E51C4CA80C00D31303 /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E41C4CA80C00D31303 /* ExploreCell.swift */; };
+		63BDB7E71C4D30BD00D31303 /* ExploreHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E61C4D30BD00D31303 /* ExploreHeader.swift */; };
 		63BDB7E91C4E0C3100D31303 /* ExploreVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7E81C4E0C3100D31303 /* ExploreVenue.swift */; };
 		63BDB7EB1C4E1F3E00D31303 /* ExplorePeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7EA1C4E1F3E00D31303 /* ExplorePeople.swift */; };
 		63BDB7ED1C4E28A600D31303 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7EC1C4E28A600D31303 /* Profile.swift */; };
@@ -73,9 +73,8 @@
 /* Begin PBXFileReference section */
 		07298FBD1C665472009B4A24 /* GoingListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoingListView.swift; sourceTree = "<group>"; };
 		07298FBF1C668D27009B4A24 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		07298FC11C668D40009B4A24 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPinAnnotation.swift; sourceTree = "<group>"; };
-		07BC86F11C5EA26700439539 /* EventDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
+		07BC86F11C5EA26700439539 /* EventDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetails.swift; path = ../EventDetails.swift; sourceTree = "<group>"; };
 		07BC86F31C5EA2B100439539 /* EventDeats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDeats.swift; sourceTree = "<group>"; };
 		07EB6AC31C5AF51F0091BA6E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		07EB6AC41C5AF51F0091BA6E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -85,10 +84,11 @@
 		07EB6AD11C5AF6C00091BA6E /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		07EB6AD31C5B2B000091BA6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6332C3CC1C580B07004521A7 /* Events-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Events-Bridging-Header.h"; sourceTree = "<group>"; };
+		639C55CB1C67848D000FCBCD /* Explore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Explore.swift; sourceTree = "<group>"; };
 		63BDB7D41C4A1D0600D31303 /* headerCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerCollectionReusableView.swift; sourceTree = "<group>"; };
 		63BDB7D81C4C22CC00D31303 /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
-		63BDB7E41C4CA80C00D31303 /* DiscoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
-		63BDB7E61C4D30BD00D31303 /* DiscoverHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverHeader.swift; sourceTree = "<group>"; };
+		63BDB7E41C4CA80C00D31303 /* ExploreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
+		63BDB7E61C4D30BD00D31303 /* ExploreHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreHeader.swift; sourceTree = "<group>"; };
 		63BDB7E81C4E0C3100D31303 /* ExploreVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreVenue.swift; sourceTree = "<group>"; };
 		63BDB7EA1C4E1F3E00D31303 /* ExplorePeople.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorePeople.swift; sourceTree = "<group>"; };
 		63BDB7EC1C4E28A600D31303 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -182,31 +182,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		639C55CD1C679197000FCBCD /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				07EB6AD11C5AF6C00091BA6E /* MapView.swift */,
+				07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		63BDB7DA1C4C22D900D31303 /* Favorite Events */ = {
 			isa = PBXGroup;
 			children = (
 				63BDB7D81C4C22CC00D31303 /* Favorites.swift */,
 			);
 			name = "Favorite Events";
-			path = ..;
 			sourceTree = "<group>";
 		};
-		63BDB7E11C4C9AD600D31303 /* Discover */ = {
+		63BDB7E11C4C9AD600D31303 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				639C55CB1C67848D000FCBCD /* Explore.swift */,
 				63BDB7E81C4E0C3100D31303 /* ExploreVenue.swift */,
-				63BDB7E61C4D30BD00D31303 /* DiscoverHeader.swift */,
+				63BDB7E61C4D30BD00D31303 /* ExploreHeader.swift */,
 				63BDB7EA1C4E1F3E00D31303 /* ExplorePeople.swift */,
-				63BDB7E41C4CA80C00D31303 /* DiscoverCell.swift */,
-				720B19331B5E8834008D261F /* EventCell.swift */,
+				63BDB7E41C4CA80C00D31303 /* ExploreCell.swift */,
 				07298FBF1C668D27009B4A24 /* UserCell.swift */,
 			);
-			name = Discover;
+			name = Explore;
 			sourceTree = "<group>";
 		};
 		63BDB7EE1C4E28AB00D31303 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				63BDB7EC1C4E28A600D31303 /* Profile.swift */,
 				63BDB7F51C4F765500D31303 /* Settings.swift */,
 				63BDB7EF1C4F5EC300D31303 /* ProfileFollowers.swift */,
 				63BDB7F31C4F6F9900D31303 /* ProfileHeader.swift */,
@@ -219,7 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				720B19051B5E7B69008D261F /* Events */,
-				07BC86F11C5EA26700439539 /* EventDetails.swift */,
+				7297FBEA1B6CBE75004DE5E3 /* Contact */,
+				63BDB7DA1C4C22D900D31303 /* Favorite Events */,
 				720B19041B5E7B69008D261F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -238,23 +248,14 @@
 				720B19081B5E7B69008D261F /* AppDelegate.swift */,
 				63BDB81F1C51B9B900D31303 /* Events-Bridging-Header.h */,
 				63BDB8151C50C5F200D31303 /* FacebookLoginScreen.swift */,
-				07EB6AD11C5AF6C00091BA6E /* MapView.swift */,
-				720B19311B5E8824008D261F /* Home.swift */,
-				07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */,
-				07BC86F31C5EA2B100439539 /* EventDeats.swift */,
-				07298FBD1C665472009B4A24 /* GoingListView.swift */,
-				07298FC11C668D40009B4A24 /* Search.swift */,
-				63BDB7EC1C4E28A600D31303 /* Profile.swift */,
 				63BDB8201C51D9EA00D31303 /* ProtectedPage.swift */,
 				720B19281B5E7BB6008D261F /* Configs.swift */,
-				72D163C11B6BBFB900DABB47 /* SubmitEvent.swift */,
 				720B190C1B5E7B69008D261F /* Main.storyboard */,
-				720B19521B5E8D20008D261F /* Home */,
-				63BDB7DA1C4C22D900D31303 /* Favorite Events */,
-				63BDB7E11C4C9AD600D31303 /* Discover */,
+				639C55CD1C679197000FCBCD /* Map */,
+				720B19521B5E8D20008D261F /* Discover */,
+				63BDB7E11C4C9AD600D31303 /* Explore */,
 				63BDB7EE1C4E28AB00D31303 /* Profile */,
 				72D163C31B6BBFBF00DABB47 /* Submit an Event */,
-				7297FBEA1B6CBE75004DE5E3 /* Contact */,
 				720B190F1B5E7B69008D261F /* Images.xcassets */,
 				720B19511B5E8C83008D261F /* Frameworks */,
 				720B19061B5E7B69008D261F /* Supporting Files */,
@@ -312,12 +313,17 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		720B19521B5E8D20008D261F /* Home */ = {
+		720B19521B5E8D20008D261F /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				07BC86F31C5EA2B100439539 /* EventDeats.swift */,
+				07298FBD1C665472009B4A24 /* GoingListView.swift */,
+				720B19311B5E8824008D261F /* Home.swift */,
 				63BDB7D41C4A1D0600D31303 /* headerCollectionReusableView.swift */,
+				720B19331B5E8834008D261F /* EventCell.swift */,
+				07BC86F11C5EA26700439539 /* EventDetails.swift */,
 			);
-			name = Home;
+			name = Discover;
 			sourceTree = "<group>";
 		};
 		7297FBEA1B6CBE75004DE5E3 /* Contact */ = {
@@ -326,11 +332,13 @@
 				7297FBE81B6CBE72004DE5E3 /* Contact.swift */,
 			);
 			name = Contact;
+			path = Events;
 			sourceTree = "<group>";
 		};
 		72D163C31B6BBFBF00DABB47 /* Submit an Event */ = {
 			isa = PBXGroup;
 			children = (
+				72D163C11B6BBFB900DABB47 /* SubmitEvent.swift */,
 			);
 			name = "Submit an Event";
 			sourceTree = "<group>";
@@ -412,21 +420,21 @@
 				07EB6AD21C5AF6C00091BA6E /* MapView.swift in Sources */,
 				63BDB7EB1C4E1F3E00D31303 /* ExplorePeople.swift in Sources */,
 				07BC86F21C5EA26700439539 /* EventDetails.swift in Sources */,
-				63BDB7E51C4CA80C00D31303 /* DiscoverCell.swift in Sources */,
+				63BDB7E51C4CA80C00D31303 /* ExploreCell.swift in Sources */,
 				720B19341B5E8834008D261F /* EventCell.swift in Sources */,
+				639C55CC1C67848D000FCBCD /* Explore.swift in Sources */,
 				07BC86EE1C5E9C6700439539 /* CustomPinAnnotation.swift in Sources */,
 				72D163C21B6BBFB900DABB47 /* SubmitEvent.swift in Sources */,
 				63BDB8161C50C5F200D31303 /* FacebookLoginScreen.swift in Sources */,
 				63BDB7F41C4F6F9900D31303 /* ProfileHeader.swift in Sources */,
 				720B19091B5E7B69008D261F /* AppDelegate.swift in Sources */,
-				07298FC21C668D40009B4A24 /* Search.swift in Sources */,
 				07298FC01C668D27009B4A24 /* UserCell.swift in Sources */,
 				720B19321B5E8824008D261F /* Home.swift in Sources */,
 				63BDB7F21C4F5EF200D31303 /* ProfileFollowing.swift in Sources */,
 				720B19291B5E7BB6008D261F /* Configs.swift in Sources */,
 				7297FBE91B6CBE72004DE5E3 /* Contact.swift in Sources */,
 				63BDB7E91C4E0C3100D31303 /* ExploreVenue.swift in Sources */,
-				63BDB7E71C4D30BD00D31303 /* DiscoverHeader.swift in Sources */,
+				63BDB7E71C4D30BD00D31303 /* ExploreHeader.swift in Sources */,
 				07298FBE1C665472009B4A24 /* GoingListView.swift in Sources */,
 				63BDB8211C51D9EA00D31303 /* ProtectedPage.swift in Sources */,
 				63BDB7F01C4F5EC300D31303 /* ProfileFollowers.swift in Sources */,

@@ -35,7 +35,7 @@ ADBannerViewDelegate {
     var cellSize = CGSize()
     var whichColToUse = 0
    // var searchViewIsVisible = false
-   
+    var user = PFUser.currentUser()
 
     
     
@@ -115,8 +115,31 @@ ADBannerViewDelegate {
         
         
         // Do any additional setup after loading the view.
+        
+        
+ //       loadUser()
+        
     }
     
+    
+    
+    
+//    func loadUser(){
+//        
+//        
+//        let userQuery = PFQuery(className: "_User")
+//        userQuery.whereKey(USER_OBJECT_ID, equalTo: PFUser.currentUser()!.objectId!)
+//        userQuery.findObjectsInBackgroundWithBlock{(result:[PFObject]?, error:NSError?) -> Void in
+//            
+//            if let foundUsers = result as? [PFUser]{
+//                self.user = foundUsers
+//                //self.eventsCollView.reloadData()
+//                
+//            }
+//        }
+//    }
+    
+
     
     
     func queryLatestEvents() {
@@ -175,10 +198,39 @@ ADBannerViewDelegate {
         
         let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "ProfileHeader", forIndexPath: indexPath) as! ProfileHeader
         
+        
+        
+        
+        let userObject: PFUser = PFUser.currentUser()!
+        
+        
+        
+        let firstName = userObject.objectForKey("first_name") as? String
+        
+        let lastName = userObject.objectForKey("last_name") as? String
+        
+        
+        
+        let imageFile = userObject.objectForKey("profile_picture") as? PFFile
+        imageFile?.getDataInBackgroundWithBlock{ (imageData, error) -> Void in
+            if error == nil {
+                if let imageData = imageData {
+                    headerView.profileImage.layer.cornerRadius = headerView.profileImage.frame.size.width / 2
+                    headerView.profileImage.image = UIImage(data:imageData)
+                }
+            }
+        }
+        
+ 
+        
+        
         //headerView.profileImage.image = UIImage(named: "favHeaderImage")
-        headerView.profileImage.layer.cornerRadius = headerView.profileImage.frame.size.width / 2;
-        headerView.profileImage.image = UIImage(data: CURRENT_PRO_PIC)
-        headerView.profileName.text = "\(CURRENT_FIRST_NAME)"
+//        headerView.profileImage.layer.cornerRadius = headerView.profileImage.frame.size.width / 2;
+//        headerView.profileImage.image = UIImage(data: CURRENT_PRO_PIC)
+        
+        
+        
+        headerView.profileName.text = "\(firstName!)" + " \(lastName!)"
         
         return headerView
     }
@@ -197,6 +249,24 @@ ADBannerViewDelegate {
         eventsClass = eventsArray[indexPath.row] as! PFObject
         
         
+            //Make event image
+            
+            cell.eventProfileImageBackground.layer.cornerRadius = cell.eventProfileImageBackground.frame.size.width / 2;
+            
+            let fullTitle = "\(eventsClass[EVENTS_TITLE]!)"
+            let firstLetter = fullTitle[fullTitle.startIndex]
+            
+            cell.eventProfileImageIcon.text = "\(firstLetter)".uppercaseString
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
         // GET EVENT'S IMAGE
         
         let imageFile = eventsClass[EVENTS_IMAGE] as? PFFile
@@ -233,6 +303,21 @@ ADBannerViewDelegate {
             
             var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
             eventsClass = eventsArray[indexPath.row] as! PFObject
+            
+            
+            
+            
+            //Make event image
+            
+            cell.eventProfileImageBackground.layer.cornerRadius = cell.eventProfileImageBackground.frame.size.width / 2;
+            
+            let fullTitle = "\(eventsClass[EVENTS_TITLE]!)"
+            let firstLetter = fullTitle[fullTitle.startIndex]
+            
+            cell.eventProfileImageIcon.text = "\(firstLetter)".uppercaseString
+            
+            
+            
             
             
             // GET EVENT'S IMAGE
