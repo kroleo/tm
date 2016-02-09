@@ -20,7 +20,7 @@ class EventDeats: UIViewController{
     
     @IBOutlet var time1: UILabel!
     
-    @IBOutlet weak var time2: UILabel!
+    @IBOutlet var time2: UILabel!
     
     @IBOutlet var image1: UIImageView!
     
@@ -146,6 +146,9 @@ class EventDeats: UIViewController{
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "MMM d, h:mm a"
         time1.text = dateFormat.stringFromDate(SelectedEvent["startDate"] as! NSDate).uppercaseString
+        //time2.text = dateFormat.stringFromDate(SelectedEvent["endDate"] as! NSDate).uppercaseString
+        
+        
 
 
         // GET EVENT START AND END DATES & TIME

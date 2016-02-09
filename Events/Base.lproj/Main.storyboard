@@ -85,9 +85,9 @@
                                     <segue destination="UKZ-y8-AGY" kind="push" id="5YK-RI-IU9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Student Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sr4-U2-Ifh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Student Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sr4-U2-Ifh">
                                 <rect key="frame" x="70" y="105" width="181" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -142,6 +142,11 @@
                 <navigationController id="IGs-4C-seb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="tab_profile" id="Rbb-aq-SB5">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="30"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7VZ-5m-Xr8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -385,9 +390,9 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AOi-8o-b0s">
-                                <rect key="frame" x="256" y="386" width="44" height="44"/>
+                                <rect key="frame" x="252" y="366" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="tab_submit"/>
+                                <state key="normal" image="submit_button"/>
                                 <connections>
                                     <action selector="hostButton:" destination="IZq-sn-SyH" eventType="touchUpInside" id="lEs-wf-cXS"/>
                                 </connections>
@@ -463,9 +468,9 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gkh-cL-82c">
-                                <rect key="frame" x="256" y="386" width="44" height="44"/>
+                                <rect key="frame" x="252" y="366" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="tab_submit"/>
+                                <state key="normal" image="submit_button"/>
                                 <connections>
                                     <segue destination="QgP-Ba-Mn3" kind="push" id="HJB-uO-dck"/>
                                 </connections>
@@ -473,7 +478,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TN4-AF-CDi"/>
+                    <navigationItem key="navigationItem" title="The Move" id="TN4-AF-CDi"/>
                     <connections>
                         <outlet property="map" destination="dPi-sx-Hmg" id="QUT-ct-Bnn"/>
                         <segue destination="SEk-2d-QyD" kind="push" identifier="toEventDetails" id="3rd-5e-I63"/>
@@ -636,6 +641,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.094117647058823528" green="0.10980392156862745" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="do3-SW-A7C">
+                                <rect key="frame" x="252" y="366" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="submit_button"/>
+                                <connections>
+                                    <segue destination="QgP-Ba-Mn3" kind="push" id="eSc-ud-vc0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1346,31 +1360,31 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j5q-tk-mDp" userLabel="timeLabel">
-                                            <rect key="frame" x="113" y="289" width="155" height="23"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
+                                            <rect key="frame" x="113" y="278" width="130" height="23"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                             <color key="textColor" white="0.3955274748" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerIcon" id="EZg-kP-zCE">
-                                            <rect key="frame" x="90" y="269" width="17" height="17"/>
+                                            <rect key="frame" x="90" y="258" width="17" height="17"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clockImage" id="trA-0r-lnC">
-                                            <rect key="frame" x="92" y="294" width="13" height="13"/>
+                                            <rect key="frame" x="92" y="283" width="13" height="13"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="OEp-aU-o5r" userLabel="titleLbl">
-                                            <rect key="frame" x="92" y="228" width="213" height="38"/>
+                                            <rect key="frame" x="92" y="217" width="213" height="38"/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="22"/>
                                             <color key="textColor" white="0.19738359899999999" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QRm-EJ-c1v" userLabel="locationLabel">
-                                            <rect key="frame" x="113" y="266" width="186" height="23"/>
+                                            <rect key="frame" x="113" y="255" width="186" height="23"/>
                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
                                             <color key="textColor" white="0.3955274748" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" id="uej-g2-EL0">
-                                            <rect key="frame" x="14" y="241" width="65" height="65"/>
+                                            <rect key="frame" x="14" y="230" width="65" height="65"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IUF-I1-ED8">
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
@@ -1508,8 +1522,8 @@
                                             </connections>
                                         </button>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TW8-Oi-tdM" userLabel="timeLabel2">
-                                            <rect key="frame" x="210" y="289" width="95" height="23"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
+                                            <rect key="frame" x="113" y="291" width="130" height="23"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                             <color key="textColor" white="0.3955274748" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1593,6 +1607,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zWC-7f-okG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="tab_map" id="hLq-F2-n3X">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="30"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -1618,8 +1637,13 @@
         <scene sceneID="bdG-5L-oOe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xPf-f2-d3f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="tab_Menu" id="oVn-1M-XWw">
+                    <tabBarItem key="tabBarItem" image="tab_menu" id="oVn-1M-XWw">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="30"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -1647,6 +1671,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JEN-AN-sYw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="exploreTab" id="0LU-G1-5cp">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="30"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -1847,10 +1876,14 @@
         <image name="settings" width="25" height="25"/>
         <image name="star_selected" width="58" height="58"/>
         <image name="star_unselected" width="58" height="58"/>
+        <image name="submit_button" width="29" height="29"/>
         <image name="tabBar" width="88" height="44"/>
-        <image name="tab_Menu" width="44" height="44"/>
         <image name="tab_map" width="44" height="44"/>
+        <image name="tab_menu" width="44" height="44"/>
         <image name="tab_profile" width="44" height="44"/>
         <image name="tab_submit" width="44" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="eSc-ud-vc0"/>
+    </inferredMetricsTieBreakers>
 </document>
