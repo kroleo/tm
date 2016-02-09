@@ -47,6 +47,10 @@ UIImagePickerControllerDelegate
     var startDate = NSDate()
     var endDate = NSDate()
     
+    var startDateTrigger = false
+    var endDateTrigger = false
+    
+    
     
     
     
@@ -54,6 +58,12 @@ UIImagePickerControllerDelegate
 override func viewDidLoad() {
         super.viewDidLoad()
 
+    //color for placeholder text
+    self.nameTxt.attributedPlaceholder = NSAttributedString(string:self.nameTxt.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
+    self.locationTxt.attributedPlaceholder = NSAttributedString(string:self.locationTxt.placeholder!, attributes: [NSForegroundColorAttributeName: UIColor.grayColor()])
+
+    
+    
     // Setup container ScrollView
     containerScrollView.contentSize = CGSizeMake(containerScrollView.frame.size.width, submitEventOutlet.frame.origin.y + 250)
     
@@ -66,10 +76,10 @@ override func viewDidLoad() {
     
     // Clear fields BarButton Item
     clearFieldsButt = UIButton(type: UIButtonType.Custom)
-    clearFieldsButt.frame = CGRectMake(0, 0, 78, 36)
-    clearFieldsButt.setTitle("Clear fields", forState: UIControlState.Normal)
+    clearFieldsButt.frame = CGRectMake(0, 0, 50, 26)
+    clearFieldsButt.setTitle("Clear", forState: UIControlState.Normal)
     clearFieldsButt.setTitleColor(mainColor, forState: UIControlState.Normal)
-    clearFieldsButt.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 13)
+    clearFieldsButt.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 13)
     clearFieldsButt.backgroundColor = UIColor.whiteColor()
     clearFieldsButt.layer.cornerRadius = 5
     clearFieldsButt.addTarget(self, action: "clearFields:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -86,8 +96,10 @@ func clearFields(sender:UIButton) {
     nameTxt.text = ""
     descriptionTxt.text = ""
     locationTxt.text = ""
-    startDateOutlet.setTitle("Tap to choose date", forState: UIControlState.Normal)
-    endDateOutlet.setTitle("Tap to choose date", forState: UIControlState.Normal)
+    startDateOutlet.setTitle("Tap to choose", forState: UIControlState.Normal)
+    startDateTrigger = false
+    endDateOutlet.setTitle("Tap to choose", forState: UIControlState.Normal)
+    endDateTrigger = false
     costTxt.text = ""
     websiteTxt.text = ""
     yourNameTxt.text = ""
@@ -120,21 +132,23 @@ func dateChanged(datePicker: UIDatePicker) {
             } else {
                 startDateOutlet.setTitle(dateStr, forState: UIControlState.Normal)
                 startDate = datePicker.date
+                startDateTrigger = true
             }
             
             
         // SET END DATE
         } else {
-            if datePicker.date.isSameAsDate(currentDate)   ||
-               datePicker.date.isLessThanDate(currentDate) {
+            if datePicker.date.isSameAsDate(startDate)   ||
+               datePicker.date.isLessThanDate(startDate) {
                 let alert = UIAlertView(title: APP_NAME,
-                    message: "End date cannot be equal or less than today",
+                    message: "End date cannot be less than Start Date",
                     delegate: nil,
                     cancelButtonTitle: "OK")
                 alert.show()
             } else {
                 endDateOutlet.setTitle(dateStr, forState: UIControlState.Normal)
                 endDate = datePicker.date
+                endDateTrigger = true
             }
         }
         
@@ -274,18 +288,73 @@ func layoutButtons() {
 @IBAction func submitEventButt(sender: AnyObject) {
     view.showHUD(view)
     dismissKeyboard()
+    navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("Home") as! Home, animated: true)
+
+    
+    
     
     // Save event on Parse
     let eventsClass = PFObject(className: EVENTS_CLASS_NAME)
+    
+    // AN EVENT NEEDS A TITLE!
+    
+    if nameTxt.text != "" {
     eventsClass[EVENTS_TITLE] = nameTxt.text
+    } else {
+        let alert = UIAlertView(title: APP_NAME,
+            message: "You must have an Event Name!",
+            delegate: nil,
+            cancelButtonTitle: "OK" )
+        alert.show()
+        self.view.hideHUD()
+    }
     eventsClass[EVENTS_DESCRIPTION] = descriptionTxt.text
-    eventsClass[EVENTS_LOCATION] = locationTxt.text
+    
+    
+    // AN EVENT NEEDS LOCATION
+    
+    if nameTxt.text != "" {
+        eventsClass[EVENTS_LOCATION] = locationTxt.text
+    } else {
+        let alert = UIAlertView(title: APP_NAME,
+            message: "You must have an Event Location!",
+            delegate: nil,
+            cancelButtonTitle: "OK" )
+        alert.show()
+        self.view.hideHUD()
+    }
     eventsClass[EVENTS_COST] = costTxt.text
     eventsClass[EVENTS_WEBSITE] = websiteTxt.text
     eventsClass[EVENTS_IS_PENDING] = false
     eventsClass[EVENTS_KEYWORDS] = "\(nameTxt!.text!.lowercaseString) \(locationTxt!.text!.lowercaseString) \(descriptionTxt!.text.lowercaseString)"
-    eventsClass[EVENTS_START_DATE] = startDate
-    eventsClass[EVENTS_END_DATE] = endDate
+    
+    //AN EVENT NEEDS A START DATE
+    if startDateTrigger == true  {
+        eventsClass[EVENTS_START_DATE] = startDate
+    } else {
+        let alert = UIAlertView(title: APP_NAME,
+            message: "You must have a Start Date!",
+            delegate: nil,
+            cancelButtonTitle: "OK" )
+        alert.show()
+        self.view.hideHUD()
+    }
+    
+    //AN EVENT NEEDS AN END DATE
+    if endDateTrigger == true {
+        eventsClass[EVENTS_END_DATE] = endDate
+    } else {
+        let alert = UIAlertView(title: APP_NAME,
+            message: "You must have an End Date!",
+            delegate: nil,
+            cancelButtonTitle: "OK" )
+        alert.show()
+        self.view.hideHUD()
+    }
+    
+    
+    
+    
     eventsClass[EVENTS_UPLOADING_USER] = PFUser.currentUser()?.objectId
     eventsClass["lit"] = 0
     eventsClass["nah"] = 0
@@ -301,8 +370,8 @@ func layoutButtons() {
     eventsClass.saveInBackgroundWithBlock { (success, error) -> Void in
         if error == nil {
             self.view.hideHUD()
-            self.openMailVC()
-            
+            //self.openMailVC()
+            // will send as message
         } else {
             let alert = UIAlertView(title: APP_NAME,
                 message: "\(error!.localizedDescription)",

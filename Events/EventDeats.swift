@@ -20,6 +20,8 @@ class EventDeats: UIViewController{
     
     @IBOutlet var time1: UILabel!
     
+    @IBOutlet weak var time2: UILabel!
+    
     @IBOutlet var image1: UIImageView!
     
     @IBOutlet var going1: UIImageView!
@@ -34,11 +36,74 @@ class EventDeats: UIViewController{
     
     @IBOutlet var otherGoing: UIButton!
     
+    @IBOutlet weak var rateProgress: UIProgressView!
+
+    @IBOutlet weak var eventImageBackground: UIView!
+    
+    @IBOutlet weak var eventImageFirstLetter: UILabel!
+    
+    @IBOutlet weak var rateProgress2: UIProgressView!
+    
+    @IBOutlet weak var rateProgress3: UIProgressView!
+    
+    var eventObj = PFObject(className: EVENTS_CLASS_NAME)
+
+    var ratePercent:Float = 0;
+    
+
+    //Force going images to be circular
+    @IBOutlet weak var viewGoing1: UIView!
+    
+    @IBOutlet weak var viewGoing2: UIView!
+    
+    @IBOutlet weak var viewGoing3: UIView!
+    
+    @IBOutlet weak var viewGoing4: UIView!    
+    
+    
+    
+    
+    
+    
+    //let index = visitedEvents.indexOf(SelectedEvent.objectId!)
+    let rateLit = SelectedEvent["Lit"] as! Float
+    let rateNah = SelectedEvent["Nah"] as! Float
+
+
+    
+    func progBarUpdate(){
+        ratePercent = (rateLit / (rateLit + rateNah));
+        //FIX HEIGHT!
+        // rateProgress.frame.size.height = 8;
+        if (rateLit == 0){
+            
+            rateProgress.setProgress(0, animated: true)
+            rateProgress2.setProgress(0, animated: true)
+            rateProgress3.setProgress(0, animated: true)
+            //rateProgress.frame.size.height = 8;
+            
+        } else {
+        
+            rateProgress.setProgress(ratePercent, animated: true)
+            rateProgress2.setProgress(ratePercent, animated: true)
+            rateProgress3.setProgress(ratePercent, animated: true)
+            //rateProgress.frame.size.height = 8;
+        }
+        
+    }
+    
+
+    
+    
     var userQuery: PFQuery!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        progBarUpdate()
         
         userQuery = PFQuery(className: "_User")
         //Check for user  or nah for specific event
@@ -54,11 +119,53 @@ class EventDeats: UIViewController{
         
         title1.text = SelectedEvent["title"] as? String
         
-        location1.text = SelectedEvent["location"] as? String
+        
+        //going event image force circles
+        self.viewGoing1.layer.cornerRadius = self.viewGoing1.frame.size.width / 2;
+        self.viewGoing2.layer.cornerRadius = self.viewGoing2.frame.size.width / 2;
+        self.viewGoing3.layer.cornerRadius = self.viewGoing3.frame.size.width / 2;
+        self.viewGoing4.layer.cornerRadius = self.viewGoing4.frame.size.width / 2;
+        
+        
+        
+        
+        //Make event image
+        
+        self.eventImageBackground.layer.cornerRadius = self.eventImageBackground.frame.size.width / 2;
+        
+        let fullTitle = "\(SelectedEvent["title"]!)"
+        let firstLetter = fullTitle[fullTitle.startIndex]
+        
+        self.eventImageFirstLetter.text = "\(firstLetter)".uppercaseString
+        
+        
+        
+        
+        location1.text = "\(SelectedEvent["location"]!)".uppercaseString
         
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "MMM d, h:mm a"
-        time1.text = dateFormat.stringFromDate(SelectedEvent["startDate"] as! NSDate)
+        time1.text = dateFormat.stringFromDate(SelectedEvent["startDate"] as! NSDate).uppercaseString
+
+
+        // GET EVENT START AND END DATES & TIME
+        //let startDateFormatter = NSDateFormatter()
+        //startDateFormatter.dateFormat = "MMM d, h:mm a"
+        //let startDateStr = startDateFormatter.stringFromDate(SelectedEvent["startDate"] as! NSDate).uppercaseString
+//        let endDateFormatter = NSDateFormatter()
+//        endDateFormatter.dateFormat = "MMM d, h:mm a"
+//        let endDateStr = endDateFormatter.stringFromDate(SelectedEvent["endDate"] as! NSDate).uppercaseString
+//        
+//        time1.text = "\(startDateStr)"
+//        if endDateStr != "" {  time2.text = " - \(endDateStr)"
+//        } else { time2.text = ""  }
+        
+        
+        
+        
+        
+        
+        
         
         let imageFile =  SelectedEvent["image"] as? PFFile
         imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
@@ -224,6 +331,9 @@ class EventDeats: UIViewController{
     }
     
     func fetch_all_going_images(){
+
+        
+        
         let arrayOfGoers = SelectedEvent["going"] as! Array<String>
         let n = arrayOfGoers.count
         if(n >= 1){

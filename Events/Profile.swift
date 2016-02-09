@@ -48,8 +48,8 @@ ADBannerViewDelegate {
             queryLatestEvents()
             
         case 1:
-
-            whichColToUse = 1
+//whichColToUse = 1
+            whichColToUse = 0
             queryLatestEvents()
             
             
@@ -111,6 +111,7 @@ ADBannerViewDelegate {
     */
         // Call a Parse query
         queryLatestEvents()
+        
         
         
         
@@ -257,13 +258,6 @@ ADBannerViewDelegate {
             let firstLetter = fullTitle[fullTitle.startIndex]
             
             cell.eventProfileImageIcon.text = "\(firstLetter)".uppercaseString
-
-            
-            
-            
-            
-            
-            
             
             
             
@@ -293,7 +287,7 @@ ADBannerViewDelegate {
         
         
         // GET EVENT'S COST
-        cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
+     //   cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
         
         
         return cell

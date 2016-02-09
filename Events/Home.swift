@@ -107,6 +107,13 @@ override func viewDidLoad() {
             if (userFirstName != nil) {
                 
                 myUser.setObject(userFirstName!, forKey: "first_name")
+                
+                //sets following
+                myUser.setObject("[]", forKey: "following")
+                
+                //sets favorited events
+                myUser.setObject("[]", forKey: "events")
+                
                 //sets profile
                 CURRENT_FIRST_NAME = userFirstName!
             }
