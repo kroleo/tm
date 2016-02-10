@@ -356,8 +356,8 @@ func layoutButtons() {
     
     
     eventsClass[EVENTS_UPLOADING_USER] = PFUser.currentUser()?.objectId
-    eventsClass["lit"] = 0
-    eventsClass["nah"] = 0
+    eventsClass["Lit"] = 0
+    eventsClass["Nah"] = 0
     eventsClass["going"] = []
     
     // Save Image (if exists)
