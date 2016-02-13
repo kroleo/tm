@@ -18,6 +18,9 @@ var SelectedEvent: PFObject!
 var visitedEvents = [String]()
 var litArray = [Bool]()
 var nahArray = [Bool]()
+var eventStrings = [String]()
+var first_name = PFUser.currentUser()!["first_name"] as! String
+var last_name = PFUser.currentUser()!["last_name"] as! String
 
 class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
@@ -27,6 +30,14 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let query1 = PFQuery(className: "_User")
+        query1.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!) {
+            (user : PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                eventStrings = user!["events"] as! [String]
+            }
+        }
         
         self.locationManager.delegate = self
         
@@ -38,10 +49,13 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
         
         self.map.showsUserLocation = true
         
-        
+        let currentDate = NSDate()
+        //StartDate is + 15h
+        let cutOff = currentDate.dateByAddingTimeInterval(540000)
         
         let query = PFQuery(className:"Events")
-        query.selectKeys(["location","title","startDate","image","going","Lit","Nah"])
+        query.whereKey("endDate", greaterThanOrEqualTo: currentDate)
+        query.whereKey("startDate", lessThanOrEqualTo: cutOff)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -50,6 +64,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
                     for object in objects{
                         let x = object["location"] as! String
                         let y = object["title"] as! String
+                        
                         let request = MKLocalSearchRequest()
                         request.naturalLanguageQuery = x
                         let search = MKLocalSearch(request: request)
@@ -59,7 +74,6 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
                         let annotation = CustomPinAnnotation()
                         annotation.title = y
                         annotation.coordinate = CLLocationCoordinate2D( latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:localSearchResponse!.boundingRegion.center.longitude)
-                        
                         annotation.EventObject = object
                         self.map.addAnnotation(annotation)
                         }

@@ -40,6 +40,7 @@ let ADMOB_UNIT_ID = "ca-app-pub-9733347540588953/7805958028"
 
 
 
+
 // USEFUL PALETTE OF COLORS
 //let mainColor = UIColor(red: 63.0/255.0, green: 174.0/255.0, blue: 181.0/255.0, alpha: 1.0)
 let mainColor = UIColor(red: 43.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)

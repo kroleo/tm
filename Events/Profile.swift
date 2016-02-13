@@ -147,30 +147,32 @@ ADBannerViewDelegate {
         //
         view.showHUD(view)
         eventsArray.removeAllObjects()
-        var eventsIDS = Array<String>()
-        let query1 = PFQuery(className: "_User")
-        query1.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!) {
-            (user : PFObject?, error: NSError?) -> Void in
-            if error == nil {
-               eventsIDS = user!["events"] as! Array<String>
-            }
-        }
-
+        
+//        var eventsIDS = Array<String>()
+//        let query1 = PFQuery(className: "_User")
+//        query1.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!) {
+//            (user : PFObject?, error: NSError?) -> Void in
+//            if error == nil {
+//               eventsIDS = user!["events"] as! Array<String>
+//                print(eventsIDS)
+//            }
+//        }
+        
         
         let query = PFQuery(className: EVENTS_CLASS_NAME)
         query.orderByDescending(EVENTS_START_DATE)
         query.limit = limitForRecentEventsQuery
+        query.whereKey("objectId", containedIn: eventStrings)
         // Query bloxk
         query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
             if error == nil {
+                print(objects)
                 if let objects = objects  {
                     for object in objects {
-                        for event in eventsIDS{
-                        if(object.objectId! == event){
-                            self.eventsArray.addObject(object)
-                        }
-                        }
-                    } }
+                        print(object)
+                        self.eventsArray.addObject(object)
+                    }
+                }
                 // Reload CollView
                 self.eventsCollView.reloadData()
                 self.view.hideHUD()

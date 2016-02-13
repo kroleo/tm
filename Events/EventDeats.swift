@@ -233,6 +233,8 @@ class EventDeats: UIViewController{
                 }
                 user?.saveInBackground()
             }
+            eventStrings = eventStrings.filter{$0 != SelectedEvent.objectId!}
+            
         }else{
             sender.selected = true
             //Coming from Maps: try to make the STRING generic in the decleration depending on the previous view
@@ -246,11 +248,12 @@ class EventDeats: UIViewController{
                 }
                 user?.saveInBackground()
             }
+            eventStrings.append(SelectedEvent.objectId!)
         }
         SelectedEvent.saveInBackground()
         
         fetch_all_going_images()
-        
+        print(eventStrings)
         let n = SelectedEvent["going"] as! Array<String>
         if(n.count > 4){
             let x = n.count - 4

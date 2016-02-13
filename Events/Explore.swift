@@ -39,7 +39,7 @@ ADBannerViewDelegate {
     var cellSize = CGSize()
     var headerSize = CGSize()
     var searchViewIsVisible = false
-    var users = [PFUser]()
+    var users = [PFObject]()
     var venues = [PFUser]()
     
     
@@ -58,24 +58,19 @@ ADBannerViewDelegate {
         searchTxt.resignFirstResponder()
         
         // Set placeholder's color and text for Search text fields
-        searchTxt.attributedPlaceholder = NSAttributedString(string: "Type a name", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()] )
+        searchTxt.attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()] )
         
         // Call a Parse query
         //queryLatestEvents()
         
-        loadUsers()
-        loadVenues()
-        
-        
-        
+        //loadUsers()
+    
         // Do any additional setup after loading the view.
     }
     
     func loadUsers(){
         
-        
         let userQuery = PFQuery(className: "_User")
-        //userQuery.whereKey(IS_VENUE, equalTo: false)
         userQuery.whereKey(USER_OBJECT_ID, notEqualTo: PFUser.currentUser()!.objectId!)
         userQuery.findObjectsInBackgroundWithBlock{(result:[PFObject]?, error:NSError?) -> Void in
             
@@ -86,60 +81,7 @@ ADBannerViewDelegate {
             }
         }
     }
-    
-    func loadVenues(){
-        
-        
-        let userQuery = PFQuery(className: "_User")
-        //userQuery.whereKey(IS_VENUE, equalTo: true)
-        userQuery.whereKey(USER_OBJECT_ID, notEqualTo: PFUser.currentUser()!.objectId!)
-        userQuery.findObjectsInBackgroundWithBlock{(result:[PFObject]?, error:NSError?) -> Void in
-            
-            if let foundUsers = result as? [PFUser]{
-                self.venues = foundUsers
-                self.eventsCollView.reloadData()
-                
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-    func queryLatestEvents() {
-    view.showHUD(view)
-    eventsArray.removeAllObjects()
-    
-    let query = PFQuery(className: EVENTS_CLASS_NAME)
-    query.whereKey(EVENTS_IS_PENDING, equalTo: false)
-    query.orderByDescending(EVENTS_START_DATE)
-    query.limit = limitForRecentEventsQuery
-    // Query bloxk
-    query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
-    if error == nil {
-    if let objects = objects  {
-    for object in objects {
-    self.eventsArray.addObject(object)
-    } }
-    // Reload CollView
-    self.eventsCollView.reloadData()
-    self.view.hideHUD()
-    
-    } else {
-    let alert = UIAlertView(title: APP_NAME,
-    message: "\(error!.localizedDescription)",
-    delegate: nil,
-    cancelButtonTitle: "OK" )
-    alert.show()
-    self.view.hideHUD()
-    } }
-    
-    }*/
+
     
     // MARK: -  COLLECTION VIEW DELEGATES
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -148,12 +90,7 @@ ADBannerViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //fix the actual number to what is needed
-        
-        if section == 0{
-            return venues.count
-        } else {
-            return users.count
-        }
+        return users.count
     }
     
     
@@ -233,12 +170,10 @@ ADBannerViewDelegate {
         
         if indexPath.section == 0{
             if (indexPath.row == 1){
-                
+                print("First If")
                 cell.separatorView.hidden = false
                 
-                let userObject: PFUser = venues[indexPath.row]
-                
-                
+                let userObject = users[indexPath.row]
                 
                 let firstName = userObject.objectForKey("first_name") as? String
 
@@ -256,49 +191,23 @@ ADBannerViewDelegate {
                         }
                     }
                 }
-                
-                
-                
-                
-                
-                /*
-                var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
-                eventsClass = eventsArray[indexPath.row] as! PFObject
-                
-                // GET EVENT'S IMAGE
-                
-                
-                let imageFile = eventsClass[EVENTS_IMAGE] as? PFFile
-                imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
-                if error == nil {
-                if let imageData = imageData {
-                
-                cell.eventImage.layer.cornerRadius = cell.eventImage.frame.size.width / 2;
-                //cell.eventImage.clipsToBounds = YES;
-                cell.eventImage.image = UIImage(data:imageData)
-                } } }
-                
-                // GET EVENT'S TITLE
-                cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
-                
-                
-                // GET EVENT START AND END DATES & TIME
-                let startDateFormatter = NSDateFormatter()
-                startDateFormatter.dateFormat = "MMM d, h:mm a"
-                let startDateStr = startDateFormatter.stringFromDate(eventsClass[EVENTS_START_DATE] as! NSDate).uppercaseString
-                cell.timeLabel.text = startDateStr*/
+            
                 
                 
                 return cell
-                // NOT NEEDED FOR NOW, to hide the last seprator
                 
             } else {
                 cell.separatorView.hidden = false
                 
+                print("Second If")
+                let userObject = users[indexPath.row]
                 
-                let userObject: PFUser = venues[indexPath.row]
+                let firstName = userObject.objectForKey("first_name") as? String
                 
-                cell.titleLbl.text = userObject.objectForKey("first_name") as? String
+                let lastName = userObject.objectForKey("last_name") as? String
+                
+                cell.titleLbl.text = "\(firstName!)" + " \(lastName!)"
+
                 
                 let imageFile = userObject.objectForKey("profile_picture") as? PFFile
                 imageFile?.getDataInBackgroundWithBlock{ (imageData, error) -> Void in
@@ -312,46 +221,23 @@ ADBannerViewDelegate {
                 
                 
                 
-                
-                /*
-                var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
-                eventsClass = eventsArray[indexPath.row] as! PFObject
-                
-                
-                // GET EVENT'S IMAGE
-                
-                let imageFile = eventsClass[EVENTS_IMAGE] as? PFFile
-                imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
-                if error == nil {
-                if let imageData = imageData {
-                
-                cell.eventImage.layer.cornerRadius = cell.eventImage.frame.size.width / 2;
-                //cell.eventImage.clipsToBounds = YES;
-                cell.eventImage.image = UIImage(data:imageData)
-                } } }
-                
-                // GET EVENT'S TITLE
-                cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
-                
-                
-                // GET EVENT START AND END DATES & TIME
-                let startDateFormatter = NSDateFormatter()
-                startDateFormatter.dateFormat = "MMM d, h:mm a"
-                let startDateStr = startDateFormatter.stringFromDate(eventsClass[EVENTS_START_DATE] as! NSDate).uppercaseString
-                cell.timeLabel.text = startDateStr
-                */
-                
-                
                 return cell
             }
             // NOT NEEDED FOR NOW
             
         } else {
             
-            cell.separatorView.hidden = false
-            let userObject: PFUser = users[indexPath.row]
+            print("Third If")
             
-            cell.titleLbl.text = userObject.objectForKey("first_name") as? String
+            cell.separatorView.hidden = false
+            
+            let userObject = users[indexPath.row]
+            
+            let firstName = userObject.objectForKey("first_name") as? String
+            
+            let lastName = userObject.objectForKey("last_name") as? String
+            
+            cell.titleLbl.text = "\(firstName!)" + " \(lastName!)"
             
             let imageFile = userObject.objectForKey("profile_picture") as? PFFile
             imageFile?.getDataInBackgroundWithBlock{ (imageData, error) -> Void in
@@ -363,33 +249,6 @@ ADBannerViewDelegate {
                 }
             }
             
-            
-            
-            /*var eventsClass = PFObject(className: EVENTS_CLASS_NAME)
-            eventsClass = eventsArray[indexPath.row] as! PFObject
-            
-            
-            // GET EVENT'S IMAGE
-            
-            let imageFile = eventsClass[EVENTS_IMAGE] as? PFFile
-            imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
-            if error == nil {
-            if let imageData = imageData {
-            
-            cell.eventImage.layer.cornerRadius = cell.eventImage.frame.size.width / 2;
-            //cell.eventImage.clipsToBounds = YES;
-            cell.eventImage.image = UIImage(data:imageData)
-            } } }
-            
-            // GET EVENT'S TITLE
-            cell.titleLbl.text = "\(eventsClass[EVENTS_TITLE]!)"
-            
-            
-            // GET EVENT START AND END DATES & TIME
-            let startDateFormatter = NSDateFormatter()
-            startDateFormatter.dateFormat = "MMM d, h:mm a"
-            let startDateStr = startDateFormatter.stringFromDate(eventsClass[EVENTS_START_DATE] as! NSDate).uppercaseString
-            cell.timeLabel.text = startDateStr*/
             
             return cell
             
@@ -433,8 +292,12 @@ ADBannerViewDelegate {
     @IBAction func searchButt(sender: AnyObject) {
         searchViewIsVisible = !searchViewIsVisible
         
-        if searchViewIsVisible { showSearchView()
-        } else { hideSearchView()  }
+        if searchViewIsVisible {
+            showSearchView()
+            
+        } else {
+            hideSearchView()
+        }
         
     }
     
@@ -443,72 +306,42 @@ ADBannerViewDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         hideSearchView()
         view.showHUD(view)
+        self.users.removeAll()
+        let firstNameQuey = PFQuery(className: "_User")
+        firstNameQuey.whereKey("first_name", matchesRegex:"(?i)\(textField.text!)")
+        let lastNameQuey = PFQuery(className: "_User")
+        lastNameQuey.whereKey("last_name", matchesRegex:"(?i)\(textField.text!)")
         
-        // Make a new Parse query
-        
-        eventsArray.removeAllObjects()
-        let keywordsArray = searchTxt.text!.componentsSeparatedByString(" ") as [String]
-        // print("\(keywordsArray)")
-        
-        /**********/
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*********/
-        
-        let query = PFQuery(className: EVENTS_CLASS_NAME)
-        if searchTxt.text != ""   { query.whereKey(EVENTS_KEYWORDS, containsString: "\(keywordsArray[0])".lowercaseString) }
-        //    if searchCityTxt.text != "" { query.whereKey(EVENTS_KEYWORDS, containsString: searchCityTxt.text!.lowercaseString) }
-        query.whereKey(EVENTS_IS_PENDING, equalTo: false)
-        
-        
+        let query = PFQuery.orQueryWithSubqueries([firstNameQuey,lastNameQuey])
         // Query block
-        query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
+        query.findObjectsInBackgroundWithBlock { (results: [PFObject]?, error)-> Void in
             if error == nil {
-                if let objects = objects  {
+                if let objects = results  {
                     for object in objects {
-                        self.eventsArray.addObject(object)
-                    } }
-                
-                // EVENT FOUND
-                if self.eventsArray.count > 0 {
-                    self.eventsCollView.reloadData()
-                    self.title = "Not on The Move"
-                    self.view.hideHUD()
+                        if(PFUser.currentUser()?.objectId != object.objectId){
+                            self.users.append(object)
+                        }
+                        
+                    }
                     
-                    // EVENT NOT FOUND
-                } else {
-                    let alert = UIAlertView(title: APP_NAME,
-                        message: "Not on The Move",
-                        delegate: nil,
-                        cancelButtonTitle: "OK")
-                    alert.show()
-                    self.view.hideHUD()
-                    self.loadUsers()
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.eventsCollView.reloadData()
+                        self.hideSearchView()
+                        self.view.hideHUD()
+                    }
                 }
-                
                 // error found
-            } else { let alert = UIAlertView(title: APP_NAME,
+            } else {
+                
+                let alert = UIAlertView(title: APP_NAME,
                 message: "\(error!.localizedDescription)",
                 delegate: nil,
                 cancelButtonTitle: "OK" )
                 alert.show()
                 self.view.hideHUD()
-            } }
+            }
+        
+        }
         
         
         return true
@@ -537,8 +370,7 @@ ADBannerViewDelegate {
     // MARK: -  REFRESH  BUTTON
     @IBAction func refreshButt(sender: AnyObject) {
         //queryLatestEvents()
-        loadUsers()
-        loadVenues()
+        //loadUsers()
         searchTxt.resignFirstResponder();
         hideSearchView()
         searchViewIsVisible = false

@@ -21,22 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Set App ID
+        // Set App I
         Parse.setApplicationId(PARSE_APP_KEY, clientKey: PARSE_CLIENT_KEY)
         
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
         self.storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        //PFUser.logOut()
         if(PFUser.currentUser() != nil){
+            
             self.window?.rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProtectedPage")
         }
         
-        // For something else
-        // return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
-return true
+    return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {

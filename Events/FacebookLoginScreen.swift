@@ -26,7 +26,7 @@ class FacebookLoginScreen: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     }
     @available(iOS 8.0, *) /*might not need this, but for now I need to test alert */
     @IBAction func facebookSignInButton(sender: AnyObject) {
-        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile","email"], block: {(user: PFUser?, error: NSError?) ->Void in
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(["public_profile"], block: {(user: PFUser?, error: NSError?) ->Void in
             
             if (error != nil){
                 // display an alert message
@@ -38,21 +38,45 @@ class FacebookLoginScreen: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                 return
             }
             
-            print(user)
-            print("Current User Token = \(FBSDKAccessToken.currentAccessToken().tokenString)")
-            
-            print("Current User ID = \(FBSDKAccessToken.currentAccessToken().userID)")
             
             
             if (FBSDKAccessToken.currentAccessToken() != nil){
                 
-                let protectedPage = self.storyboard?.instantiateViewControllerWithIdentifier("ProtectedPage") as! ProtectedPage
+                //https://www.youtube.com/watch?v=SBvtDR31Z5Q
+                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,first_name,last_name,picture"])
+                graphRequest.startWithCompletionHandler { (connection, result, error) -> Void in
+                    if error != nil {
+                        print(error)
+                    }else {
+                        let id = result["id"] as! String
+                        user!["first_name"] = result["first_name"] as! String
+                        user!["last_name"] = result["last_name"] as! String
+                        user!["events"] = []
+                        user!["email"] = "foo@foo.com"
+                        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
+                            //Get Profile Picture
+                            let userProfile = "https://graph.facebook.com/" + id + "/picture?type=small"
+                            let picUrl = NSURL(string: userProfile)
+                            let data = NSData(contentsOfURL: picUrl!)
+                            if(data != nil){
+                                let pfobj = PFFile(data: data!)
+                                print(pfobj)
+                                user!["profile_picture"] = pfobj
+                            }
+                            
+                            user!.saveInBackground()
+                            
+                        }
+                        
+                        
+                        
+                    }
+                }
+
                 
-                //let protectedPageNav = UINavigationController(rootViewController: protectedPage)
+                self.performSegueWithIdentifier("toConfirm", sender: self)
                 
-                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                
-                appDelegate.window?.rootViewController = protectedPage
+               
             }
             
             
