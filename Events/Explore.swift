@@ -16,9 +16,7 @@ class Explore: UIViewController,
     UICollectionViewDataSource,
     UICollectionViewDelegate,
     UICollectionViewDelegateFlowLayout,
-    UITextFieldDelegate,
-    GADBannerViewDelegate,
-ADBannerViewDelegate {
+    UITextFieldDelegate {
     
     
     

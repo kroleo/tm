@@ -48,14 +48,15 @@ class FacebookLoginScreen: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                     if error != nil {
                         print(error)
                     }else {
+                        if(user!.isNew){
                         let id = result["id"] as! String
                         user!["first_name"] = result["first_name"] as! String
                         user!["last_name"] = result["last_name"] as! String
                         user!["events"] = []
-                        user!["email"] = "foo@foo.com"
+                        user!["email"] = user!.objectId! + "@foo.com"
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)){
                             //Get Profile Picture
-                            let userProfile = "https://graph.facebook.com/" + id + "/picture?type=small"
+                            let userProfile = "https://graph.facebook.com/" + id + "/picture?type=normal"
                             let picUrl = NSURL(string: userProfile)
                             let data = NSData(contentsOfURL: picUrl!)
                             if(data != nil){
@@ -69,12 +70,19 @@ class FacebookLoginScreen: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                         }
                         
                         
-                        
+                        }
                     }
                 }
-
                 
-                self.performSegueWithIdentifier("toConfirm", sender: self)
+                if(user!.isNew){
+                    self.performSegueWithIdentifier("toConfirm", sender: self)
+                }else{
+                    let protectedPage = self.storyboard?.instantiateViewControllerWithIdentifier("ProtectedPage") as! ProtectedPage
+                    
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    
+                    appDelegate.window?.rootViewController = protectedPage
+                }
                 
                
             }

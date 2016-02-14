@@ -15,7 +15,8 @@ class GoingListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet var tableView: UITableView!
     let array = (SelectedEvent["going"] as! Array<String>)
-    var names = [String]()
+    //var names = [String]()
+    var names = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -33,7 +34,9 @@ class GoingListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
                                 
                                 let name = (object["first_name"] as! String) + " " + (object["last_name"] as! String)
                                 print(name)
-                                self.names.append(name)
+                                //self.names.append(name)
+                                self.names.addObject(object)
+                                print(object)
                             }
                         }
                     }
@@ -57,11 +60,37 @@ class GoingListView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
-        let row = indexPath.row
-        cell.textLabel?.text = names[row]
+        //let row = indexPath.row
+        //cell.textLabel?.text = names[row]
+        
+        var eventsClass = PFUser()
+        eventsClass = names[indexPath.row] as! PFUser
+        
+        
+        
+        cell.textLabel?.text = "\(eventsClass["first_name"]!)" + " \(eventsClass["last_name"]!)"
         
         return cell
     }
+    
+    
+    // MARK: - TAP A CELL TO OPEN Other profile CONTROLLER
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        let selectedUser:PFUser = names[indexPath.row] as! PFUser
+        
+        
+        let edVC = storyboard?.instantiateViewControllerWithIdentifier("OtherProfile") as! OtherProfile
+        
+        edVC.selectedUser = selectedUser
+        
+        navigationController?.pushViewController(edVC, animated: true)
+        
+        
+        
+    }
+    
     
     
 }

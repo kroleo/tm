@@ -16,9 +16,7 @@ class Profile: UIViewController,
     UICollectionViewDataSource,
     UICollectionViewDelegate,
     UICollectionViewDelegateFlowLayout,
-    UITextFieldDelegate,
-    GADBannerViewDelegate,
-ADBannerViewDelegate {
+    UITextFieldDelegate{
     
     /* Views */
     @IBOutlet var eventsCollView: UICollectionView!
@@ -96,49 +94,15 @@ ADBannerViewDelegate {
         
         self.title = "Profile"
 
-        
-        // iPhone
         cellSize = CGSizeMake(view.frame.size.width, 120)
-        
-   /*     // Search View initial setup
-        searchView.frame.origin.y = -searchView.frame.size.height
-        searchView.layer.cornerRadius = 10
-        searchViewIsVisible = false
-        searchTxt.resignFirstResponder()
-        
-        // Set placeholder's color and text for Search text fields
-        searchTxt.attributedPlaceholder = NSAttributedString(string: "Type an event name", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()] )
-    */
-        // Call a Parse query
-        queryLatestEvents()
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
-        
-        
- //       loadUser()
-        
+
     }
     
-    
-    
-    
-//    func loadUser(){
-//        
-//        
-//        let userQuery = PFQuery(className: "_User")
-//        userQuery.whereKey(USER_OBJECT_ID, equalTo: PFUser.currentUser()!.objectId!)
-//        userQuery.findObjectsInBackgroundWithBlock{(result:[PFObject]?, error:NSError?) -> Void in
-//            
-//            if let foundUsers = result as? [PFUser]{
-//                self.user = foundUsers
-//                //self.eventsCollView.reloadData()
-//                
-//            }
-//        }
-//    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        queryLatestEvents()
+    }
+
     
 
     
@@ -147,16 +111,6 @@ ADBannerViewDelegate {
         //
         view.showHUD(view)
         eventsArray.removeAllObjects()
-        
-//        var eventsIDS = Array<String>()
-//        let query1 = PFQuery(className: "_User")
-//        query1.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!) {
-//            (user : PFObject?, error: NSError?) -> Void in
-//            if error == nil {
-//               eventsIDS = user!["events"] as! Array<String>
-//                print(eventsIDS)
-//            }
-//        }
         
         
         let query = PFQuery(className: EVENTS_CLASS_NAME)

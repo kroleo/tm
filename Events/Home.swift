@@ -166,6 +166,9 @@ override func viewDidLoad() {
     
 }
 
+    override func viewWillAppear(animated: Bool) {
+        queryLatestEvents()
+    }
     
     
 // MARK: - QUERY LATEST EVENTS
@@ -173,10 +176,15 @@ func queryLatestEvents() {
     view.showHUD(view)
     eventsArray.removeAllObjects()
     
+    let currentDate = NSDate()
+    //StartDate is + 15h
+    let startCutOff = currentDate.dateByAddingTimeInterval(518400)
+    let endCutOff = currentDate.dateByAddingTimeInterval(-295200)
     let query = PFQuery(className: EVENTS_CLASS_NAME)
-    query.whereKey(EVENTS_IS_PENDING, equalTo: false)
     query.orderByDescending("Lit")
     query.limit = limitForRecentEventsQuery
+    query.whereKey("endDate", greaterThanOrEqualTo: endCutOff)
+    query.whereKey("startDate", lessThanOrEqualTo: startCutOff)
     // Query bloxk
     query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in
         if error == nil {
@@ -303,7 +311,7 @@ func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath ind
     }
     */
     // GET EVENT'S COST
-    cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
+    //cell.costLabel.text = "\(eventsClass[EVENTS_COST]!)".uppercaseString
 
     
 return cell

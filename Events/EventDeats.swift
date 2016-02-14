@@ -66,15 +66,15 @@ class EventDeats: UIViewController{
     
     
     //let index = visitedEvents.indexOf(SelectedEvent.objectId!)
-    let rateLit = SelectedEvent["Lit"] as! Float
-    let rateNah = SelectedEvent["Nah"] as! Float
+    var rateLit = SelectedEvent["Lit"] as! Float
+    var rateNah = SelectedEvent["Nah"] as! Float
 
 
     
     func progBarUpdate(){
         ratePercent = (rateLit / (rateLit + rateNah));
         //FIX HEIGHT!
-        // rateProgress.frame.size.height = 8;
+        rateProgress.frame.size.height = 8;
         if (rateLit == 0){
             
             rateProgress.setProgress(0, animated: true)
@@ -105,7 +105,7 @@ class EventDeats: UIViewController{
         
         progBarUpdate()
         
-        userQuery = PFQuery(className: "_User")
+        
         //Check for user  or nah for specific event
         if(!visitedEvents.contains(SelectedEvent.objectId!)){
             visitedEvents.append(SelectedEvent.objectId!)
@@ -137,19 +137,13 @@ class EventDeats: UIViewController{
         let firstLetter = fullTitle[fullTitle.startIndex]
         
         self.eventImageFirstLetter.text = "\(firstLetter)".uppercaseString
-        
-        
-        
-        
+
         location1.text = "\(SelectedEvent["location"]!)".uppercaseString
         
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "MMM d, h:mm a"
         time1.text = dateFormat.stringFromDate(SelectedEvent["startDate"] as! NSDate).uppercaseString
         //time2.text = dateFormat.stringFromDate(SelectedEvent["endDate"] as! NSDate).uppercaseString
-        
-        
-
 
         // GET EVENT START AND END DATES & TIME
         //let startDateFormatter = NSDateFormatter()
@@ -163,13 +157,6 @@ class EventDeats: UIViewController{
 //        if endDateStr != "" {  time2.text = " - \(endDateStr)"
 //        } else { time2.text = ""  }
         
-        
-        
-        
-        
-        
-        
-        
         let imageFile =  SelectedEvent["image"] as? PFFile
         imageFile?.getDataInBackgroundWithBlock { (imageData, error) -> Void in
             if error == nil {
@@ -178,8 +165,15 @@ class EventDeats: UIViewController{
                     self.image1.image = UIImage(data:imageData)
                 } } }
         
+
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        userQuery = PFQuery(className: "_User")
         //Add the goers to the images
         fetch_all_going_images()
+        progBarUpdate()
         
         //Number of Other
         let n = SelectedEvent["going"] as! Array<String>
@@ -189,13 +183,13 @@ class EventDeats: UIViewController{
         }else{
             otherGoing.setTitle("", forState: UIControlState.Normal)
         }
-    
+        
         //Check to see if the current user has this event as going or not
-    
+        
         userQuery.getObjectInBackgroundWithId((PFUser.currentUser()?.objectId)!){
             (user: PFObject?, error: NSError?) -> Void in
             if error == nil {
-               var found = false
+                var found = false
                 let array = user?.objectForKey("events") as! Array<String>
                 for s in array{
                     if(s == SelectedEvent.objectId){
@@ -209,10 +203,9 @@ class EventDeats: UIViewController{
                 }else{
                     self.going.selected = false
                 }
-
+                
             }
         }
-        
     }
     
     func isNotNSNull(object:AnyObject) -> Bool {
@@ -271,48 +264,46 @@ class EventDeats: UIViewController{
     }
     
     
-    @IBAction func nah(sender: AnyObject) {
+    @IBAction func nah(sender: UIButton) {
         let index = visitedEvents.indexOf(SelectedEvent.objectId!)
-        let lits = SelectedEvent["Lit"] as! Int
-        let nahs = SelectedEvent["Nah"] as! Int
+
+        
         if(litArray[index!]){
-            SelectedEvent["Lit"] = lits - 1
-            SelectedEvent["Nah"] = nahs + 1
+            SelectedEvent["Lit"] = rateLit - 1
+            rateLit--
+            SelectedEvent["Nah"] = rateNah + 1
+            rateNah++
             litArray[index!] = false
             nahArray[index!] = true
         }else if(!nahArray[index!]){
-            SelectedEvent["Nah"] = nahs + 1
+            SelectedEvent["Nah"] = rateNah + 1
+            rateNah++
             nahArray[index!] = true
-        }else{
-            let alert = UIAlertView()
-            alert.title = "You can't Nah an Event more than once"
-            alert.addButtonWithTitle("Okay")
-            alert.show()
         }
-        
+        sender.enabled = false
+        progBarUpdate()
         SelectedEvent.saveInBackground()
     }
     
-    @IBAction func lit(sender: AnyObject) {
+    @IBAction func lit(sender: UIButton) {
         let index = visitedEvents.indexOf(SelectedEvent.objectId!)
-        let lits = SelectedEvent["Lit"] as! Int
-        let nahs = SelectedEvent["Nah"] as! Int
+
         
         if(nahArray[index!]){
-            SelectedEvent["Lit"] = lits + 1
-            SelectedEvent["Nah"] = nahs - 1
+            SelectedEvent["Lit"] = rateLit + 1
+            rateLit++
+            SelectedEvent["Nah"] = rateNah - 1
+            rateNah--
             litArray[index!] = true
             nahArray[index!] = false
         }else if(!litArray[index!]){
-            SelectedEvent["Lit"] = nahs + 1
+            SelectedEvent["Lit"] = rateNah + 1
+            rateNah++
             litArray[index!] = true
-        }else{
-            let alert = UIAlertView()
-            alert.title = "You can't Lit an Event more than once"
-            alert.addButtonWithTitle("Okay")
-            alert.show()
         }
+        sender.enabled = false
         
+        progBarUpdate()
         SelectedEvent.saveInBackground()
     }
     

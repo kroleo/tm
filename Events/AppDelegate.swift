@@ -31,8 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         //PFUser.logOut()
         if(PFUser.currentUser() != nil){
-            
-            self.window?.rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProtectedPage")
+            if(PFUser.currentUser()!["emailVerified"] as! Bool){
+                self.window?.rootViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProtectedPage")
+            }
         }
         
         

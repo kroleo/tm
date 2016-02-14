@@ -15,7 +15,6 @@ import MessageUI
 class SubmitEvent: UIViewController,
 UITextFieldDelegate,
 UITextViewDelegate,
-MFMailComposeViewControllerDelegate,
 UIAlertViewDelegate,
 UINavigationControllerDelegate,
 UIImagePickerControllerDelegate
@@ -23,7 +22,7 @@ UIImagePickerControllerDelegate
 
     /* Views */
     @IBOutlet var containerScrollView: UIScrollView!
-    
+     
     @IBOutlet var nameTxt: UITextField!
     @IBOutlet var descriptionTxt: UITextView!
     @IBOutlet var locationTxt: UITextField!
@@ -51,6 +50,7 @@ UIImagePickerControllerDelegate
     var endDateTrigger = false
     
     
+    @IBOutlet var addPhoto: UIButton!
     
     
     
@@ -220,6 +220,7 @@ return true
     delegate: self,
     cancelButtonTitle: "Cancel",
     otherButtonTitles: "Photo Library", "Camera")
+    addPhoto.setTitle("", forState: .Normal)
     alert.show()
 }
 // AlertView delegate
@@ -288,165 +289,94 @@ func layoutButtons() {
 @IBAction func submitEventButt(sender: AnyObject) {
     view.showHUD(view)
     dismissKeyboard()
-    navigationController?.pushViewController(storyboard?.instantiateViewControllerWithIdentifier("Home") as! Home, animated: true)
-
-    
-    
-    
+    var errors = ""
     // Save event on Parse
     let eventsClass = PFObject(className: EVENTS_CLASS_NAME)
     
     // AN EVENT NEEDS A TITLE!
-    
     if nameTxt.text != "" {
     eventsClass[EVENTS_TITLE] = nameTxt.text
     } else {
-        let alert = UIAlertView(title: APP_NAME,
-            message: "You must have an Event Name!",
-            delegate: nil,
-            cancelButtonTitle: "OK" )
-        alert.show()
-        self.view.hideHUD()
+        errors += "-You forgot to add the Event Title"
     }
-    eventsClass[EVENTS_DESCRIPTION] = descriptionTxt.text
     
-    
-    // AN EVENT NEEDS LOCATION
-    
-    if nameTxt.text != "" {
-        eventsClass[EVENTS_LOCATION] = locationTxt.text
-    } else {
-        let alert = UIAlertView(title: APP_NAME,
-            message: "You must have an Event Location!",
-            delegate: nil,
-            cancelButtonTitle: "OK" )
-        alert.show()
-        self.view.hideHUD()
-    }
-    eventsClass[EVENTS_COST] = costTxt.text
-    eventsClass[EVENTS_WEBSITE] = websiteTxt.text
-    eventsClass[EVENTS_IS_PENDING] = false
-    eventsClass[EVENTS_KEYWORDS] = "\(nameTxt!.text!.lowercaseString) \(locationTxt!.text!.lowercaseString) \(descriptionTxt!.text.lowercaseString)"
+    eventsClass["Lit"] = 0
+    eventsClass["Nah"] = 0
+    eventsClass["going"] = []
     
     //AN EVENT NEEDS A START DATE
     if startDateTrigger == true  {
         eventsClass[EVENTS_START_DATE] = startDate
     } else {
-        let alert = UIAlertView(title: APP_NAME,
-            message: "You must have a Start Date!",
-            delegate: nil,
-            cancelButtonTitle: "OK" )
-        alert.show()
-        self.view.hideHUD()
+        if(!errors.isEmpty){
+            errors += "\r\n"
+        }
+        errors += "-You need a start date"
+        
     }
     
     //AN EVENT NEEDS AN END DATE
     if endDateTrigger == true {
         eventsClass[EVENTS_END_DATE] = endDate
     } else {
-        let alert = UIAlertView(title: APP_NAME,
-            message: "You must have an End Date!",
-            delegate: nil,
-            cancelButtonTitle: "OK" )
-        alert.show()
-        self.view.hideHUD()
+        if(!errors.isEmpty){
+            errors += "\r\n"
+        }
+        errors += "-You need an end date"
     }
-    
-    
-    
-    
-    eventsClass[EVENTS_UPLOADING_USER] = PFUser.currentUser()?.objectId
-    eventsClass["Lit"] = 0
-    eventsClass["Nah"] = 0
-    eventsClass["going"] = []
-    
-    // Save Image (if exists)
+    //AN EVENT NEEDS AN IMAGE
     if eventImage.image != nil {
         let imageData = UIImageJPEGRepresentation(eventImage.image!, 0.5)
         let imageFile = PFFile(name:"image.jpg", data:imageData!)
         eventsClass[EVENTS_IMAGE] = imageFile
+    }else{
+        if(!errors.isEmpty){
+            errors += "\r\n"
+        }
+        errors += "-You need a photo for your Lit event"
+    }
     
-    
-    eventsClass.saveInBackgroundWithBlock { (success, error) -> Void in
-        if error == nil {
-            self.view.hideHUD()
-            //self.openMailVC()
-            // will send as message
-        } else {
-            let alert = UIAlertView(title: APP_NAME,
-                message: "\(error!.localizedDescription)",
-                delegate: nil,
-                cancelButtonTitle: "OK" )
-            alert.show()
-            self.view.hideHUD()
-        } }
+    // AN EVENT NEEDS LOCATION
+    if nameTxt.text != "" {
+            eventsClass[EVENTS_LOCATION] = self.locationTxt.text
         
-        
-    // AN EVENT NEEDS A COVER IMAGE!
     } else {
+        if(!errors.isEmpty){
+            errors += "\r\n"
+        }
+        errors += "-You forgot to add a location."
+ 
+    }
+
+    if(errors.isEmpty){
+        eventsClass.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                self.view.hideHUD()
+                
+            } else {
+                let alert = UIAlertView(title: APP_NAME,
+                    message: "\(error!.localizedDescription)",
+                    delegate: nil,
+                    cancelButtonTitle: "OK" )
+                alert.show()
+                self.view.hideHUD()
+            }
+        }
+        self.navigationController?.popViewControllerAnimated(true)
+    }else{
+        print(errors)
         let alert = UIAlertView(title: APP_NAME,
-            message: "You must attach an image to this Event!",
+            message: errors,
             delegate: nil,
             cancelButtonTitle: "OK" )
         alert.show()
         self.view.hideHUD()
     }
 
-}
     
-    
-// MARK: -  OPEN MAIL CONTROLLER
-func openMailVC() {
-    // This string containes standard HTML tags, you can edit them as you wish
-    let messageStr = "<font size = '1' color= '#222222' style = 'font-family: 'HelveticaNeue'>Event Title:<strong>\(nameTxt!.text!)</strong><br>Description: <strong>\(descriptionTxt.text)</strong><br>Location: <strong>\(locationTxt!.text!)</strong><br>Start Date: <strong>\(startDateOutlet.titleLabel!.text!)</strong><br>End Date: <strong>\(endDateOutlet.titleLabel!.text!)</strong><br>Cost: <strong>\(costTxt!.text!)</strong><br>Website: <strong>\(websiteTxt!.text!)</strong><br><br>Email for reply: <strong>\(yourEmailTxt!.text!)</strong><br>Regards.</font>"
-    
-    
-    let mailComposer = MFMailComposeViewController()
-    mailComposer.mailComposeDelegate = self
-    mailComposer.setSubject("Event Submission from \(yourNameTxt!.text!)")
-    mailComposer.setMessageBody(messageStr, isHTML: true)
-    mailComposer.setToRecipients([SUBMISSION_EMAIL_ADDRESS])
-    // Attach the event image
-    if eventImage.image != nil {
-        let imageData = UIImageJPEGRepresentation(eventImage.image!, 1.0)
-        mailComposer.addAttachmentData(imageData!, mimeType: "image/jpg", fileName: "\(nameTxt.text).jpg")
-    }
-    
-    if MFMailComposeViewController.canSendMail() { presentViewController(mailComposer, animated: true, completion: nil)
-    } else {
-        let alert = UIAlertView(title: APP_NAME,
-        message: "Your device cannot send emails. Please configure an email address into Settings -> Mail, Contacts, Calendars.",
-        delegate: nil,
-        cancelButtonTitle: "OK")
-        alert.show()
-    }
 
 }
-// Email delegate
-func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
-        
-        var resultMess = ""
-        switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
-            resultMess = "Mail cancelled"
-        case MFMailComposeResultSaved.rawValue:
-            resultMess = "Mail saved"
-        case MFMailComposeResultSent.rawValue:
-            resultMess = "Thanks for submitting your Event!\nWe'll review it asap and email you when your Event will be published or in case we'll need some additional info from you"
-        case MFMailComposeResultFailed.rawValue:
-            resultMess = "Something went wrong with sending Mail, try again later."
-        default:break
-        }
-        
-        // Show email result alert
-        let alert = UIAlertView(title: APP_NAME,
-        message: resultMess,
-        delegate: self,
-        cancelButtonTitle: "OK" )
-        alert.show()
-        
-        dismissViewControllerAnimated(false, completion: nil)
-}
+
     
     
     

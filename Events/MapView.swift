@@ -49,6 +49,12 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
         
         self.map.showsUserLocation = true
         
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
         let currentDate = NSDate()
         //StartDate is + 15h
         let cutOff = currentDate.dateByAddingTimeInterval(540000)
@@ -60,7 +66,7 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 // objects in results will only contain the location
-                 if let objects = objects{
+                if let objects = objects{
                     for object in objects{
                         let x = object["location"] as! String
                         let y = object["title"] as! String
@@ -69,13 +75,15 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
                         request.naturalLanguageQuery = x
                         let search = MKLocalSearch(request: request)
                         search.startWithCompletionHandler{ (localSearchResponse, error) -> Void in
-                        // Add PointAnnonation text and a Pin to the Map
-                        //http://stackoverflow.com/questions/26991473/mkpointannotations-touch-event-in-swift
-                        let annotation = CustomPinAnnotation()
-                        annotation.title = y
-                        annotation.coordinate = CLLocationCoordinate2D( latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:localSearchResponse!.boundingRegion.center.longitude)
-                        annotation.EventObject = object
-                        self.map.addAnnotation(annotation)
+                            // Add PointAnnonation text and a Pin to the Map
+                            //http://stackoverflow.com/questions/26991473/mkpointannotations-touch-event-in-swift
+                            if(localSearchResponse != nil){
+                                let annotation = CustomPinAnnotation()
+                                annotation.title = y
+                                annotation.coordinate = CLLocationCoordinate2D( latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:localSearchResponse!.boundingRegion.center.longitude)
+                                annotation.EventObject = object
+                                self.map.addAnnotation(annotation)
+                            }
                         }
                     }
                 }

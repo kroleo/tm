@@ -165,16 +165,16 @@ UITextFieldDelegate{
         }
         //let currentCellUserStatus = userObject.objectForKey("objectId") as? String
         //let i = followArray.count
-        let x = 1
+//        let x = 1
 
      
         
         
-        if (x == 1){
-            cell.followButton.selected = true
-        } else {
-            cell.followButton.selected = false
-        }
+//        if (x == 1){
+//            cell.followButton.selected = true
+//        } else {
+//            cell.followButton.selected = false
+//        }
      
         
    /*
