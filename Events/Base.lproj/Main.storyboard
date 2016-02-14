@@ -459,6 +459,14 @@
                                     <segue destination="QgP-Ba-Mn3" kind="push" id="HJB-uO-dck"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tgl-TB-Nof">
+                                <rect key="frame" x="20" y="384" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="COLOR"/>
+                                <connections>
+                                    <segue destination="RSq-q4-goT" kind="push" id="O97-PG-iBr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1583,7 +1591,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wpt-JF-w8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-328" y="1189"/>
+            <point key="canvasLocation" x="-763" y="1761"/>
+        </scene>
+        <!--Map View Color-->
+        <scene sceneID="C4o-Kt-kym">
+            <objects>
+                <viewController storyboardIdentifier="MapViewColor" id="RSq-q4-goT" customClass="MapViewColor" customModule="Events" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tTS-5d-9HY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CMj-Yu-d6m"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQa-Vg-Phe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-358" y="1154"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wGS-f9-5n6">

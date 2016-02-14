@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1Ijoia3JvbGVvIiwiYSI6ImNpa2M1eHk3MzBseTR1eW00dmYyZm9pYnUifQ.RecD05lcjhSuZDc-odIrBg
-pk.eyJ1Ijoia3JvbGVvIiwiYSI6ImNpa2M1eHk3MzBseTR1eW00dmYyZm9pYnUifQ.RecD05lcjhSuZDc-odIrBgpk.eyJ1Ijoia3JvbGVvIiwiYSI6ImNpa2M1eHk3MzBseTR1eW00dmYyZm9pYnUifQ.RecD05lcjhSuZDc-odIrBg</string>
+	<string>pk.eyJ1Ijoia3JvbGVvIiwiYSI6ImNpa2M1eHk3MzBseTR1eW00dmYyZm9pYnUifQ.RecD05lcjhSuZDc-odIrBg</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbauth2</string>

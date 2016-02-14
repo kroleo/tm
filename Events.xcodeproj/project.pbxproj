@@ -38,6 +38,7 @@
 		63BDB81E1C51423B00D31303 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BDB81D1C51423B00D31303 /* Social.framework */; };
 		63BDB8211C51D9EA00D31303 /* ProtectedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB8201C51D9EA00D31303 /* ProtectedPage.swift */; };
 		63ED88451C70CCEE00A4A571 /* OtherProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED88441C70CCEE00A4A571 /* OtherProfile.swift */; };
+		63ED88471C70F0F700A4A571 /* MapViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED88461C70F0F700A4A571 /* MapViewColor.swift */; };
 		63F3EA611C69CEC40005A188 /* ConfirmEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F3EA601C69CEC40005A188 /* ConfirmEmail.swift */; };
 		63F3EA631C6A84880005A188 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 63F3EA621C6A84880005A188 /* Podfile */; };
 		720B19091B5E7B69008D261F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B19081B5E7B69008D261F /* AppDelegate.swift */; };
@@ -108,6 +109,7 @@
 		63BDB81F1C51B9B900D31303 /* Events-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Events-Bridging-Header.h"; sourceTree = "<group>"; };
 		63BDB8201C51D9EA00D31303 /* ProtectedPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtectedPage.swift; sourceTree = "<group>"; };
 		63ED88441C70CCEE00A4A571 /* OtherProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherProfile.swift; sourceTree = "<group>"; };
+		63ED88461C70F0F700A4A571 /* MapViewColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewColor.swift; sourceTree = "<group>"; };
 		63F3EA601C69CEC40005A188 /* ConfirmEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmEmail.swift; sourceTree = "<group>"; };
 		63F3EA621C6A84880005A188 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		720B19031B5E7B69008D261F /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				07EB6AD11C5AF6C00091BA6E /* MapView.swift */,
+				63ED88461C70F0F700A4A571 /* MapViewColor.swift */,
 				07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */,
 			);
 			name = Map;
@@ -503,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63ED88471C70F0F700A4A571 /* MapViewColor.swift in Sources */,
 				63BDB7D91C4C22CC00D31303 /* Favorites.swift in Sources */,
 				63BDB7ED1C4E28A600D31303 /* Profile.swift in Sources */,
 				63BDB7D51C4A1D0600D31303 /* headerCollectionReusableView.swift in Sources */,
