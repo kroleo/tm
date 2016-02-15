@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "720B19021B5E7B69008D261F"
-               BuildableName = "Events.app"
-               BlueprintName = "Events"
+               BuildableName = "The Move.app"
+               BlueprintName = "The Move"
                ReferencedContainer = "container:Events.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "720B19021B5E7B69008D261F"
-            BuildableName = "Events.app"
-            BlueprintName = "Events"
+            BuildableName = "The Move.app"
+            BlueprintName = "The Move"
             ReferencedContainer = "container:Events.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "720B19021B5E7B69008D261F"
-            BuildableName = "Events.app"
-            BlueprintName = "Events"
+            BuildableName = "The Move.app"
+            BlueprintName = "The Move"
             ReferencedContainer = "container:Events.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "720B19021B5E7B69008D261F"
-            BuildableName = "Events.app"
-            BlueprintName = "Events"
+            BuildableName = "The Move.app"
+            BlueprintName = "The Move"
             ReferencedContainer = "container:Events.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

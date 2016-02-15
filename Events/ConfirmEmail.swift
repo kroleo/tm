@@ -11,6 +11,7 @@ import Parse
 
 class ConfirmEmail: UIViewController {
     @IBOutlet var eduEmail: UITextField!
+    
     @IBAction func verify(sender: UIButton) {
         checks()
     }
@@ -20,6 +21,8 @@ class ConfirmEmail: UIViewController {
     }
     
     func checks(){
+        self.eduEmail.resignFirstResponder()
+        
         let user = PFUser.currentUser()!
         
         let emailAddress = (eduEmail.text! as String).lowercaseString

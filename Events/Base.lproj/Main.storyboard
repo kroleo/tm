@@ -53,14 +53,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="example@university.edu" textAlignment="natural" minimumFontSize="17" id="agz-Ue-Vl1">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="example@university.edu" textAlignment="center" minimumFontSize="17" id="agz-Ue-Vl1">
                                 <rect key="frame" x="45" y="214" width="230" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zAp-us-QYz">
-                                <rect key="frame" x="125" y="266" width="70" height="26"/>
+                                <rect key="frame" x="56" y="265" width="70" height="26"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Submit">
@@ -84,6 +84,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UST-hJ-D3C">
+                                <rect key="frame" x="194" y="265" width="70" height="26"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="verify:" destination="q8k-dU-c2L" eventType="touchUpInside" id="aei-Rw-tGL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -95,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oI-bA-Sfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1884" y="876"/>
+            <point key="canvasLocation" x="-1790" y="874"/>
         </scene>
         <!--Protected Page-->
         <scene sceneID="qRy-gz-wjg">
@@ -470,7 +481,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="The Move" id="TN4-AF-CDi"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="The Move" id="TN4-AF-CDi">
+                        <barButtonItem key="rightBarButtonItem" image="refreshButt" id="Z6f-Y6-8dy" userLabel="refreshButt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshButt:" destination="BKT-gN-H5Q" id="kvc-PQ-xCP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="map" destination="dPi-sx-Hmg" id="QUT-ct-Bnn"/>
                         <segue destination="SEk-2d-QyD" kind="push" identifier="toEventDetails" id="3rd-5e-I63"/>
@@ -773,19 +793,6 @@
                                             <action selector="chooseImageButt:" destination="QgP-Ba-Mn3" eventType="touchUpInside" id="J0c-d8-fdC"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="fyw-9T-nv4" userLabel="submitEventButt">
-                                        <rect key="frame" x="156" y="485" width="144" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
-                                        <state key="normal" title="Submit">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="submitEventButt:" destination="QgP-Ba-Mn3" eventType="touchUpInside" id="sx8-Kl-0iO"/>
-                                        </connections>
-                                    </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENT COST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="32N-TD-lPk">
                                         <rect key="frame" x="8" y="538" width="94" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -899,18 +906,31 @@
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ors-Sg-8bc">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ors-Sg-8bc">
                                         <rect key="frame" x="26" y="485" width="90" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="add contacts"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want us to send texts to your friends inviting them to your dope party? Select the contacts and we'll take care of that." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cUX-8k-eOe">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want us to send texts to your friends inviting them to your dope party? Select the contacts and we'll take care of that." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cUX-8k-eOe">
                                         <rect key="frame" x="18" y="399" width="286" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="fyw-9T-nv4" userLabel="submitEventButt">
+                                        <rect key="frame" x="89" y="486" width="144" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitEventButt:" destination="QgP-Ba-Mn3" eventType="touchUpInside" id="sx8-Kl-0iO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <gestureRecognizers/>
                                 <connections>
@@ -1464,21 +1484,21 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
                                             <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="trackTintColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="YtD-QS-lKP" userLabel="rateProgress">
                                             <rect key="frame" x="0.0" y="427" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
                                             <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="trackTintColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="ciS-ei-YdZ" userLabel="rateProgress">
                                             <rect key="frame" x="0.0" y="429" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
                                             <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="trackTintColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mR3-Zy-c5M">
                                             <rect key="frame" x="8" y="389" width="46" height="30"/>
@@ -1519,6 +1539,13 @@
                                             <color key="textColor" white="0.3955274748" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zti-vo-O6a">
+                                            <rect key="frame" x="122" y="392" width="77" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <blurEffect style="light"/>
@@ -1539,6 +1566,7 @@
                         <outlet property="image1" destination="zNv-Bf-zQT" id="73x-xo-b5t"/>
                         <outlet property="location1" destination="QRm-EJ-c1v" id="mRz-DB-PLR"/>
                         <outlet property="otherGoing" destination="bb0-w1-nL9" id="Dxh-j5-aCu"/>
+                        <outlet property="percentageLit" destination="Zti-vo-O6a" id="rwz-Wn-51g"/>
                         <outlet property="rateProgress" destination="Vrh-jR-ZQt" id="p7g-Y1-6ux"/>
                         <outlet property="rateProgress2" destination="YtD-QS-lKP" id="aBu-Z4-H76"/>
                         <outlet property="rateProgress3" destination="ciS-ei-YdZ" id="Sp0-la-G4a"/>

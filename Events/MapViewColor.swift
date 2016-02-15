@@ -108,7 +108,7 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
         if ((currentHour > 6) && (currentHour < 8 )){
         mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.darkStyleURL())
         } else {
-            mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.lightStyleURL())
+            mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.darkStyleURL())
         }
         
         mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]

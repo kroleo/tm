@@ -49,6 +49,7 @@ class EventDeats: UIViewController{
     var eventObj = PFObject(className: EVENTS_CLASS_NAME)
 
     var ratePercent:Float = 0;
+    @IBOutlet var percentageLit: UILabel!
     
 
     //Force going images to be circular
@@ -81,6 +82,7 @@ class EventDeats: UIViewController{
             rateProgress2.setProgress(0, animated: true)
             rateProgress3.setProgress(0, animated: true)
             //rateProgress.frame.size.height = 8;
+            percentageLit.hidden = true
             
         } else {
         
@@ -88,6 +90,13 @@ class EventDeats: UIViewController{
             rateProgress2.setProgress(ratePercent, animated: true)
             rateProgress3.setProgress(ratePercent, animated: true)
             //rateProgress.frame.size.height = 8;
+            percentageLit.hidden = false
+            
+            //String(format:"%.2f", ratePercent)
+            let actualPercentage = ratePercent * 100
+            let twoDigits = String(format:"%.0f", actualPercentage)
+            
+            percentageLit.text = "\(twoDigits)" + "%"
         }
         
     }

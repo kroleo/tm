@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1Ijoia3JvbGVvIiwiYSI6ImNpa2M1eHk3MzBseTR1eW00dmYyZm9pYnUifQ.RecD05lcjhSuZDc-odIrBg</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fbauth2</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -41,8 +35,14 @@
 	<string>859447097407208</string>
 	<key>FacebookDisplayName</key>
 	<string>The Move</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth2</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1Ijoia3JvbGVvIiwiYSI6ImNpa2M1eHk3MzBseTR1eW00dmYyZm9pYnUifQ.RecD05lcjhSuZDc-odIrBg</string>
 	<key>NSExceptionDomains</key>
 	<dict>
 		<key>files.parsetfss.com</key>
@@ -51,6 +51,8 @@
 			<true/>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To update the map</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -68,8 +70,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To update the map</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

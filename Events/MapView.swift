@@ -129,6 +129,16 @@ class MapView: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
         
         print(error.localizedDescription)
     }
+    
+    
+    // MARK: -  REFRESH  BUTTON
+    @IBAction func refreshButt(sender: AnyObject) {
+        viewWillAppear(true)
+        
+        self.title = "The Move"
+    }
+    
+    
    
     
 }

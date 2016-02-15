@@ -111,8 +111,8 @@
 		63ED88441C70CCEE00A4A571 /* OtherProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherProfile.swift; sourceTree = "<group>"; };
 		63ED88461C70F0F700A4A571 /* MapViewColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewColor.swift; sourceTree = "<group>"; };
 		63F3EA601C69CEC40005A188 /* ConfirmEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmEmail.swift; sourceTree = "<group>"; };
-		63F3EA621C6A84880005A188 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		720B19031B5E7B69008D261F /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63F3EA621C6A84880005A188 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		720B19031B5E7B69008D261F /* The Move.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Move.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		720B19071B5E7B69008D261F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		720B19081B5E7B69008D261F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		720B190D1B5E7B69008D261F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 		720B19041B5E7B69008D261F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				720B19031B5E7B69008D261F /* Events.app */,
+				720B19031B5E7B69008D261F /* The Move.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -386,9 +386,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		720B19021B5E7B69008D261F /* Events */ = {
+		720B19021B5E7B69008D261F /* The Move */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 720B19221B5E7B69008D261F /* Build configuration list for PBXNativeTarget "Events" */;
+			buildConfigurationList = 720B19221B5E7B69008D261F /* Build configuration list for PBXNativeTarget "The Move" */;
 			buildPhases = (
 				8656AA3D98DD7090C43A5759 /* Check Pods Manifest.lock */,
 				720B18FF1B5E7B69008D261F /* Sources */,
@@ -401,9 +401,9 @@
 			);
 			dependencies = (
 			);
-			name = Events;
+			name = "The Move";
 			productName = Events;
-			productReference = 720B19031B5E7B69008D261F /* Events.app */;
+			productReference = 720B19031B5E7B69008D261F /* The Move.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -419,6 +419,7 @@
 				TargetAttributes = {
 					720B19021B5E7B69008D261F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 24WJ762CQL;
 					};
 				};
 			};
@@ -435,7 +436,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				720B19021B5E7B69008D261F /* Events */,
+				720B19021B5E7B69008D261F /* The Move */,
 			);
 		};
 /* End PBXProject section */
@@ -645,7 +646,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Francesco Franchini (J3UVU3A8DR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -656,8 +658,9 @@
 				INFOPLIST_FILE = Events/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.domain.events;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TheMove.Kroleo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Events/Events-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -671,7 +674,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Francesco Franchini (J3UVU3A8DR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -682,8 +686,9 @@
 				INFOPLIST_FILE = Events/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.domain.events;
+				PRODUCT_BUNDLE_IDENTIFIER = com.TheMove.Kroleo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Events/Events-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -701,7 +706,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		720B19221B5E7B69008D261F /* Build configuration list for PBXNativeTarget "Events" */ = {
+		720B19221B5E7B69008D261F /* Build configuration list for PBXNativeTarget "The Move" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				720B19231B5E7B69008D261F /* Debug */,
