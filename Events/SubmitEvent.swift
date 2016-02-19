@@ -347,7 +347,16 @@ func layoutButtons() {
         errors += "-You forgot to add a location."
  
     }
-
+    
+    // Set Event Pending to False
+    eventsClass[EVENTS_IS_PENDING] = false
+    
+    
+    // Set Uploading User
+    eventsClass["uploadingUser"] = PFUser.currentUser()?.objectId
+    
+    
+    
     if(errors.isEmpty){
         eventsClass.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {

@@ -28,6 +28,10 @@ class Profile: UIViewController,
     @IBOutlet weak var searchOutlet: UIBarButtonItem!
  */
     
+    
+    //Profile picture circle
+    
+    
     /* Variables */
     var eventsArray = NSMutableArray()
     var cellSize = CGSize()
@@ -96,6 +100,8 @@ class Profile: UIViewController,
 
         cellSize = CGSizeMake(view.frame.size.width, 120)
 
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -179,13 +185,10 @@ class Profile: UIViewController,
         }
         
  
+        //force circle
         
-        
-        //headerView.profileImage.image = UIImage(named: "favHeaderImage")
-//        headerView.profileImage.layer.cornerRadius = headerView.profileImage.frame.size.width / 2;
-//        headerView.profileImage.image = UIImage(data: CURRENT_PRO_PIC)
-        
-        
+        headerView.circleProfile.layer.cornerRadius = headerView.circleProfile.frame.size.width / 2;
+
         
         headerView.profileName.text = "\(firstName!)" + " \(lastName!)"
         

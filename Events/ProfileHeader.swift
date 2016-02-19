@@ -17,6 +17,7 @@ class ProfileHeader: UICollectionReusableView {
     
     @IBOutlet weak var profileName: UILabel!
     
+    @IBOutlet weak var circleProfile: UIView!
     
         
 }
