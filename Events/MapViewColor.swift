@@ -27,6 +27,7 @@ var last_name1 = PFUser.currentUser()!["last_name"] as! String
 
 class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate {
     
+    @IBOutlet var colorMapView: UIView!
     var mapView: MGLMapView!
     var locationManager = CLLocationManager()
     var eventsArray1 = NSMutableArray()
@@ -106,6 +107,7 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
         let components = NSDateComponents()
         let currentHour = components.hour
         if ((currentHour > 6) && (currentHour < 8 )){
+        //mapView = MGLMapView(frame: colorMapView.bounds, styleURL: MGLStyle.darkStyleURL())
         mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.darkStyleURL())
         } else {
             mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.darkStyleURL())
@@ -116,9 +118,11 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
         // set the map's center coordinate
         mapView.setCenterCoordinate(CLLocationCoordinate2D(latitude: 38.894368,
             longitude: -77.036487),
-            zoomLevel: 15, animated: false)
+            zoomLevel: 8, direction: 180, animated: false)
         view.addSubview(mapView)
         
+        //        let userLocationLong = mapView.userLocation?.coordinate.longitude
+        //        let userLocationLat = mapView.userLocation?.coordinate.latitude
         // Declare the annotation `point` and set its coordinates, title, and subtitle
         //let point = MGLPointAnnotation()
         //point.coordinate = CLLocationCoordinate2D(latitude: 38.894368, longitude: -77.036487)
@@ -130,6 +134,10 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
         
         // Set the delegate property of our map view to self after instantiating it.
         mapView.delegate = self
+        mapView.showsUserLocation = true
+
+        
+        
         
     }
     
@@ -157,6 +165,30 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
         let eventDetailsPage = storyboard?.instantiateViewControllerWithIdentifier("EventDetails") as! EventDeats
         navigationController?.pushViewController(eventDetailsPage, animated: true)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        // Wait a bit before setting a new camera.
+        
+        // Create a camera that rotates around the same center point, back to 0°.
+        // `fromDistance:` is meters above mean sea level that an eye would have to be in order to see what the map view is showing.
+        let camera = MGLMapCamera(lookingAtCenterCoordinate: mapView.centerCoordinate, fromDistance: 2000, pitch: 0, heading: 0)
+        
+        // Animate the camera movement over 5 seconds.
+        mapView.setCamera(camera, withDuration: 5, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
+    }
+    
+//    func mapView(mapView: MGLMapView, imageForAnnotation annotation: MGLAnnotation) -> MGLAnnotationImage? {
+//        var annotationImage = mapView.dequeueReusableAnnotationImageWithIdentifier("markerIcon")
+//        
+//        if annotationImage == nil {
+//            // Leaning Tower of Pisa by Stefan Spieler from the Noun Project
+//            let image = UIImage(named: "")
+//            annotationImage = MGLAnnotationImage(image: image!, reuseIdentifier: "markerIcon")
+//        }
+//    
+//        return annotationImage
+//    }
+    
     
     
 }

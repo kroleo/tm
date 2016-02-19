@@ -78,7 +78,7 @@ override func viewDidLoad() {
     
     
     // Call a Parse query
-    queryLatestEvents()
+    //queryLatestEvents()
     
     
     //Get facebook information and upload to parse

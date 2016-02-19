@@ -59,17 +59,25 @@ class Explore: UIViewController,
         searchTxt.attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()] )
         
         // Call a Parse query
-        //queryLatestEvents()
+
         
-        //loadUsers()
+        loadUsers()
     
         // Do any additional setup after loading the view.
     }
+    
+    // to refesh for every time tab is clicked
+//    override func viewWillAppear(animated: Bool) {
+//        loadUsers()
+//    }
+    
     
     func loadUsers(){
         
         let userQuery = PFQuery(className: "_User")
         userQuery.whereKey(USER_OBJECT_ID, notEqualTo: PFUser.currentUser()!.objectId!)
+        userQuery.whereKey("emailVerified", equalTo: true)
+        userQuery.limit = limitForExplorePeopleQuery
         userQuery.findObjectsInBackgroundWithBlock{(result:[PFObject]?, error:NSError?) -> Void in
             
             if let foundUsers = result as? [PFUser]{
