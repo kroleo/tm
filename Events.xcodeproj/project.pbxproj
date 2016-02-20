@@ -17,7 +17,6 @@
 		07BC86F41C5EA2B100439539 /* EventDeats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BC86F31C5EA2B100439539 /* EventDeats.swift */; };
 		07EB6AC81C5AF51F0091BA6E /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EB6AC31C5AF51F0091BA6E /* Bolts.framework */; };
 		07EB6ACB1C5AF51F0091BA6E /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EB6AC61C5AF51F0091BA6E /* FBSDKShareKit.framework */; };
-		07EB6AD21C5AF6C00091BA6E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EB6AD11C5AF6C00091BA6E /* MapView.swift */; };
 		07EB6AD41C5B2B000091BA6E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EB6AD31C5B2B000091BA6E /* MapKit.framework */; };
 		639C55CC1C67848D000FCBCD /* Explore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639C55CB1C67848D000FCBCD /* Explore.swift */; };
 		63BDB7D51C4A1D0600D31303 /* headerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDB7D41C4A1D0600D31303 /* headerCollectionReusableView.swift */; };
@@ -90,7 +89,6 @@
 		07BC86F31C5EA2B100439539 /* EventDeats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDeats.swift; sourceTree = "<group>"; };
 		07EB6AC31C5AF51F0091BA6E /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		07EB6AC61C5AF51F0091BA6E /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		07EB6AD11C5AF6C00091BA6E /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		07EB6AD31C5B2B000091BA6E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5B3717C8A1185C850CBD5856 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6332C3CC1C580B07004521A7 /* Events-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Events-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 		639C55CD1C679197000FCBCD /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				07EB6AD11C5AF6C00091BA6E /* MapView.swift */,
 				63ED88461C70F0F700A4A571 /* MapViewColor.swift */,
 				07BC86ED1C5E9C6700439539 /* CustomPinAnnotation.swift */,
 			);
@@ -536,7 +533,6 @@
 				63BDB7D91C4C22CC00D31303 /* Favorites.swift in Sources */,
 				63BDB7ED1C4E28A600D31303 /* Profile.swift in Sources */,
 				63BDB7D51C4A1D0600D31303 /* headerCollectionReusableView.swift in Sources */,
-				07EB6AD21C5AF6C00091BA6E /* MapView.swift in Sources */,
 				63ED88451C70CCEE00A4A571 /* OtherProfile.swift in Sources */,
 				63BDB7EB1C4E1F3E00D31303 /* ExplorePeople.swift in Sources */,
 				07BC86F21C5EA26700439539 /* EventDetails.swift in Sources */,

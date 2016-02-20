@@ -188,7 +188,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="0Va-20-QAs" userLabel="EventCell" customClass="EventCell" customModule="The_Move" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="219" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="283" width="320" height="110"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -283,7 +283,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell1" id="zcX-lS-Muq" userLabel="EventCell" customClass="EventCell" customModule="The_Move" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="329" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="393" width="320" height="110"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -317,7 +317,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileHeader" id="Tf3-4s-LgC" customClass="ProfileHeader" customModule="The_Move" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="219"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" id="BYE-Rk-lQf">
@@ -578,18 +578,18 @@
             <objects>
                 <viewController storyboardIdentifier="MapView" id="BKT-gN-H5Q" userLabel="MapView" customClass="MapView" customModule="The_Move" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="thb-ZZ-x1x">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="dPi-sx-Hmg">
-                                <rect key="frame" x="0.0" y="63" width="320" height="370"/>
+                                <rect key="frame" x="0.0" y="63" width="320" height="458"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="BKT-gN-H5Q" id="2dn-7i-sA7"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gkh-cL-82c">
-                                <rect key="frame" x="252" y="366" width="65" height="65"/>
+                                <rect key="frame" x="252" y="454" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="submit_button"/>
                                 <connections>
@@ -597,12 +597,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tgl-TB-Nof">
-                                <rect key="frame" x="20" y="384" width="76" height="30"/>
+                                <rect key="frame" x="20" y="472" width="76" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="COLOR"/>
-                                <connections>
-                                    <segue destination="RSq-q4-goT" kind="push" id="O97-PG-iBr"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -619,12 +616,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="map" destination="dPi-sx-Hmg" id="QUT-ct-Bnn"/>
-                        <segue destination="SEk-2d-QyD" kind="push" identifier="toEventDetails" id="3rd-5e-I63"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0m-A0-da2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-358" y="452"/>
+            <point key="canvasLocation" x="-96" y="1268"/>
         </scene>
         <!--Recent Events-->
         <scene sceneID="Ct4-Sg-koh">
@@ -1755,25 +1751,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" id="T5t-yd-mBB">
+                            <view contentMode="scaleToFill" id="T5t-yd-mBB">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view opaque="NO" contentMode="scaleToFill" id="uWb-WG-DM2">
-                                <rect key="frame" x="0.0" y="356" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hD6-V9-Usa">
-                                <rect key="frame" x="137" y="366" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9pV-PY-bbe">
+                                <rect key="frame" x="252" y="366" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="submit_button"/>
+                                <connections>
+                                    <segue destination="QgP-Ba-Mn3" kind="push" id="2MH-Mx-joA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CMj-Yu-d6m"/>
+                    <navigationItem key="navigationItem" id="CMj-Yu-d6m">
+                        <barButtonItem key="rightBarButtonItem" image="refreshButt" id="vqZ-4c-fUq" userLabel="refreshButt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshButt:" destination="RSq-q4-goT" id="w41-hc-wGG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="colorMapView" destination="T5t-yd-mBB" id="pLk-1a-JXI"/>
@@ -1781,7 +1783,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQa-Vg-Phe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-358" y="1154"/>
+            <point key="canvasLocation" x="-358" y="452"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wGS-f9-5n6">
@@ -1808,7 +1810,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BKT-gN-H5Q" kind="relationship" relationship="rootViewController" id="tTB-JL-k3H"/>
+                        <segue destination="RSq-q4-goT" kind="relationship" relationship="rootViewController" id="2Ay-Zh-Z45"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEv-VE-1O1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2321,6 +2323,6 @@
         <image name="tabbar" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HJB-uO-dck"/>
+        <segue reference="2MH-Mx-joA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@ import Parse
 import UIKit
 import Mapbox
 
-class CustomPinAnnotation: MKPointAnnotation{
+class CustomPinAnnotation: MGLPointAnnotation{
     
     var EventObject: PFObject!
 
