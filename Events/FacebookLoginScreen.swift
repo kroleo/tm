@@ -74,15 +74,15 @@ class FacebookLoginScreen: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                     }
                 }
                 
-                if(user!.isNew){
-                    self.performSegueWithIdentifier("toConfirm", sender: self)
-                }else{
+//                if(user!.isNew){
+//                    self.performSegueWithIdentifier("toConfirm", sender: self)
+//                }else{
                     let protectedPage = self.storyboard?.instantiateViewControllerWithIdentifier("ProtectedPage") as! ProtectedPage
                     
                     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                     
                     appDelegate.window?.rootViewController = protectedPage
-                }
+//                }
                 
                
             }

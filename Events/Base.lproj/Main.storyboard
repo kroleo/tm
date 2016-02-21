@@ -376,7 +376,7 @@
                                                     <rect key="frame" x="96" y="26" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="f7k-lu-VDw">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="f7k-lu-VDw">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -435,61 +435,68 @@
             <objects>
                 <viewController storyboardIdentifier="Settings" id="S1e-TB-SRT" customClass="Settings" customModule="The_Move" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hdD-Ps-JYG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2LR-Dy-Rtd">
-                                <rect key="frame" x="131" y="171" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="About">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Isl-kG-zfm" kind="push" id="lQG-MT-XHt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aiH-HQ-fcE">
-                                <rect key="frame" x="106" y="209" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Privacy Policy">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="VIG-kX-PN9" kind="push" id="s5C-nd-m4Y"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ua1-i1-knn">
-                                <rect key="frame" x="84" y="247" width="152" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Terms &amp; Conditions">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="xgo-h0-Kxr" kind="push" id="OAf-g3-ayf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8XL-e1-dtb">
-                                <rect key="frame" x="126" y="285" width="67" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logoutFacebookButton:" destination="S1e-TB-SRT" eventType="touchUpInside" id="bXp-A3-fFN"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" id="3De-oz-iLt">
+                                <rect key="frame" x="0.0" y="233" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2LR-Dy-Rtd">
+                                        <rect key="frame" x="160" y="10" width="57" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                        <state key="normal" title="About">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Isl-kG-zfm" kind="push" id="lQG-MT-XHt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aiH-HQ-fcE">
+                                        <rect key="frame" x="134" y="60" width="108" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                        <state key="normal" title="Privacy Policy">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="VIG-kX-PN9" kind="push" id="s5C-nd-m4Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ua1-i1-knn">
+                                        <rect key="frame" x="112" y="110" width="152" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                        <state key="normal" title="Terms &amp; Conditions">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="xgo-h0-Kxr" kind="push" id="OAf-g3-ayf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8XL-e1-dtb">
+                                        <rect key="frame" x="155" y="160" width="67" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutFacebookButton:" destination="S1e-TB-SRT" eventType="touchUpInside" id="bXp-A3-fFN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ul-OD-tsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1102" y="452"/>
+            <point key="canvasLocation" x="1151.5" y="321.5"/>
         </scene>
         <!--Privacy Policy-->
         <scene sceneID="Jkr-at-MvH">
@@ -516,7 +523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMm-QQ-csT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1676" y="126"/>
+            <point key="canvasLocation" x="1676" y="322"/>
         </scene>
         <!--Terms Conditions-->
         <scene sceneID="Wll-TH-ekl">
@@ -543,7 +550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMk-kq-Xdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1676" y="670"/>
+            <point key="canvasLocation" x="1676" y="874"/>
         </scene>
         <!--About-->
         <scene sceneID="TCQ-RJ-XLz">
@@ -570,7 +577,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBh-IE-YtO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1676" y="-441"/>
+            <point key="canvasLocation" x="1676" y="-249"/>
         </scene>
         <!--MapView-->
         <scene sceneID="IoC-yE-3Ld">
@@ -829,7 +836,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="QgP-Ba-Mn3" id="mIw-TG-Y9x"/>
                                         </connections>
@@ -851,7 +858,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="QgP-Ba-Mn3" id="82x-yp-X8E"/>
                                         </connections>
@@ -1037,7 +1044,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="fyw-9T-nv4" userLabel="submitEventButt">
-                                        <rect key="frame" x="104" y="454" width="111" height="29"/>
+                                        <rect key="frame" x="104" y="442" width="111" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
@@ -1475,46 +1482,53 @@
             <objects>
                 <viewController storyboardIdentifier="EventDetails" id="SEk-2d-QyD" customClass="EventDeats" customModule="The_Move" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i5B-gX-JWU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" id="hAX-9Z-Vp5">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="99t-dI-FqZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zNv-Bf-zQT">
-                                            <rect key="frame" x="0.0" y="63" width="320" height="162"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        </imageView>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" id="nCJ-dL-oeC">
+                                            <rect key="frame" x="0.0" y="63" width="320" height="174"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zNv-Bf-zQT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j5q-tk-mDp" userLabel="timeLabel">
-                                            <rect key="frame" x="113" y="278" width="130" height="23"/>
+                                            <rect key="frame" x="113" y="332" width="130" height="23"/>
                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                             <color key="textColor" white="0.3955274748" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="markerIcon" id="EZg-kP-zCE">
-                                            <rect key="frame" x="90" y="258" width="17" height="17"/>
+                                            <rect key="frame" x="90" y="307" width="17" height="17"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clockImage" id="trA-0r-lnC">
-                                            <rect key="frame" x="92" y="283" width="13" height="13"/>
+                                            <rect key="frame" x="92" y="336" width="13" height="13"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="OEp-aU-o5r" userLabel="titleLbl">
-                                            <rect key="frame" x="92" y="217" width="213" height="38"/>
+                                            <rect key="frame" x="92" y="260" width="213" height="38"/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="22"/>
                                             <color key="textColor" white="0.19738359899999999" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QRm-EJ-c1v" userLabel="locationLabel">
-                                            <rect key="frame" x="113" y="255" width="186" height="23"/>
+                                            <rect key="frame" x="113" y="304" width="186" height="23"/>
                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
                                             <color key="textColor" white="0.3955274748" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" id="uej-g2-EL0">
-                                            <rect key="frame" x="14" y="230" width="65" height="65"/>
+                                            <rect key="frame" x="14" y="279" width="65" height="65"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IUF-I1-ED8">
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
@@ -1532,13 +1546,13 @@
                                             <color key="backgroundColor" white="0.1005924916" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <view contentMode="scaleToFill" id="yry-R1-UvM" userLabel="attendingView">
-                                            <rect key="frame" x="0.0" y="315" width="320" height="62"/>
+                                            <rect key="frame" x="0.0" y="403" width="320" height="62"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <subviews>
                                                 <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="79g-cB-by6" userLabel="viewGoing1">
                                                     <rect key="frame" x="84" y="6" width="50" height="50"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="fwA-XU-f1l">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="fwA-XU-f1l">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -1548,7 +1562,7 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" id="k56-tw-JKQ" userLabel="viewGoing2">
                                                     <rect key="frame" x="137" y="6" width="50" height="50"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3zp-Vh-2Lk">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3zp-Vh-2Lk">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -1558,7 +1572,7 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" id="aeW-72-FPt" userLabel="viewGoing3">
                                                     <rect key="frame" x="190" y="6" width="50" height="50"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sLd-ow-dGC">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sLd-ow-dGC">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -1568,7 +1582,7 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" id="GaJ-Ei-G8K" userLabel="viewGoing4">
                                                     <rect key="frame" x="243" y="6" width="50" height="50"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="VqF-kE-PCi">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="VqF-kE-PCi">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
@@ -1588,7 +1602,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cPz-7J-6s3" userLabel="Attend">
                                                     <rect key="frame" x="24" y="14" width="34" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                                    <state key="normal" title="attend" image="star_unselected"/>
+                                                    <state key="normal" image="star_unselected"/>
                                                     <state key="selected" image="star_selected"/>
                                                     <connections>
                                                         <action selector="go:" destination="SEk-2d-QyD" eventType="touchUpInside" id="VxK-QV-aKQ"/>
@@ -1598,28 +1612,28 @@
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="Vrh-jR-ZQt" userLabel="rateProgress">
-                                            <rect key="frame" x="0.0" y="425" width="320" height="2"/>
+                                            <rect key="frame" x="0.0" y="513" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
                                             <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="trackTintColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="YtD-QS-lKP" userLabel="rateProgress">
-                                            <rect key="frame" x="0.0" y="427" width="320" height="2"/>
+                                            <rect key="frame" x="0.0" y="515" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
                                             <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="trackTintColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="ciS-ei-YdZ" userLabel="rateProgress">
-                                            <rect key="frame" x="0.0" y="429" width="320" height="2"/>
+                                            <rect key="frame" x="0.0" y="517" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <inset key="insetFor6xAndEarlier" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
                                             <color key="progressTintColor" red="0.2784313725" green="0.94509803920000002" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="trackTintColor" red="1" green="0.36159708709999999" blue="0.31523164329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mR3-Zy-c5M">
-                                            <rect key="frame" x="8" y="389" width="46" height="30"/>
+                                            <rect key="frame" x="8" y="477" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                             <state key="normal" title="Nah">
@@ -1630,7 +1644,7 @@
                                             </connections>
                                         </button>
                                         <view hidden="YES" contentMode="scaleToFill" id="5np-2i-Rvi" userLabel="snapchatView">
-                                            <rect key="frame" x="272" y="352" width="40" height="26"/>
+                                            <rect key="frame" x="272" y="277" width="40" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uSz-xd-hwB">
@@ -1641,7 +1655,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9HK-WR-qJL">
-                                            <rect key="frame" x="266" y="389" width="46" height="30"/>
+                                            <rect key="frame" x="266" y="477" width="46" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                             <state key="normal" title="Lit">
@@ -1652,13 +1666,13 @@
                                             </connections>
                                         </button>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TW8-Oi-tdM" userLabel="timeLabel2">
-                                            <rect key="frame" x="113" y="291" width="130" height="23"/>
+                                            <rect key="frame" x="113" y="347" width="130" height="23"/>
                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                             <color key="textColor" white="0.3955274748" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zti-vo-O6a">
-                                            <rect key="frame" x="122" y="392" width="77" height="21"/>
+                                            <rect key="frame" x="122" y="480" width="77" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1672,7 +1686,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="inn-Fn-9H5"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="eventImageBackground" destination="uej-g2-EL0" id="K8c-Yh-GRv"/>
                         <outlet property="eventImageFirstLetter" destination="IUF-I1-ED8" id="49c-wk-V4t"/>
@@ -1699,7 +1713,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4fF-z6-wDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-763" y="1154"/>
+            <point key="canvasLocation" x="-756" y="1024"/>
         </scene>
         <!--Going List View-->
         <scene sceneID="xUn-Uj-BHS">
@@ -1752,6 +1766,12 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eIi-eQ-DKl">
+                                <rect key="frame" x="252" y="366" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" image="submit_button_white"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9pV-PY-bbe">
                                 <rect key="frame" x="252" y="366" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -1774,6 +1794,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="addEventButton" destination="9pV-PY-bbe" id="hi2-Vu-2mf"/>
+                        <outlet property="addEventButtonWhite" destination="eIi-eQ-DKl" id="zBf-gg-kxX"/>
                         <outlet property="colorMapView" destination="T5t-yd-mBB" id="pLk-1a-JXI"/>
                     </connections>
                 </viewController>
@@ -2313,6 +2335,7 @@
         <image name="star_selected" width="58" height="58"/>
         <image name="star_unselected" width="58" height="58"/>
         <image name="submit_button" width="50" height="50"/>
+        <image name="submit_button_white" width="50" height="50"/>
         <image name="tabBar" width="88" height="44"/>
         <image name="tab_Menu" width="44" height="44"/>
         <image name="tab_map" width="44" height="44"/>
@@ -2320,6 +2343,6 @@
         <image name="tabbar" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eSc-ud-vc0"/>
+        <segue reference="2MH-Mx-joA"/>
     </inferredMetricsTieBreakers>
 </document>

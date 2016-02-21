@@ -76,7 +76,7 @@ class Explore: UIViewController,
         
         let userQuery = PFQuery(className: "_User")
         userQuery.whereKey(USER_OBJECT_ID, notEqualTo: PFUser.currentUser()!.objectId!)
-        userQuery.whereKey("emailVerified", equalTo: true)
+//        userQuery.whereKey("emailVerified", equalTo: true)
         userQuery.limit = limitForExplorePeopleQuery
         userQuery.findObjectsInBackgroundWithBlock{(result:[PFObject]?, error:NSError?) -> Void in
             

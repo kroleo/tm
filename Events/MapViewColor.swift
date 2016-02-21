@@ -24,6 +24,8 @@ var last_name = PFUser.currentUser()!["last_name"] as! String
 
 class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate {
 
+    @IBOutlet var addEventButton: UIButton!
+    @IBOutlet var addEventButtonWhite: UIButton!
     
     @IBOutlet var colorMapView: UIView!
     var mapView: MGLMapView!
@@ -38,9 +40,13 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
         if ((currentHour > 6) && (currentHour < 20 )){
             mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.lightStyleURL())
             pinImage = UIImage(named: "mapPinBlack")
+            addEventButton.hidden = false
+            addEventButtonWhite.hidden = true
         } else {
             mapView = MGLMapView(frame: view.bounds, styleURL: MGLStyle.darkStyleURL())
             pinImage = UIImage(named: "mapPinColor")
+            addEventButton.hidden = true
+            addEventButtonWhite.hidden = false
         }
         
         self.mapView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
@@ -75,7 +81,7 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
 //        
 //        // Create a camera that rotates around the same center point, back to 0°.
 //        // `fromDistance:` is meters above mean sea level that an eye would have to be in order to see what the map view is showing.
-//        let camera = MGLMapCamera(lookingAtCenterCoordinate: mapView.centerCoordinate, fromDistance: 2000, pitch: 0, heading: 0)
+//        let camera = MGLMapCamera(lookingAtCenterCoordinate: mapView.centerCoordinate, fromDistance: 1000, pitch: 0, heading: 0)
 //        
 //        // Animate the camera movement over 5 seconds.
 //        mapView.setCamera(camera, withDuration: 5, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
@@ -125,7 +131,7 @@ class MapViewColor: UIViewController, CLLocationManagerDelegate, MGLMapViewDeleg
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         //The greater the Span the greater the zoom out. Change to 0.5 if you want more zoom in feature
         //let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(0.02, 0.02))
-        self.mapView.setCenterCoordinate(center, zoomLevel: 15, animated: true)
+        self.mapView.setCenterCoordinate(center, zoomLevel: 15, animated: false)
         self.locationManager.stopUpdatingLocation()
     }
     

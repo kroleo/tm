@@ -287,12 +287,10 @@ func layoutButtons() {
     if nameTxt.text != "" {
     eventsClass[EVENTS_TITLE] = nameTxt.text
     } else {
-        errors += "-You forgot to add the Event Title"
+        errors += "-You forgot to add the event title"
     }
     
-    eventsClass["Lit"] = 0
-    eventsClass["Nah"] = 0
-    eventsClass["going"] = []
+
     
     //AN EVENT NEEDS A START DATE
     if startDateTrigger == true  {
@@ -323,11 +321,11 @@ func layoutButtons() {
         if(!errors.isEmpty){
             errors += "\r\n"
         }
-        errors += "-You need a photo for your Lit event"
+        errors += "-You need a photo for your event"
     }
     
     // AN EVENT NEEDS LOCATION
-    if nameTxt.text != "" {
+    if locationTxt.text != "" {
             eventsClass[EVENTS_LOCATION] = self.locationTxt.text
         
     } else {
@@ -344,6 +342,9 @@ func layoutButtons() {
     
     // Set Uploading User
     eventsClass["uploadingUser"] = PFUser.currentUser()?.objectId
+    eventsClass["Lit"] = 0
+    eventsClass["Nah"] = 0
+    eventsClass["going"] = []
     
     
     
@@ -383,7 +384,7 @@ func layoutButtons() {
 
     
     func sendSMS(number: String){
-        let code = "\(first_name) \(last_name) is inviting you for his Lit Event.\nDownload the application to find out location, timings and other cool events around you.\nLink."
+        let code = "\(first_name) \(last_name) is inviting you for their event: \(nameTxt.text!).\nGet The Move for details and other cool events around you.\ngetthemove.com"
         
         let data = [
             "To" : number,
