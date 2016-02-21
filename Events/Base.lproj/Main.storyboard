@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="XNr-zz-JEX">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
@@ -1028,20 +1027,17 @@
                                         <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ors-Sg-8bc">
-                                        <rect key="frame" x="26" y="485" width="90" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="add contacts"/>
+                                    <button alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ors-Sg-8bc">
+                                        <rect key="frame" x="65" y="401" width="189" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="13"/>
+                                        <state key="normal" title="Send Texts To Your Friends?" image="contactBook"/>
+                                        <connections>
+                                            <action selector="select_contacts:" destination="QgP-Ba-Mn3" eventType="touchUpInside" id="wN8-MU-5Hz"/>
+                                        </connections>
                                     </button>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want us to send texts to your friends inviting them to your dope party? Select the contacts and we'll take care of that." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cUX-8k-eOe">
-                                        <rect key="frame" x="18" y="399" width="286" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="fyw-9T-nv4" userLabel="submitEventButt">
-                                        <rect key="frame" x="89" y="486" width="144" height="29"/>
+                                        <rect key="frame" x="104" y="454" width="111" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
@@ -2306,6 +2302,7 @@
     </scenes>
     <resources>
         <image name="clockImage" width="50" height="50"/>
+        <image name="contactBook" width="24" height="24"/>
         <image name="exploreTab" width="44" height="44"/>
         <image name="facebookLoginImage" width="589" height="114"/>
         <image name="fbLoginScreen" width="640" height="1136"/>
@@ -2323,6 +2320,6 @@
         <image name="tabbar" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2MH-Mx-joA"/>
+        <segue reference="eSc-ud-vc0"/>
     </inferredMetricsTieBreakers>
 </document>

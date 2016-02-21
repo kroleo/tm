@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ConfirmEmail: UIViewController {
+class ConfirmEmail: UIViewController, UITextFieldDelegate{
     @IBOutlet var eduEmail: UITextField!
     
     @IBAction func verify(sender: UIButton) {
@@ -18,8 +18,13 @@ class ConfirmEmail: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        eduEmail.delegate = self
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        eduEmail.resignFirstResponder()
+        return true
+    }
     func checks(){
         self.eduEmail.resignFirstResponder()
         

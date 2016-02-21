@@ -10,14 +10,15 @@ for CodeCanyon.net
 import UIKit
 import Parse
 import MessageUI
-
+import SwiftRequest
+import EPContactsPicker
 
 class SubmitEvent: UIViewController,
 UITextFieldDelegate,
 UITextViewDelegate,
 UIAlertViewDelegate,
 UINavigationControllerDelegate,
-UIImagePickerControllerDelegate
+UIImagePickerControllerDelegate, EPPickerDelegate
 {
 
     /* Views */
@@ -38,14 +39,14 @@ UIImagePickerControllerDelegate
     @IBOutlet var datePicker: UIDatePicker!
     
     @IBOutlet var submitEventOutlet: UIButton!
-    var clearFieldsButt = UIButton()
+
     
     
     /* Variables */
     var startDateSelected = false
     var startDate = NSDate()
     var endDate = NSDate()
-    
+    var selectedContactsArray = [String]()
     var startDateTrigger = false
     var endDateTrigger = false
     
@@ -73,17 +74,6 @@ override func viewDidLoad() {
     datePicker.backgroundColor = UIColor.whiteColor()
     startDateSelected = false
     
-    
-    // Clear fields BarButton Item
-    clearFieldsButt = UIButton(type: UIButtonType.Custom)
-    clearFieldsButt.frame = CGRectMake(0, 0, 50, 26)
-    clearFieldsButt.setTitle("Clear", forState: UIControlState.Normal)
-    clearFieldsButt.setTitleColor(mainColor, forState: UIControlState.Normal)
-    clearFieldsButt.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 13)
-    clearFieldsButt.backgroundColor = UIColor.whiteColor()
-    clearFieldsButt.layer.cornerRadius = 5
-    clearFieldsButt.addTarget(self, action: "clearFields:", forControlEvents: UIControlEvents.TouchUpInside)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: clearFieldsButt)
     
     
     // Round views corners
@@ -371,6 +361,11 @@ func layoutButtons() {
                 self.view.hideHUD()
             }
         }
+        if(!selectedContactsArray.isEmpty){
+            for contact in selectedContactsArray{
+                sendSMS(contact)
+            }
+        }
         self.navigationController?.popViewControllerAnimated(true)
     }else{
         print(errors)
@@ -387,10 +382,63 @@ func layoutButtons() {
 }
 
     
+    func sendSMS(number: String){
+        let code = "\(first_name) \(last_name) is inviting you for his Lit Event.\nDownload the application to find out location, timings and other cool events around you.\nLink."
+        
+        let data = [
+            "To" : number,
+            "From" : "+15713273248",
+            "Body" : code
+        ]
+        
+        let swiftRequest = SwiftRequest()
+        swiftRequest.post("https://api.twilio.com/2010-04-01/Accounts/AC4c5c35fc2cdfff1d9b19aad685528f5d/Messages",
+            auth: ["username" : "AC4c5c35fc2cdfff1d9b19aad685528f5d", "password" : "ec4cb4554c0c09467c6bab9043a7c03c"],
+            data: data,
+            callback: {err, response, body in
+                if err == nil {
+                    print("Success: \(response)")
+                } else {
+                    print("Error: (err)")
+                }
+        })
+        
+    }
     
     
     
+    @IBAction func select_contacts(sender: AnyObject) {
+        let contactPickerScene = EPContactsPicker(delegate: self, multiSelection:true, subtitleCellType: SubtitleCellValue.PhoneNumer)
+        let navigationController = UINavigationController(rootViewController: contactPickerScene)
+        self.presentViewController(navigationController, animated: true, completion: nil)
+    }
     
+    func epContactPicker(_: EPContactsPicker, didContactFetchFailed error : NSError)
+    {
+        print("Failed with error \(error.description)")
+    }
+    
+    func epContactPicker(_: EPContactsPicker, didSelectContact contact : EPContact)
+    {
+        print("Contact \(contact.displayName()) has been selected")
+    }
+    
+    func epContactPicker(_: EPContactsPicker, didCancel error : NSError)
+    {
+        print("User canceled the selection");
+    }
+    
+    func epContactPicker(_: EPContactsPicker, didSelectMultipleContacts contacts: [EPContact]) {
+        print("The following contacts are selected")
+        for contact in contacts {
+            let stringArray = contact.phoneNumbers[0].phoneNumber.componentsSeparatedByCharactersInSet(
+                NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+            var newString = stringArray.joinWithSeparator("")
+            newString = "+1" + "\(newString)"
+            selectedContactsArray.append(newString)
+            
+        }
+    }
     
     
     

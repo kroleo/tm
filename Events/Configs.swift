@@ -141,6 +141,17 @@ extension NSDate
     }
 }
 
+extension String {
+    func replace(string:String, replacement:String) -> String {
+        return self.stringByReplacingOccurrencesOfString(string, withString: replacement, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    
+    func removeWhitespace() -> String {
+        return self.replace(" ", replacement: "")
+    }
+    
+}
+
 /*** DO NOT EDIT THE VARIABLES BELOW ***/
 
 // EVENTS CLASS
