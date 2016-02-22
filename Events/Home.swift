@@ -178,12 +178,12 @@ func queryLatestEvents() {
     
     let currentDate = NSDate()
     //StartDate is + 15h
-    let startCutOff = currentDate.dateByAddingTimeInterval(518400)
-    let endCutOff = currentDate.dateByAddingTimeInterval(-295200)
+    let startCutOff = currentDate.dateByAddingTimeInterval(1209600)
+//    let endCutOff = currentDate.dateByAddingTimeInterval(-295200)
     let query = PFQuery(className: EVENTS_CLASS_NAME)
     query.orderByDescending("Lit")
     query.limit = limitForRecentEventsQuery
-    query.whereKey("endDate", greaterThanOrEqualTo: endCutOff)
+    query.whereKey("endDate", greaterThanOrEqualTo: currentDate)
     query.whereKey("startDate", lessThanOrEqualTo: startCutOff)
     // Query bloxk
     query.findObjectsInBackgroundWithBlock { (objects, error)-> Void in

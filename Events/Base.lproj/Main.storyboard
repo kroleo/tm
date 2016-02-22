@@ -1771,6 +1771,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" image="submit_button_white"/>
+                                <connections>
+                                    <segue destination="QgP-Ba-Mn3" kind="push" id="vPd-Cc-zIJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9pV-PY-bbe">
                                 <rect key="frame" x="252" y="366" width="65" height="65"/>
